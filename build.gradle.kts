@@ -15,7 +15,19 @@ kotlin {
         binaries {
             executable {
                 entryPoint = "main"
+                runTask?.run {
+                    val args = providers.gradleProperty("runArgs")
+                    argumentProviders.add(CommandLineArgumentProvider {
+                        args.orNull?.split(' ') ?: emptyList()
+                    })
+                }
             }
+        }
+    }
+
+    sourceSets {
+        macosMain.dependencies {
+            implementation("com.github.ajalt.clikt:clikt:4.2.1")
         }
     }
 }

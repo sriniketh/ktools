@@ -40,26 +40,43 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "last_opened_file_path": "/Users/srinikethramachandran/Documents/projects/ktools/src/macOSNativeMain/kotlin"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "JSON",
+      "JSON Lines"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/macOSNativeMain/kotlin" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/macosMain/kotlin" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
   </component>
-  <component name="RunManager" selected="Gradle.runDebugExecutableMacosArm64">
-    <configuration name="runDebugExecutableMacOSArm64Native" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.UUIDTest">
+    <configuration name="UUIDTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="runDebugExecutableMacOSArm64Native" />
+            <option value=":cleanMacosArm64Test" />
+            <option value=":macosArm64Test" />
+            <option value="--tests &quot;UUIDTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -67,21 +84,23 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="runDebugExecutableMacOSNative" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UUIDTest.test uuid prints new uuid" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="runDebugExecutableMacOSNative" />
+            <option value=":cleanMacosArm64Test" />
+            <option value=":macosArm64Test" />
+            <option value="--tests &quot;UUIDTest.test uuid prints new uuid&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -89,7 +108,31 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="UUIDTest.test uuid" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanMacosArm64Test" />
+            <option value=":macosArm64Test" />
+            <option value="--tests &quot;UUIDTest.test uuid&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="runDebugExecutableMacosArm64" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -152,10 +195,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.runDebugExecutableMacosArm64" />
-        <item itemvalue="Gradle.runDebugExecutableMacOSArm64Native" />
-        <item itemvalue="Gradle.runDebugExecutableMacOSNative" />
-        <item itemvalue="Gradle.runDebugExecutableNative" />
+        <item itemvalue="Gradle.UUIDTest" />
+        <item itemvalue="Gradle.UUIDTest" />
+        <item itemvalue="Gradle.UUIDTest" />
+        <item itemvalue="Gradle.UUIDTest.test uuid prints new uuid" />
+        <item itemvalue="Gradle.UUIDTest.test uuid prints new uuid" />
       </list>
     </recent_temporary>
   </component>
