@@ -6,7 +6,7 @@ import platform.Foundation.NSUUID
 
 actual fun createRandomUUID(): String = NSUUID().UUIDString
 
-class UUID : CliktCommand(help = "Create a random UUID") {
+internal class UUID : CliktCommand(help = "Create a random UUID") {
     private enum class Case { lower, upper }
 
     private val case by option("-c", "--case", help = "Use upper or lower case. Default is lower.")
