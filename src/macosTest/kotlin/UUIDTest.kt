@@ -38,6 +38,4 @@ class UUIDTest {
         val outputWithoutNewLines = result.stdout.removeNewLines()
         assertTrue(uuidRegexWithLowercaseChars.matches(outputWithoutNewLines))
     }
-
-    private fun String.removeNewLines() = replace("""\r\n|\n""".toRegex(), "")
 }

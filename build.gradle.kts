@@ -26,6 +26,9 @@ kotlin {
     }
 
     sourceSets {
+        commonMain.dependencies {
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
+        }
         macosMain.dependencies {
             implementation("com.github.ajalt.clikt:clikt:4.2.1")
         }

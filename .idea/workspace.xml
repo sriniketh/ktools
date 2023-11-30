@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72586d5e-1fee-4003-af2d-635f22b81f07" name="Changes" comment="" />
+    <list default="true" id="72586d5e-1fee-4003-af2d-635f22b81f07" name="Changes" comment="add unix time">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/macosMain/kotlin/UnixTime.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/macosMain/kotlin/UnixTime.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/macosTest/kotlin/UUIDTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/macosTest/kotlin/UUIDTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/macosTest/kotlin/UnixTimeTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/macosTest/kotlin/UnixTimeTest.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,13 +38,33 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Kotlin File" />
         <option value="Kotlin Class" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2YsWpxlT8XxzR1i8g7s0VodWT4u" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "last_opened_file_path": "/Users/srinikethramachandran/Documents/projects/ktools/src/macOSNativeMain/kotlin"
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/srinikethramachandran/Documents/projects/ktools",
+    "settings.editor.selected.configurable": "inlay.hints"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -62,7 +87,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.UUIDTest">
+  <component name="RunManager" selected="Gradle.UnixTimeTest">
     <configuration name="UUIDTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -135,19 +160,20 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="runDebugExecutableMacosArm64" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UnixTimeTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="runDebugExecutableMacosArm64" />
-            <option value="runDebugExecutableMacosX64" />
+            <option value=":cleanMacosArm64Test" />
+            <option value=":macosArm64Test" />
+            <option value="--tests &quot;UnixTimeTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -155,21 +181,23 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="runDebugExecutableNative" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UnixTimeTest.test unixtime --operation=millisToISO exits with non zero status code when no --millis argument not passed" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="runDebugExecutableNative" />
+            <option value=":cleanMacosArm64Test" />
+            <option value=":macosArm64Test" />
+            <option value="--tests &quot;UnixTimeTest.test unixtime --operation=millisToISO exits with non zero status code when no --millis argument not passed&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -177,7 +205,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
@@ -195,15 +223,62 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.UUIDTest" />
-        <item itemvalue="Gradle.UUIDTest" />
-        <item itemvalue="Gradle.UUIDTest" />
-        <item itemvalue="Gradle.UUIDTest.test uuid prints new uuid" />
-        <item itemvalue="Gradle.UUIDTest.test uuid prints new uuid" />
+        <item itemvalue="Gradle.UnixTimeTest" />
+        <item itemvalue="Gradle.UnixTimeTest" />
+        <item itemvalue="Gradle.UnixTimeTest.test unixtime --operation=millisToISO exits with non zero status code when no --millis argument not passed" />
+        <item itemvalue="Gradle.UnixTimeTest" />
+        <item itemvalue="Gradle.UnixTimeTest" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="72586d5e-1fee-4003-af2d-635f22b81f07" name="Changes" comment="" />
+      <created>1701314954817</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701314954817</updated>
+    </task>
+    <task id="LOCAL-00001" summary="make UUID internal">
+      <option name="closed" value="true" />
+      <created>1701322686856</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1701322686856</updated>
+    </task>
+    <task id="LOCAL-00002" summary="use name param to explicitly name subcommand">
+      <option name="closed" value="true" />
+      <created>1701323096560</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701323096560</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add unix time">
+      <option name="closed" value="true" />
+      <created>1701331843425</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701331843425</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add unix time">
+      <option name="closed" value="true" />
+      <created>1701331950282</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701331950282</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="make UUID internal" />
+    <MESSAGE value="use name param to explicitly name subcommand" />
+    <MESSAGE value="add unix time" />
+    <option name="LAST_COMMIT_MESSAGE" value="add unix time" />
   </component>
 </project>
