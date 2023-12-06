@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72586d5e-1fee-4003-af2d-635f22b81f07" name="Changes" comment="add unix time">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commonMain/kotlin/UUID.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/commonMain/kotlin/UUID.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/macosMain/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nativeMain/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/macosMain/kotlin/UUID.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/macosMain/kotlin/UUID.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/macosMain/kotlin/UnixTime.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nativeMain/kotlin/UnixTime.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/macosTest/kotlin/TestHelpers.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nativeTest/kotlin/TestHelpers.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/macosTest/kotlin/UUIDTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nativeTest/kotlin/UUIDCommandTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/macosTest/kotlin/UnixTimeTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nativeTest/kotlin/UnixTimeCommandTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,22 +55,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/srinikethramachandran/Documents/projects/ktools",
-    "settings.editor.selected.configurable": "preferences.editor"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/srinikethramachandran/Documents/projects/ktools&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "JSON",
-      "JSON Lines"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JSON&quot;,
+      &quot;JSON Lines&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/macOSNativeMain/kotlin" />
@@ -97,7 +90,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.UUIDCommandTest">
+  <component name="RunManager" selected="Gradle.ktools [installDist]">
     <configuration name="UUIDCommandTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -112,30 +105,6 @@
             <option value=":cleanMacosArm64Test" />
             <option value=":macosArm64Test" />
             <option value="--tests &quot;UUIDCommandTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="UUIDTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":cleanMacosArm64Test" />
-            <option value=":macosArm64Test" />
-            <option value="--tests &quot;UUIDTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -194,28 +163,48 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="UnixTimeTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ktools [assembleDist]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":cleanMacosArm64Test" />
-            <option value=":macosArm64Test" />
-            <option value="--tests &quot;UnixTimeTest&quot;" />
+            <option value="assembleDist" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ktools [installDist]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="installDist" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
@@ -233,11 +222,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ktools [installDist]" />
+        <item itemvalue="Gradle.ktools [assembleDist]" />
         <item itemvalue="Gradle.UUIDCommandTest" />
         <item itemvalue="Gradle.UUIDCommandTest" />
         <item itemvalue="Gradle.UnixTimeCommandTest" />
-        <item itemvalue="Gradle.UUIDTest" />
-        <item itemvalue="Gradle.UUIDTest.test createRandomUUID creates random UUID" />
       </list>
     </recent_temporary>
   </component>
