@@ -4,7 +4,7 @@ import kotlinx.datetime.Instant
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class UnixTimeTest {
+class UnixTimeCommandTest {
 
     private val fakeClock: FakeClock = FakeClock()
     private val unixTime = UnixTime(clock = fakeClock)

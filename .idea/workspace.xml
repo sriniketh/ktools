@@ -6,9 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="72586d5e-1fee-4003-af2d-635f22b81f07" name="Changes" comment="add unix time">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/macosMain/kotlin/UnixTime.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/macosMain/kotlin/UnixTime.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/macosTest/kotlin/UUIDTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/macosTest/kotlin/UUIDTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/macosTest/kotlin/UnixTimeTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/macosTest/kotlin/UnixTimeTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commonMain/kotlin/UUID.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/commonMain/kotlin/UUID.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/macosMain/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nativeMain/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/macosMain/kotlin/UUID.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/macosMain/kotlin/UUID.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/macosMain/kotlin/UnixTime.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nativeMain/kotlin/UnixTime.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/macosTest/kotlin/TestHelpers.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nativeTest/kotlin/TestHelpers.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/macosTest/kotlin/UUIDTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nativeTest/kotlin/UUIDCommandTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/macosTest/kotlin/UnixTimeTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/nativeTest/kotlin/UnixTimeCommandTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,9 +54,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2YsWpxlT8XxzR1i8g7s0VodWT4u" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -64,7 +69,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/srinikethramachandran/Documents/projects/ktools",
-    "settings.editor.selected.configurable": "inlay.hints"
+    "settings.editor.selected.configurable": "preferences.editor"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -78,16 +83,45 @@
       <recent name="$PROJECT_DIR$/src/macOSNativeMain/kotlin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/nativeTest/kotlin" />
+      <recent name="$PROJECT_DIR$/src/nativeMain/kotlin" />
       <recent name="$PROJECT_DIR$/src/macosMain/kotlin" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.UnixTimeTest">
+  <component name="RunManager" selected="Gradle.UUIDCommandTest">
+    <configuration name="UUIDCommandTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanMacosArm64Test" />
+            <option value=":macosArm64Test" />
+            <option value="--tests &quot;UUIDCommandTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="UUIDTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -112,7 +146,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="UUIDTest.test uuid prints new uuid" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UUIDTest.test createRandomUUID creates random UUID" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -125,7 +159,7 @@
           <list>
             <option value=":cleanMacosArm64Test" />
             <option value=":macosArm64Test" />
-            <option value="--tests &quot;UUIDTest.test uuid prints new uuid&quot;" />
+            <option value="--tests &quot;UUIDTest.test createRandomUUID creates random UUID&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -136,7 +170,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="UUIDTest.test uuid" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UnixTimeCommandTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -149,7 +183,7 @@
           <list>
             <option value=":cleanMacosArm64Test" />
             <option value=":macosArm64Test" />
-            <option value="--tests &quot;UUIDTest.test uuid&quot;" />
+            <option value="--tests &quot;UnixTimeCommandTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -184,30 +218,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="UnixTimeTest.test unixtime --operation=millisToISO exits with non zero status code when no --millis argument not passed" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":cleanMacosArm64Test" />
-            <option value=":macosArm64Test" />
-            <option value="--tests &quot;UnixTimeTest.test unixtime --operation=millisToISO exits with non zero status code when no --millis argument not passed&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="KotlinNativeTemplate.macosArm64Main" />
       <method v="2">
@@ -223,11 +233,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.UnixTimeTest" />
-        <item itemvalue="Gradle.UnixTimeTest" />
-        <item itemvalue="Gradle.UnixTimeTest.test unixtime --operation=millisToISO exits with non zero status code when no --millis argument not passed" />
-        <item itemvalue="Gradle.UnixTimeTest" />
-        <item itemvalue="Gradle.UnixTimeTest" />
+        <item itemvalue="Gradle.UUIDCommandTest" />
+        <item itemvalue="Gradle.UUIDCommandTest" />
+        <item itemvalue="Gradle.UnixTimeCommandTest" />
+        <item itemvalue="Gradle.UUIDTest" />
+        <item itemvalue="Gradle.UUIDTest.test createRandomUUID creates random UUID" />
       </list>
     </recent_temporary>
   </component>
@@ -280,5 +290,9 @@
     <MESSAGE value="use name param to explicitly name subcommand" />
     <MESSAGE value="add unix time" />
     <option name="LAST_COMMIT_MESSAGE" value="add unix time" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

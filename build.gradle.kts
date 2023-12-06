@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+
 plugins {
     kotlin("multiplatform") version "1.9.20-RC2"
 }
@@ -10,10 +12,13 @@ repositories {
 }
 
 kotlin {
-    val platformTargets = listOf(macosX64(), macosArm64())
-    configure(platformTargets) {
+    macosX64()
+    macosArm64()
+
+    targets.withType<KotlinNativeTarget> {
         binaries {
             executable {
+                baseName = "ktools"
                 entryPoint = "main"
                 runTask?.run {
                     val args = providers.gradleProperty("runArgs")
@@ -29,7 +34,7 @@ kotlin {
         commonMain.dependencies {
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
         }
-        macosMain.dependencies {
+        nativeMain.dependencies {
             implementation("com.github.ajalt.clikt:clikt:4.2.1")
         }
     }
