@@ -33,16 +33,18 @@ kotlin {
 
     sourceSets {
         val okioVersion = "3.6.0"
+        val kotlinxDateTimeVersin = "0.4.1"
+        val cliktVersion = "4.2.1"
 
         commonMain.dependencies {
-            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDateTimeVersin")
             implementation("com.squareup.okio:okio:$okioVersion")
         }
         commonTest.dependencies {
             implementation("com.squareup.okio:okio-fakefilesystem:$okioVersion")
         }
         nativeMain.dependencies {
-            implementation("com.github.ajalt.clikt:clikt:4.2.1")
+            implementation("com.github.ajalt.clikt:clikt:$cliktVersion")
         }
     }
 }
