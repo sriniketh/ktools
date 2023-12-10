@@ -5,7 +5,7 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.prompt
 import kotlinx.datetime.Clock
 
-internal class UnixTime(private val clock: Clock = Clock.System) :
+internal class UnixTimeCommand(private val clock: Clock = Clock.System) :
     CliktCommand(name = "unixtime", help = "Unix time conversions") {
 
     private sealed class Operation(name: String) : OptionGroup(name)
