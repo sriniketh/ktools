@@ -3,7 +3,7 @@ import com.github.ajalt.clikt.parameters.options.default
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.types.enum
 
-internal class UUID : CliktCommand(name = "uuid", help = "Create a random UUID") {
+internal class UUIDCommand : CliktCommand(name = "uuid", help = "Create a random UUID") {
     private enum class Case { lower, upper }
 
     private val case by option("-c", "--case", help = "Use upper or lower case. Default is lower.")
