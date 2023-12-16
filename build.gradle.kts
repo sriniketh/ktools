@@ -35,10 +35,12 @@ kotlin {
         val okioVersion = "3.6.0"
         val kotlinxDateTimeVersin = "0.4.1"
         val cliktVersion = "4.2.1"
+        val kotlinxSerializationVersion = "1.6.2"
 
         commonMain.dependencies {
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDateTimeVersin")
             implementation("com.squareup.okio:okio:$okioVersion")
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion")
         }
         commonTest.dependencies {
             implementation("com.squareup.okio:okio-fakefilesystem:$okioVersion")
