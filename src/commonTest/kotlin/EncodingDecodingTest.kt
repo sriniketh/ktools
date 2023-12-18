@@ -2,7 +2,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 
-class EncodingTest {
+class EncodingDecodingTest {
 
     @Test
     fun `encodeToUTF8 encodes content to UTF-8 hex`() {
