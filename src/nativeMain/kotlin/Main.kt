@@ -3,7 +3,14 @@ import com.github.ajalt.clikt.core.subcommands
 
 fun main(args: Array<String>) =
     KTools()
-        .subcommands(UUIDCommand(), UnixTimeCommand(), HashCommand(), EncodingCommand(), DecodingCommand())
+        .subcommands(
+            UUIDCommand(),
+            UnixTimeCommand(),
+            HashCommand(),
+            EncodingCommand(),
+            DecodingCommand(),
+            PrettyPrintCommand()
+        )
         .main(args)
 
 class KTools : CliktCommand() {
