@@ -21,13 +21,13 @@ internal class DecodingCommand :
         .check("string must be non-empty") { it.isNotEmpty() }
 
     override fun run() {
-        when (format) {
-            "UTF8", "utf8" -> {
+        when (format.lowercase()) {
+            "utf8" -> {
                 echo("input string: $content")
                 echo("decoded string: ${decodeFromUTF8Hex(content)}")
             }
 
-            "BASE64", "base64" -> {
+            "base64" -> {
                 echo("input string: $content")
                 echo("decoded string: ${decodeFromBase64(content)}")
             }

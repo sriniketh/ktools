@@ -42,8 +42,8 @@ internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTE
         }
 
     override fun run() {
-        when (algorithm) {
-            "MD5", "md5" -> {
+        when (algorithm.lowercase()) {
+            "md5" -> {
                 when (val it = content) {
                     is FileContent -> printHashForFileOrExceptionIfFailure { fileMD5(it.path, fileSystem) }
                     is StringContent -> {
@@ -53,7 +53,7 @@ internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTE
                 }
             }
 
-            "SHA1", "sha1" -> {
+            "sha1" -> {
                 when (val it = content) {
                     is FileContent -> printHashForFileOrExceptionIfFailure { fileSHA1(it.path, fileSystem) }
                     is StringContent -> {
@@ -63,7 +63,7 @@ internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTE
                 }
             }
 
-            "SHA256", "sha256" -> {
+            "sha256" -> {
                 when (val it = content) {
                     is FileContent -> printHashForFileOrExceptionIfFailure { fileSHA256(it.path, fileSystem) }
                     is StringContent -> {
@@ -73,7 +73,7 @@ internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTE
                 }
             }
 
-            "SHA512", "sha512" -> {
+            "sha512" -> {
                 when (val it = content) {
                     is FileContent -> printHashForFileOrExceptionIfFailure { fileSHA512(it.path, fileSystem) }
                     is StringContent -> {
