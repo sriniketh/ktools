@@ -13,11 +13,11 @@ internal class UnixTimeCommand(private val clock: Clock = Clock.System) :
     private class NowMillis : Operation("Current time in millis")
     private class NowISO : Operation("Current time in ISO 8601 format")
     private class MillisToISO : Operation("Convert time in millis to ISO 8601 format") {
-        val timeMillis by option("--millis").prompt("Enter time in millis:")
+        val timeMillis by option("--millis").prompt("Enter time in millis")
     }
 
     private class ISOToMillis : Operation("Convert time in ISO 8601 format to millis") {
-        val timeISO by option("--iso").prompt("Enter time in ISO 8601 format:")
+        val timeISO by option("--iso").prompt("Enter time in ISO 8601 format")
     }
 
     private val operation by option().groupChoice(
