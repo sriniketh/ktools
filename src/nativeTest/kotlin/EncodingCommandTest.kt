@@ -20,20 +20,20 @@ class EncodingCommandTest {
     }
 
     @Test
-    fun `encode returns non 0 status code when no text is passed`() {
+    fun `encode returns non 0 status code when no string is passed`() {
         val result = encodingCommand.test("utf8")
         assertNotEquals(0, result.statusCode)
     }
 
     @Test
-    fun `encode returns non 0 status code when empty text is passed`() {
-        val result = encodingCommand.test("utf8 --text=")
+    fun `encode returns non 0 status code when empty string is passed`() {
+        val result = encodingCommand.test("utf8 --string=")
         assertNotEquals(0, result.statusCode)
     }
 
     @Test
     fun `encode returns 0 status code when valid inputs passed`() {
-        val result = encodingCommand.test("""utf8 --text="Foo © bar 𝌆 baz ☃ qux"""")
+        val result = encodingCommand.test("""utf8 --string="Foo © bar 𝌆 baz ☃ qux"""")
         assertEquals(0, result.statusCode)
     }
 
@@ -41,7 +41,7 @@ class EncodingCommandTest {
 
     @Test
     fun `encode utf8 encodes content for valid input`() {
-        val result = encodingCommand.test("""utf8 --text="Foo © bar 𝌆 baz ☃ qux"""")
+        val result = encodingCommand.test("""utf8 --string="Foo © bar 𝌆 baz ☃ qux"""")
         assertEquals(
             "input string: Foo © bar 𝌆 baz ☃ qux\nencoded string: 466f6f20c2a92062617220f09d8c862062617a20e2988320717578\n",
             result.stdout
@@ -52,7 +52,7 @@ class EncodingCommandTest {
 
     @Test
     fun `encode base64 encodes content for valid input`() {
-        val result = encodingCommand.test("""base64 --text="Foo © bar 𝌆 baz ☃ qux"""")
+        val result = encodingCommand.test("""base64 --string="Foo © bar 𝌆 baz ☃ qux"""")
         assertEquals(
             "input string: Foo © bar 𝌆 baz ☃ qux\nencoded string: Rm9vIMKpIGJhciDwnYyGIGJheiDimIMgcXV4\n",
             result.stdout

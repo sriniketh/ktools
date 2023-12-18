@@ -16,9 +16,9 @@ internal class DecodingCommand :
         "base64",
         ignoreCase = true
     )
-    private val content by option("--text", "-t", help = "Content that needs to be decoded")
-        .prompt("Enter text for decoding")
-        .check("text must be non-empty") { it.isNotEmpty() }
+    private val content by option("--string", "-s", help = "Content that needs to be decoded")
+        .prompt("Enter string for decoding")
+        .check("string must be non-empty") { it.isNotEmpty() }
 
     override fun run() {
         when (format) {
