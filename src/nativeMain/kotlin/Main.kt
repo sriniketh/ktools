@@ -13,6 +13,6 @@ fun main(args: Array<String>) =
         )
         .main(args)
 
-class KTools : CliktCommand() {
+internal class KTools : CliktCommand() {
     override fun run() = Unit
 }
