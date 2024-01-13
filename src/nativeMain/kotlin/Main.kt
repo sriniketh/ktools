@@ -1,6 +1,9 @@
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.subcommands
 
+/**
+ * Entry point for native application.
+ */
 fun main(args: Array<String>) =
     KTools()
         .subcommands(

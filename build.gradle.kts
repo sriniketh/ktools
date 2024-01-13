@@ -1,8 +1,12 @@
+import org.jetbrains.dokka.DokkaConfiguration.Visibility
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import java.net.URL
 
 plugins {
     kotlin("multiplatform") version "1.9.20-RC2"
     distribution
+    id("org.jetbrains.dokka") version "1.9.10"
 }
 
 group = "me.user"
@@ -49,6 +53,23 @@ kotlin {
         }
         nativeMain.dependencies {
             implementation("com.github.ajalt.clikt:clikt:$cliktVersion")
+        }
+    }
+}
+
+tasks.withType<DokkaTask>().configureEach {
+    dokkaSourceSets.configureEach {
+        displayName.set(name)
+        documentedVisibilities.set(
+            setOf(Visibility.PUBLIC)
+        )
+        includes.from(project.files(), "docs/ModuleInfoForDokka.md")
+        sourceLink {
+            localDirectory.set(file("src/$name/kotlin"))
+            remoteUrl.set(
+                URL("https://github.com/sriniketh/ktools/tree/main/src/$name/kotlin")
+            )
+            remoteLineSuffix.set("#L")
         }
     }
 }
