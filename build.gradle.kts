@@ -11,8 +11,8 @@ plugins {
     id("com.mikepenz.aboutlibraries.plugin") version "10.10.0"
 }
 
-group = "me.user"
-version = "1.0-SNAPSHOT"
+group = "dev.sriniketh"
+version = "0.1.0"
 
 repositories {
     mavenCentral()
