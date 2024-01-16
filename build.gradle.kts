@@ -5,8 +5,10 @@ import java.net.URL
 
 plugins {
     kotlin("multiplatform") version "1.9.20-RC2"
+    kotlin("plugin.serialization") version "1.9.21"
     distribution
     id("org.jetbrains.dokka") version "1.9.10"
+    id("com.mikepenz.aboutlibraries.plugin") version "10.10.0"
 }
 
 group = "me.user"
@@ -72,4 +74,10 @@ tasks.withType<DokkaTask>().configureEach {
             remoteLineSuffix.set("#L")
         }
     }
+}
+
+aboutLibraries {
+    registerAndroidTasks = false
+    outputFileName = "librariesandlicenses.json"
+    prettyPrint = true
 }
