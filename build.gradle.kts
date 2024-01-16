@@ -26,7 +26,7 @@ kotlin {
         binaries {
             executable {
                 baseName = "ktools"
-                entryPoint = "main"
+                entryPoint = "dev.sriniketh.main"
                 runTask?.run {
                     val args = providers.gradleProperty("runArgs")
                     argumentProviders.add(CommandLineArgumentProvider {
