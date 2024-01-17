@@ -16,7 +16,7 @@ internal class UUIDCommand : CliktCommand(name = "uuid", help = "Create a random
         val uuid = createRandomUUID()
         when (case) {
             Case.lower -> echo(uuid.lowercase())
-            Case.upper -> echo(uuid)
+            Case.upper -> echo(uuid.uppercase())
         }
     }
 }
