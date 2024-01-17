@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import java.net.URL
 
 plugins {
-    kotlin("multiplatform") version "1.9.20-RC2"
+    kotlin("multiplatform") version "1.9.22"
     kotlin("plugin.serialization") version "1.9.21"
     distribution
     id("org.jetbrains.dokka") version "1.9.10"
