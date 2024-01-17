@@ -1,8 +1,31 @@
 {
     "metadata": {
-        "generated": "2024-01-16T06:33:08.131Z"
+        "generated": "2024-01-17T07:33:58.313Z"
     },
     "libraries": [
+        {
+            "uniqueId": "app.softwork:kotlinx-uuid-core",
+            "funding": [
+                
+            ],
+            "developers": [
+                {
+                    "name": "Philip Wedemann"
+                }
+            ],
+            "artifactVersion": "0.0.22",
+            "description": "A multiplatform Kotlin UUID library, forked from https://github.com/cy6erGn0m/kotlinx-uuid",
+            "scm": {
+                "connection": "scm:git://github.com/hfhbd/kotlinx-uuid.git",
+                "url": "https://github.com/hfhbd/kotlinx-uuid",
+                "developerConnection": "scm:git://github.com/hfhbd/kotlinx-uuid.git"
+            },
+            "name": "app.softwork UUID Library",
+            "website": "https://github.com/hfhbd/kotlinx-uuid",
+            "licenses": [
+                "Apache-2.0"
+            ]
+        },
         {
             "uniqueId": "com.github.ajalt.clikt:clikt",
             "funding": [
@@ -96,6 +119,28 @@
             ]
         },
         {
+            "uniqueId": "io.ktor:ktor-client-core",
+            "funding": [
+                
+            ],
+            "developers": [
+                {
+                    "organisationUrl": "https://www.jetbrains.com",
+                    "name": "JetBrains Team"
+                }
+            ],
+            "artifactVersion": "2.3.7",
+            "description": "Ktor is a framework for quickly creating web applications in Kotlin with minimal effort.",
+            "scm": {
+                "url": "https://github.com/ktorio/ktor.git"
+            },
+            "name": "ktor-client-core",
+            "website": "https://github.com/ktorio/ktor",
+            "licenses": [
+                "Apache-2.0"
+            ]
+        },
+        {
             "uniqueId": "io.ktor:ktor-events",
             "funding": [
                 
@@ -184,28 +229,6 @@
             ]
         },
         {
-            "uniqueId": "io.ktor:ktor-server-core",
-            "funding": [
-                
-            ],
-            "developers": [
-                {
-                    "organisationUrl": "https://www.jetbrains.com",
-                    "name": "JetBrains Team"
-                }
-            ],
-            "artifactVersion": "2.3.7",
-            "description": "Ktor is a framework for quickly creating web applications in Kotlin with minimal effort.",
-            "scm": {
-                "url": "https://github.com/ktorio/ktor.git"
-            },
-            "name": "ktor-server-core",
-            "website": "https://github.com/ktorio/ktor",
-            "licenses": [
-                "Apache-2.0"
-            ]
-        },
-        {
             "uniqueId": "io.ktor:ktor-utils",
             "funding": [
                 
@@ -222,6 +245,28 @@
                 "url": "https://github.com/ktorio/ktor.git"
             },
             "name": "ktor-utils",
+            "website": "https://github.com/ktorio/ktor",
+            "licenses": [
+                "Apache-2.0"
+            ]
+        },
+        {
+            "uniqueId": "io.ktor:ktor-websocket-serialization",
+            "funding": [
+                
+            ],
+            "developers": [
+                {
+                    "organisationUrl": "https://www.jetbrains.com",
+                    "name": "JetBrains Team"
+                }
+            ],
+            "artifactVersion": "2.3.7",
+            "description": "Ktor is a framework for quickly creating web applications in Kotlin with minimal effort.",
+            "scm": {
+                "url": "https://github.com/ktorio/ktor.git"
+            },
+            "name": "ktor-websocket-serialization",
             "website": "https://github.com/ktorio/ktor",
             "licenses": [
                 "Apache-2.0"
@@ -273,30 +318,6 @@
             "website": "https://github.com/java-native-access/jna",
             "licenses": [
                 "LGPL-2.1-or-later",
-                "Apache-2.0"
-            ]
-        },
-        {
-            "uniqueId": "org.jetbrains.kotlin:kotlin-reflect",
-            "funding": [
-                
-            ],
-            "developers": [
-                {
-                    "organisationUrl": "https://www.jetbrains.com",
-                    "name": "Kotlin Team"
-                }
-            ],
-            "artifactVersion": "1.8.22",
-            "description": "Kotlin Full Reflection Library",
-            "scm": {
-                "connection": "scm:git:https://github.com/JetBrains/kotlin.git",
-                "url": "https://github.com/JetBrains/kotlin",
-                "developerConnection": "scm:git:https://github.com/JetBrains/kotlin.git"
-            },
-            "name": "Kotlin Reflect",
-            "website": "https://kotlinlang.org/",
-            "licenses": [
                 "Apache-2.0"
             ]
         },
