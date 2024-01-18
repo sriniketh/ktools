@@ -15,29 +15,37 @@ internal class UnixTimeCommand(private val clock: Clock = Clock.System) :
     private class NowMillis : Operation("Current time in millis")
     private class NowISO : Operation("Current time in ISO 8601 format")
     private class MillisToISO : Operation("Convert time in millis to ISO 8601 format") {
-        val timeMillis by option("--millis").prompt("Enter time in millis")
+        val timeInMillis by option("--millis").prompt("Enter time in millis")
     }
 
     private class ISOToMillis : Operation("Convert time in ISO 8601 format to millis") {
-        val timeISO by option("--iso").prompt("Enter time in ISO 8601 format")
+        val timeInISO by option("--iso").prompt("Enter time in ISO 8601 format")
     }
 
-    private val operation by option().groupChoice(
-        "nowMillis" to NowMillis(),
-        "nowISO" to NowISO(),
-        "millisToISO" to MillisToISO(),
-        "ISOToMillis" to ISOToMillis(),
+    private val operation by option(
+        names = arrayOf("-o", "--operation"),
+        help = "Choose operation to perform: [nowmillis | nowiso | millistoiso | isotomillis]"
+    ).groupChoice(
+        "nowmillis" to NowMillis(),
+        "nowiso" to NowISO(),
+        "millistoiso" to MillisToISO(),
+        "isotomillis" to ISOToMillis(),
     )
 
     override fun run() {
         when (val it = operation) {
             is NowMillis -> echo(currentTimeInMillis(clock))
             is NowISO -> echo(currentTimeInIso8601(clock))
-            is MillisToISO -> echo(timeInMillisToIso8601(it.timeMillis.toLong()))
+            is MillisToISO -> try {
+                echo(timeInMillisToIso8601(it.timeInMillis.toLong()))
+            } catch (exception: NumberFormatException) {
+                echo("Number format exception: invalid input ${it.timeInMillis}")
+            }
+
             is ISOToMillis -> try {
-                echo(iso8601ToTimeInMillis(it.timeISO))
+                echo(iso8601ToTimeInMillis(it.timeInISO))
             } catch (exception: IllegalArgumentException) {
-                echo("Illegal argument exception: ${exception.message}")
+                echo("Illegal argument exception: invalid input ${it.timeInISO}")
             }
 
             else -> echo("Invalid operation")
