@@ -70,7 +70,7 @@ tasks.withType<DokkaTask>().configureEach {
         documentedVisibilities.set(
             setOf(Visibility.PUBLIC)
         )
-        includes.from(project.files(), "docs/ModuleInfoForDokka.md")
+        outputDirectory.set(file("${rootDir}/docs/dokka/"))
         sourceLink {
             localDirectory.set(file("src/$name/kotlin"))
             remoteUrl.set(
