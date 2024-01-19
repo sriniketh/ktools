@@ -10,10 +10,8 @@ permissions:
   contents: read
 
 jobs:
-  build:
-
+  build_macos:
     runs-on: macos-latest
-
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
@@ -28,5 +26,43 @@ jobs:
       - name: Save test results
         uses: actions/upload-artifact@v4
         with:
-          name: test-results
-          path: build/reports/tests
+          name: test-results-macos
+          path: build/reports/tests/macos
+
+  build_linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+      - name: Save test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-linux
+          path: build/reports/tests/linux
+
+  build_windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+      - name: Save test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-windows
+          path: build/reports/tests/windows
