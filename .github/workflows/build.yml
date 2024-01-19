@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-results-macos
-          path: build/reports/tests/macos
+          path: build/reports/tests
 
   build_linux:
     runs-on: ubuntu-latest
@@ -46,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-results-linux
-          path: build/reports/tests/linux
+          path: build/reports/tests
 
   build_windows:
     runs-on: windows-latest
@@ -65,4 +65,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-results-windows
-          path: build/reports/tests/windows
+          path: build/reports/tests
