@@ -1,0 +1,107 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  build_macosArm:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: macosArm64Binaries
+      - name: Upload macos Arm build
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-arm-build
+          path: build/bin/macosArm64/releaseExecutable/ktools.kexe
+
+  build_macosX64:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: macosX64Binaries
+      - name: Upload macos X64 build
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-x64-build
+          path: build/bin/macosX64/releaseExecutable/ktools.kexe
+
+  build_linuxX64:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: linuxX64Binaries
+      - name: Upload linux X64 build
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-x64-build
+          path: build/bin/linuxX64/releaseExecutable/ktools.kexe
+
+  build_windowsX64:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: mingwX64Binaries
+      - name: Upload windows X64 build
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-x64-build
+          path: build/bin/mingwX64/releaseExecutable/ktools.exe
+
+  release:
+    needs:
+      - "build_macosArm"
+      - "build_macosX64"
+      - "build_linuxX64"
+      - "build_windowsX64"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all builds
+        uses: actions/download-artifact@v3
+        with:
+          path: build
+      - name: Make Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            build/macos-arm-build/ktools.kexe
+            build/macos-x64-build/ktools.kexe
+            build/linux-x64-build/ktools.kexe
+            build/windows-x64-build/ktools.exe
