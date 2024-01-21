@@ -105,17 +105,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: build
-      - name: Rename builds
-        run: |
-          mv build/macos-arm-build/ktools.kexe build/macos-arm-build/macos-arm-ktools.kexe
-          mv build/macos-x64-build/ktools.kexe build/macos-x64-build/macos-x64-ktools.kexe
-          mv build/linux-x64-build/ktools.kexe build/linux-x64-build/linux-x64-ktools.kexe
-          mv build/windows-x64-build/ktools.exe build/windows-x64-build/windows-x64-ktools.exe
       - name: Make Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            build/macos-arm-build/macos-arm-ktools.kexe
-            build/macos-x64-build/macos-x64-ktools.kexe
-            build/linux-x64-build/linux-x64-ktools.kexe
-            build/windows-x64-build/windows-x64-ktools.exe
+            build/macos-arm-build
+            build/macos-x64-build
+            build/linux-x64-build
+            build/windows-x64-build
