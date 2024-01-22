@@ -44,3 +44,6 @@ bin/
 
 ### Mkdocs
 docs/dokka
+
+### Python
+venv/

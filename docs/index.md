@@ -10,9 +10,13 @@ ktools is a command line application that provides useful developer tools. It's 
 * `ktools encode` - Encodes some text content to specified format
 * `ktools decode` - Decodes some text content from specified format
 * `ktools prettyprint` - Pretty print commonly used text like json
-* ... and growing
+* ... and more in development
 
-Learn more about these commands [here](commands.md)
+Learn more about these commands [here](commands.md).
+
+## Releases
+
+ktools is available as an executable for MacOS ARM, MacOS x64, Linux x64 and Windows x64 systems [here](https://github.com/sriniketh/ktools/releases). 
 
 ## License
 
