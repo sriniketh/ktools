@@ -1,0 +1,43 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:dev.sriniketh.helpers////PointingToDeclaration/ktools/dev.sriniketh.helpers/index.html
+$dokka.location:dev.sriniketh.helpers//parseFile/#kotlin.String#kotlin.Boolean#okio.FileSystem/PointingToDeclaration/ktools/dev.sriniketh.helpers/parse-file.html
+$dokka.location:dev.sriniketh.models////PointingToDeclaration/ktools/dev.sriniketh.models/index.html
+$dokka.location:dev.sriniketh.models/LibrariesAndLicenses///PointingToDeclaration/ktools/dev.sriniketh.models/-libraries-and-licenses/index.html
+$dokka.location:dev.sriniketh.models/LibrariesAndLicenses/LibrariesAndLicenses/#kotlin.collections.List[dev.sriniketh.models.Library]#kotlin.collections.Map[kotlin.String,dev.sriniketh.models.License]/PointingToDeclaration/ktools/dev.sriniketh.models/-libraries-and-licenses/-libraries-and-licenses.html
+$dokka.location:dev.sriniketh.models/LibrariesAndLicenses/libraries/#/PointingToDeclaration/ktools/dev.sriniketh.models/-libraries-and-licenses/libraries.html
+$dokka.location:dev.sriniketh.models/LibrariesAndLicenses/licenses/#/PointingToDeclaration/ktools/dev.sriniketh.models/-libraries-and-licenses/licenses.html
+$dokka.location:dev.sriniketh.models/Library///PointingToDeclaration/ktools/dev.sriniketh.models/-library/index.html
+$dokka.location:dev.sriniketh.models/Library/Library/#kotlin.String?#kotlin.String#kotlin.String?/PointingToDeclaration/ktools/dev.sriniketh.models/-library/-library.html
+$dokka.location:dev.sriniketh.models/Library/artifactVersion/#/PointingToDeclaration/ktools/dev.sriniketh.models/-library/artifact-version.html
+$dokka.location:dev.sriniketh.models/Library/name/#/PointingToDeclaration/ktools/dev.sriniketh.models/-library/name.html
+$dokka.location:dev.sriniketh.models/Library/uniqueId/#/PointingToDeclaration/ktools/dev.sriniketh.models/-library/unique-id.html
+$dokka.location:dev.sriniketh.models/License///PointingToDeclaration/ktools/dev.sriniketh.models/-license/index.html
+$dokka.location:dev.sriniketh.models/License/License/#kotlin.String#kotlin.String?/PointingToDeclaration/ktools/dev.sriniketh.models/-license/-license.html
+$dokka.location:dev.sriniketh.models/License/name/#/PointingToDeclaration/ktools/dev.sriniketh.models/-license/name.html
+$dokka.location:dev.sriniketh.models/License/url/#/PointingToDeclaration/ktools/dev.sriniketh.models/-license/url.html
+$dokka.location:dev.sriniketh////PointingToDeclaration/ktools/dev.sriniketh/index.html
+$dokka.location:dev.sriniketh//createRandomUUID/#/PointingToDeclaration/ktools/dev.sriniketh/create-random-u-u-i-d.html
+$dokka.location:dev.sriniketh//currentTimeInIso8601/#kotlinx.datetime.Clock/PointingToDeclaration/ktools/dev.sriniketh/current-time-in-iso8601.html
+$dokka.location:dev.sriniketh//currentTimeInMillis/#kotlinx.datetime.Clock/PointingToDeclaration/ktools/dev.sriniketh/current-time-in-millis.html
+$dokka.location:dev.sriniketh//decodeFromBase64/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/decode-from-base64.html
+$dokka.location:dev.sriniketh//decodeFromUTF8Hex/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/decode-from-u-t-f8-hex.html
+$dokka.location:dev.sriniketh//encodeToBase64/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/encode-to-base64.html
+$dokka.location:dev.sriniketh//encodeToUTF8Hex/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/encode-to-u-t-f8-hex.html
+$dokka.location:dev.sriniketh//fileMD5/#kotlin.String#okio.FileSystem/PointingToDeclaration/ktools/dev.sriniketh/file-m-d5.html
+$dokka.location:dev.sriniketh//fileSHA1/#kotlin.String#okio.FileSystem/PointingToDeclaration/ktools/dev.sriniketh/file-s-h-a1.html
+$dokka.location:dev.sriniketh//fileSHA256/#kotlin.String#okio.FileSystem/PointingToDeclaration/ktools/dev.sriniketh/file-s-h-a256.html
+$dokka.location:dev.sriniketh//fileSHA512/#kotlin.String#okio.FileSystem/PointingToDeclaration/ktools/dev.sriniketh/file-s-h-a512.html
+$dokka.location:dev.sriniketh//iso8601ToTimeInMillis/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/iso8601-to-time-in-millis.html
+$dokka.location:dev.sriniketh//main/#kotlin.Array[kotlin.String]/PointingToDeclaration/ktools/dev.sriniketh/main.html
+$dokka.location:dev.sriniketh//prettyPrintCookieHeader/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/pretty-print-cookie-header.html
+$dokka.location:dev.sriniketh//prettyPrintJson/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/pretty-print-json.html
+$dokka.location:dev.sriniketh//stringMD5/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/string-m-d5.html
+$dokka.location:dev.sriniketh//stringSHA1/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/string-s-h-a1.html
+$dokka.location:dev.sriniketh//stringSHA256/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/string-s-h-a256.html
+$dokka.location:dev.sriniketh//stringSHA512/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/string-s-h-a512.html
+$dokka.location:dev.sriniketh//timeInMillisToIso8601/#kotlin.Long/PointingToDeclaration/ktools/dev.sriniketh/time-in-millis-to-iso8601.html
+dev.sriniketh
+dev.sriniketh.helpers
+dev.sriniketh.models
+
