@@ -4,19 +4,20 @@ ktools is a command line application that provides useful developer tools. It's 
 
 ## Commands
 
+* `ktools --help` - View all available commands
 * `ktools uuid` - Creates a random UUID
 * `ktools unixtime` - Unix time conversions
 * `ktools hash` - Provides hash value for given file or string
 * `ktools encode` - Encodes some text content to specified format
 * `ktools decode` - Decodes some text content from specified format
 * `ktools prettyprint` - Pretty print commonly used text like json
-* ... and more in development
+* ... and growing
 
-Learn more about these commands [here](commands.md).
+Commands are written using [Clikt](https://ajalt.github.io/clikt/) and have help messages that can be viewed using `--help`. Learn more about these commands [here](commands.md).
 
 ## Releases
 
-ktools is available as an executable for MacOS ARM, MacOS x64, Linux x64 and Windows x64 systems [here](https://github.com/sriniketh/ktools/releases). 
+ktools is available as an executable for MacOS ARM, MacOS x64, Linux x64 and Windows x64 systems. Find the latest release [here](https://github.com/sriniketh/ktools/releases). 
 
 ## License
 
