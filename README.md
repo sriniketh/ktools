@@ -32,6 +32,12 @@ Note for MacOS: The OS may prevent opening the executable since the app has not 
 override the settings to allow execution by heading to privacy and security settings and allowing execution as
 mentioned [here](https://support.apple.com/en-us/HT202491).
 
+## Why?
+
+For fun, mostly. I use the terminal extensively but often have to switch away from it to do time unit conversions,
+hashing, etc. I wanted a handy tool that runs in the terminal and also wanted to test kotlin multiplatform as a solution
+for scalable cross-platform applications.
+
 ## License
 
 This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
