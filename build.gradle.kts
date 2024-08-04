@@ -5,12 +5,12 @@ import java.io.ByteArrayOutputStream
 import java.net.URL
 
 plugins {
-    kotlin("multiplatform") version "1.9.22"
-    kotlin("plugin.serialization") version "1.9.21"
+    alias(libs.plugins.multiplatform)
+    alias(libs.plugins.serialization)
     distribution
-    id("org.jetbrains.dokka") version "1.9.10"
-    id("com.mikepenz.aboutlibraries.plugin") version "10.10.0"
-    id("com.github.gmazzo.buildconfig") version "5.3.5"
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.aboutlibraries)
+    alias(libs.plugins.buildconfig)
 }
 
 group = "dev.sriniketh"
