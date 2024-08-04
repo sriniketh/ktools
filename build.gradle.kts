@@ -42,25 +42,19 @@ kotlin {
     }
 
     sourceSets {
-        val okioVersion = "3.6.0"
-        val kotlinxDateTimeVersin = "0.4.1"
-        val cliktVersion = "4.2.1"
-        val kotlinxSerializationVersion = "1.6.2"
-        val ktorVersion = "2.3.7"
-        val uuidVersion = "0.0.22"
 
         commonMain.dependencies {
-            implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDateTimeVersin")
-            implementation("com.squareup.okio:okio:$okioVersion")
-            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion")
-            implementation("io.ktor:ktor-client-core:$ktorVersion")
-            implementation("app.softwork:kotlinx-uuid-core:$uuidVersion")
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.okio.core)
+            implementation(libs.kotlinx.serialization)
+            implementation(libs.ktor.client)
+            implementation(libs.uuid)
         }
         commonTest.dependencies {
-            implementation("com.squareup.okio:okio-fakefilesystem:$okioVersion")
+            implementation(libs.okio.fakefilesystem)
         }
         nativeMain.dependencies {
-            implementation("com.github.ajalt.clikt:clikt:$cliktVersion")
+            implementation(libs.clikt)
         }
     }
 }
