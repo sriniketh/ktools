@@ -2,7 +2,6 @@ package dev.sriniketh
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
-import kotlinx.datetime.toInstant
 
 /**
  * Current time in millis.
@@ -36,4 +35,4 @@ fun timeInMillisToIso8601(timeInMillis: Long): String = Instant.fromEpochMillise
  * @throws IllegalArgumentException
  */
 @Throws(IllegalArgumentException::class)
-fun iso8601ToTimeInMillis(iso8601: String): Long = iso8601.toInstant().toEpochMilliseconds()
+fun iso8601ToTimeInMillis(iso8601: String): Long = Instant.parse(iso8601).toEpochMilliseconds()

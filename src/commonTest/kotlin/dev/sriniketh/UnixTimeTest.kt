@@ -36,7 +36,7 @@ class UnixTimeTest {
 
     @Test
     fun `iso8601ToTimeInMillis throws exception when time is not in iso 8601 format`() {
-        assertFailsWith<IllegalArgumentException>() {
+        assertFailsWith<IllegalArgumentException> {
             iso8601ToTimeInMillis("some thing")
         }
     }
