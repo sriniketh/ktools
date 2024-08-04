@@ -1,3 +1,4 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.dokka.DokkaConfiguration.Visibility
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
@@ -11,6 +12,8 @@ plugins {
     alias(libs.plugins.dokka)
     alias(libs.plugins.aboutlibraries)
     alias(libs.plugins.buildconfig)
+
+    alias(libs.plugins.gradle.versions)
 }
 
 group = "dev.sriniketh"
@@ -94,4 +97,23 @@ fun getVersionNameFromGitTags(): String {
         standardOutput = stdout
     }
     return stdout.toString().trim()
+}
+
+// gradle versions plugin config
+tasks.named<DependencyUpdatesTask>("dependencyUpdates") {
+    checkForGradleUpdate = true
+    outputFormatter = "html"
+    outputDir = "build/dependencyUpdates"
+    reportfileName = "report"
+
+    rejectVersionIf {
+        candidate.version.isNonStable()
+    }
+}
+
+fun String.isNonStable(): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { uppercase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(this)
+    return isStable.not()
 }
