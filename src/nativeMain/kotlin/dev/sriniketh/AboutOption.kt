@@ -6,7 +6,7 @@ import com.github.ajalt.clikt.parameters.options.eagerOption
 import dev.sriniketh.helpers.parseFile
 import dev.sriniketh.models.LibrariesAndLicenses
 
-internal inline fun <T : CliktCommand> T.aboutOption(): T =
+internal fun <T : CliktCommand> T.aboutOption(): T =
     eagerOption(names = setOf("-a", "--about"), help = "Learn more about ktools and exit") {
 
         // generated using `./gradlew exportLibraryDefinitions -PaboutLibraries.exportPath=src/nativeMain/resources/ -PaboutLibraries.exportVariant=metadataNativeMain`

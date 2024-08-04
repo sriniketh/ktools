@@ -47,3 +47,6 @@ docs/dokka
 
 ### Python
 venv/
+
+### Kotlin
+.kotlin/
