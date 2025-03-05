@@ -25,7 +25,7 @@ dependencyResolutionManagement {
             library("clikt", "com.github.ajalt.clikt", "clikt").version("4.4.0")
             library("kotlinx-serialization", "org.jetbrains.kotlinx", "kotlinx-serialization-json").version("1.7.1")
             library("ktor-client", "io.ktor", "ktor-client-core").version("2.3.12")
-            library("uuid", "app.softwork", "kotlinx-uuid-core").version("0.0.26")
+            library("uuid", "app.softwork", "kotlinx-uuid-core").version("0.1.4")
         }
     }
 }
