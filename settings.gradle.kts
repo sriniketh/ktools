@@ -17,7 +17,7 @@ dependencyResolutionManagement {
             plugin("serialization", "org.jetbrains.kotlin.plugin.serialization").versionRef("kotlin")
             plugin("dokka", "org.jetbrains.dokka").version("1.9.20")
             plugin("aboutlibraries", "com.mikepenz.aboutlibraries.plugin").version("11.6.3")
-            plugin("buildconfig", "com.github.gmazzo.buildconfig").version("5.4.0")
+            plugin("buildconfig", "com.github.gmazzo.buildconfig").version("5.5.1")
 
             library("okio-core", "com.squareup.okio", "okio").versionRef("okio")
             library("okio-fakefilesystem", "com.squareup.okio", "okio-fakefilesystem").versionRef("okio")
