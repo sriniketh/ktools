@@ -1,6 +1,7 @@
 package dev.sriniketh
 
 import kotlin.test.Test
+import kotlin.test.assertNotEquals
 import kotlin.test.assertTrue
 
 class UUIDTest {
@@ -11,5 +12,12 @@ class UUIDTest {
         val uuidRegex =
             """^[0-9a-f]{8}\b-[0-9a-f]{4}\b-[0-9a-f]{4}\b-[0-9a-f]{4}\b-[0-9a-f]{12}$""".toRegex()
         assertTrue(uuidRegex.matches(uuid))
+    }
+
+    @Test
+    fun `test createRandomUUID does not return same ID upon successive calls to function`() {
+        val uuid1 = createRandomUUID()
+        val uuid2 = createRandomUUID()
+        assertNotEquals(uuid1, uuid2)
     }
 }

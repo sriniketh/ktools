@@ -51,7 +51,6 @@ kotlin {
             implementation(libs.okio.core)
             implementation(libs.kotlinx.serialization)
             implementation(libs.ktor.client)
-            implementation(libs.uuid)
         }
         commonTest.dependencies {
             implementation(libs.okio.fakefilesystem)

@@ -1,12 +1,12 @@
 package dev.sriniketh
 
-import kotlinx.uuid.SecureRandom
-import kotlinx.uuid.UUID
-import kotlinx.uuid.generateUUID
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
 /**
  * Creates random UUID.
  *
  * @return Random UUID string.
  */
-fun createRandomUUID(): String = UUID.Companion.generateUUID(random = SecureRandom).toString()
+@OptIn(ExperimentalUuidApi::class)
+fun createRandomUUID(): String = Uuid.random().toString()
