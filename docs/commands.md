@@ -29,33 +29,33 @@ ktools is a command line application that provides useful developer tools. It's 
 Learn more at https://github.com/sriniketh/ktools.
 
 Libraries used:
-app.softwork UUID Library : app.softwork:kotlinx-uuid-core : 0.0.22
-Clikt : com.github.ajalt.clikt:clikt : 4.2.1
-Colormath : com.github.ajalt.colormath:colormath : 3.3.1
-Mordant : com.github.ajalt.mordant:mordant : 2.2.0
-okio : com.squareup.okio:okio : 3.6.0
-ktor-client-core : io.ktor:ktor-client-core : 2.3.7
-ktor-events : io.ktor:ktor-events : 2.3.7
-ktor-http : io.ktor:ktor-http : 2.3.7
-ktor-io : io.ktor:ktor-io : 2.3.7
-ktor-serialization : io.ktor:ktor-serialization : 2.3.7
-ktor-utils : io.ktor:ktor-utils : 2.3.7
-ktor-websocket-serialization : io.ktor:ktor-websocket-serialization : 2.3.7
-ktor-websockets : io.ktor:ktor-websockets : 2.3.7
-Java Native Access : net.java.dev.jna:jna : 5.13.0
-Kotlin Stdlib : org.jetbrains.kotlin:kotlin-stdlib : 1.9.22
-Kotlin Stdlib Jdk7 : org.jetbrains.kotlin:kotlin-stdlib-jdk7 : 1.8.20
-Kotlin Stdlib Jdk8 : org.jetbrains.kotlin:kotlin-stdlib-jdk8 : 1.8.20
-atomicfu : org.jetbrains.kotlinx:atomicfu : 0.20.2
-kotlinx-coroutines-core : org.jetbrains.kotlinx:kotlinx-coroutines-core : 1.7.1
-kotlinx-datetime : org.jetbrains.kotlinx:kotlinx-datetime : 0.4.1
-kotlinx-serialization-core : org.jetbrains.kotlinx:kotlinx-serialization-core : 1.6.2
-kotlinx-serialization-json : org.jetbrains.kotlinx:kotlinx-serialization-json : 1.6.2
-markdown : org.jetbrains:markdown : 0.5.2
+Clikt : com.github.ajalt.clikt:clikt : 5.0.3
+Clikt Core : com.github.ajalt.clikt:clikt-core : 5.0.3
+Colormath : com.github.ajalt.colormath:colormath : 3.6.0
+Mordant : com.github.ajalt.mordant:mordant : 3.0.1
+Mordant Core : com.github.ajalt.mordant:mordant-core : 3.0.1
+okio : com.squareup.okio:okio : 3.10.2
+ktor-client-core : io.ktor:ktor-client-core : 3.1.1
+ktor-events : io.ktor:ktor-events : 3.1.1
+ktor-http : io.ktor:ktor-http : 3.1.1
+ktor-http-cio : io.ktor:ktor-http-cio : 3.1.1
+ktor-io : io.ktor:ktor-io : 3.1.1
+ktor-serialization : io.ktor:ktor-serialization : 3.1.1
+ktor-sse : io.ktor:ktor-sse : 3.1.1
+ktor-utils : io.ktor:ktor-utils : 3.1.1
+ktor-websocket-serialization : io.ktor:ktor-websocket-serialization : 3.1.1
+ktor-websockets : io.ktor:ktor-websockets : 3.1.1
+Kotlin Stdlib : org.jetbrains.kotlin:kotlin-stdlib : 2.1.10
+atomicfu : org.jetbrains.kotlinx:atomicfu : 0.23.1
+kotlinx-coroutines-core : org.jetbrains.kotlinx:kotlinx-coroutines-core : 1.10.1
+kotlinx-datetime : org.jetbrains.kotlinx:kotlinx-datetime : 0.6.2
+kotlinx-io-bytestring : org.jetbrains.kotlinx:kotlinx-io-bytestring : 0.6.0
+kotlinx-io-core : org.jetbrains.kotlinx:kotlinx-io-core : 0.6.0
+kotlinx-serialization-core : org.jetbrains.kotlinx:kotlinx-serialization-core : 1.8.0
+kotlinx-serialization-json : org.jetbrains.kotlinx:kotlinx-serialization-json : 1.8.0
 
 Licenses:
 Apache-2.0 : Apache License 2.0 : https://spdx.org/licenses/Apache-2.0.html
-LGPL-2.1-or-later : LGPL-2.1-or-later : https://www.gnu.org/licenses/old-licenses/lgpl-2.1
 MIT : MIT License : https://spdx.org/licenses/MIT.html
 ```
 
