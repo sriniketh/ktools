@@ -1,14 +1,14 @@
 package dev.sriniketh
 
 import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.Context
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.options.check
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.prompt
 import com.github.ajalt.clikt.parameters.types.choice
 
-internal class EncodingCommand :
-    CliktCommand(name = "encode", help = "Encode text content") {
+internal class EncodingCommand : CliktCommand(name = "encode") {
 
     private val format by argument(
         name = "format",
@@ -21,6 +21,8 @@ internal class EncodingCommand :
     private val content by option("--string", "-s", help = "Content that needs to be encoded")
         .prompt("Enter string for encoding")
         .check("string must be non-empty") { it.isNotEmpty() }
+
+    override fun help(context: Context): String = "Encode text content"
 
     override fun run() {
         when (format.lowercase()) {

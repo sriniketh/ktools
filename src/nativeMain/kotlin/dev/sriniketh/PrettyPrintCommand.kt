@@ -1,6 +1,7 @@
 package dev.sriniketh
 
 import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.Context
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.options.check
 import com.github.ajalt.clikt.parameters.options.option
@@ -8,7 +9,7 @@ import com.github.ajalt.clikt.parameters.options.prompt
 import com.github.ajalt.clikt.parameters.types.choice
 import kotlinx.serialization.SerializationException
 
-internal class PrettyPrintCommand : CliktCommand(name = "prettyprint", help = "Pretty print content") {
+internal class PrettyPrintCommand : CliktCommand(name = "prettyprint") {
 
     private val contenttype by argument(
         name = "contenttype",
@@ -21,6 +22,8 @@ internal class PrettyPrintCommand : CliktCommand(name = "prettyprint", help = "P
     private val content by option("--string", "-s", help = "Content that needs to be formatted")
         .prompt("Enter string for pretty printing")
         .check("string must be non-empty") { it.isNotEmpty() }
+
+    override fun help(context: Context): String = "Pretty print content"
 
     override fun run() {
         when (contenttype.lowercase()) {

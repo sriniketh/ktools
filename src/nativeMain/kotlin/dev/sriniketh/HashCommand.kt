@@ -1,6 +1,7 @@
 package dev.sriniketh
 
 import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.Context
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.groups.mutuallyExclusiveOptions
 import com.github.ajalt.clikt.parameters.groups.required
@@ -12,8 +13,7 @@ import com.github.ajalt.clikt.parameters.types.choice
 import okio.FileSystem
 import okio.IOException
 
-internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTEM) :
-    CliktCommand(name = "hash", help = "Get hash value for given file or string") {
+internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTEM) : CliktCommand(name = "hash") {
 
     private sealed interface Content
     private class FileContent(val path: String) : Content
@@ -42,6 +42,8 @@ internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTE
         } catch (exception: IOException) {
             echo("IOException: ${exception.message}")
         }
+
+    override fun help(context: Context): String = "Get hash value for given file or string"
 
     override fun run() {
         when (algorithm.lowercase()) {
