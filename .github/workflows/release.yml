@@ -21,7 +21,7 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: macosArm64Binaries
       - name: Upload macos Arm build
@@ -42,7 +42,7 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: macosX64Binaries
       - name: Upload macos X64 build
@@ -63,7 +63,7 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: linuxX64Binaries
       - name: Upload linux X64 build
@@ -84,7 +84,7 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: mingwX64Binaries
       - name: Upload windows X64 build

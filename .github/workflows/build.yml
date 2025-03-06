@@ -22,7 +22,7 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: build
       - name: Save test results
@@ -43,7 +43,7 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: build
       - name: Save test results
@@ -64,7 +64,7 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: build
       - name: Save test results
