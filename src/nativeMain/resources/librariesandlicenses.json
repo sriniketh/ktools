@@ -1,31 +1,5 @@
 {
-    "metadata": {
-        "generated": "2024-08-05T00:23:38.375Z"
-    },
     "libraries": [
-        {
-            "uniqueId": "app.softwork:kotlinx-uuid-core",
-            "funding": [
-                
-            ],
-            "developers": [
-                {
-                    "name": "Philip Wedemann"
-                }
-            ],
-            "artifactVersion": "0.0.26",
-            "description": "A multiplatform Kotlin UUID library, forked from https://github.com/cy6erGn0m/kotlinx-uuid",
-            "scm": {
-                "connection": "scm:git://github.com/hfhbd/kotlinx-uuid.git",
-                "url": "https://github.com/hfhbd/kotlinx-uuid",
-                "developerConnection": "scm:git://github.com/hfhbd/kotlinx-uuid.git"
-            },
-            "name": "app.softwork UUID Library",
-            "website": "https://github.com/hfhbd/kotlinx-uuid",
-            "licenses": [
-                "Apache-2.0"
-            ]
-        },
         {
             "uniqueId": "com.github.ajalt.clikt:clikt",
             "funding": [
@@ -36,7 +10,7 @@
                     "name": "AJ Alt"
                 }
             ],
-            "artifactVersion": "4.4.0",
+            "artifactVersion": "5.0.3",
             "description": "Multiplatform command line interface parsing for Kotlin",
             "scm": {
                 "connection": "scm:git:git://github.com/ajalt/clikt.git",
@@ -44,6 +18,29 @@
                 "developerConnection": "scm:git:ssh://git@github.com/ajalt/clikt.git"
             },
             "name": "Clikt",
+            "website": "https://github.com/ajalt/clikt/",
+            "licenses": [
+                "Apache-2.0"
+            ]
+        },
+        {
+            "uniqueId": "com.github.ajalt.clikt:clikt-core",
+            "funding": [
+                
+            ],
+            "developers": [
+                {
+                    "name": "AJ Alt"
+                }
+            ],
+            "artifactVersion": "5.0.3",
+            "description": "Multiplatform command line interface parsing for Kotlin",
+            "scm": {
+                "connection": "scm:git:git://github.com/ajalt/clikt.git",
+                "url": "https://github.com/ajalt/clikt/",
+                "developerConnection": "scm:git:ssh://git@github.com/ajalt/clikt.git"
+            },
+            "name": "Clikt Core",
             "website": "https://github.com/ajalt/clikt/",
             "licenses": [
                 "Apache-2.0"
@@ -59,7 +56,7 @@
                     "name": "AJ Alt"
                 }
             ],
-            "artifactVersion": "3.5.0",
+            "artifactVersion": "3.6.0",
             "description": "Multiplatform color space conversions for Kotlin",
             "scm": {
                 "connection": "scm:git:git://github.com/ajalt/colormath.git",
@@ -82,7 +79,7 @@
                     "name": "AJ Alt"
                 }
             ],
-            "artifactVersion": "2.5.0",
+            "artifactVersion": "3.0.1",
             "description": "Colorful multiplatform styling Kotlin for command-line applications",
             "scm": {
                 "connection": "scm:git:git://github.com/ajalt/mordant.git",
@@ -90,6 +87,29 @@
                 "developerConnection": "scm:git:ssh://git@github.com/ajalt/mordant.git"
             },
             "name": "Mordant",
+            "website": "https://github.com/ajalt/mordant/",
+            "licenses": [
+                "Apache-2.0"
+            ]
+        },
+        {
+            "uniqueId": "com.github.ajalt.mordant:mordant-core",
+            "funding": [
+                
+            ],
+            "developers": [
+                {
+                    "name": "AJ Alt"
+                }
+            ],
+            "artifactVersion": "3.0.1",
+            "description": "Colorful multiplatform styling Kotlin for command-line applications",
+            "scm": {
+                "connection": "scm:git:git://github.com/ajalt/mordant.git",
+                "url": "https://github.com/ajalt/",
+                "developerConnection": "scm:git:ssh://git@github.com/ajalt/mordant.git"
+            },
+            "name": "Mordant Core",
             "website": "https://github.com/ajalt/mordant/",
             "licenses": [
                 "Apache-2.0"
@@ -105,7 +125,7 @@
                     "name": "Square, Inc."
                 }
             ],
-            "artifactVersion": "3.9.0",
+            "artifactVersion": "3.10.2",
             "description": "A modern I/O library for Android, Java, and Kotlin Multiplatform.",
             "scm": {
                 "connection": "scm:git:git://github.com/square/okio.git",
@@ -126,10 +146,10 @@
             "developers": [
                 {
                     "organisationUrl": "https://www.jetbrains.com",
-                    "name": "JetBrains Team"
+                    "name": "Jetbrains Team"
                 }
             ],
-            "artifactVersion": "2.3.12",
+            "artifactVersion": "3.1.1",
             "description": "Ktor is a framework for quickly creating web applications in Kotlin with minimal effort.",
             "scm": {
                 "url": "https://github.com/ktorio/ktor.git"
@@ -148,10 +168,10 @@
             "developers": [
                 {
                     "organisationUrl": "https://www.jetbrains.com",
-                    "name": "JetBrains Team"
+                    "name": "Jetbrains Team"
                 }
             ],
-            "artifactVersion": "2.3.12",
+            "artifactVersion": "3.1.1",
             "description": "Ktor is a framework for quickly creating web applications in Kotlin with minimal effort.",
             "scm": {
                 "url": "https://github.com/ktorio/ktor.git"
@@ -170,15 +190,37 @@
             "developers": [
                 {
                     "organisationUrl": "https://www.jetbrains.com",
-                    "name": "JetBrains Team"
+                    "name": "Jetbrains Team"
                 }
             ],
-            "artifactVersion": "2.3.12",
+            "artifactVersion": "3.1.1",
             "description": "Ktor is a framework for quickly creating web applications in Kotlin with minimal effort.",
             "scm": {
                 "url": "https://github.com/ktorio/ktor.git"
             },
             "name": "ktor-http",
+            "website": "https://github.com/ktorio/ktor",
+            "licenses": [
+                "Apache-2.0"
+            ]
+        },
+        {
+            "uniqueId": "io.ktor:ktor-http-cio",
+            "funding": [
+                
+            ],
+            "developers": [
+                {
+                    "organisationUrl": "https://www.jetbrains.com",
+                    "name": "Jetbrains Team"
+                }
+            ],
+            "artifactVersion": "3.1.1",
+            "description": "Ktor is a framework for quickly creating web applications in Kotlin with minimal effort.",
+            "scm": {
+                "url": "https://github.com/ktorio/ktor.git"
+            },
+            "name": "ktor-http-cio",
             "website": "https://github.com/ktorio/ktor",
             "licenses": [
                 "Apache-2.0"
@@ -192,10 +234,10 @@
             "developers": [
                 {
                     "organisationUrl": "https://www.jetbrains.com",
-                    "name": "JetBrains Team"
+                    "name": "Jetbrains Team"
                 }
             ],
-            "artifactVersion": "2.3.12",
+            "artifactVersion": "3.1.1",
             "description": "Ktor is a framework for quickly creating web applications in Kotlin with minimal effort.",
             "scm": {
                 "url": "https://github.com/ktorio/ktor.git"
@@ -214,15 +256,37 @@
             "developers": [
                 {
                     "organisationUrl": "https://www.jetbrains.com",
-                    "name": "JetBrains Team"
+                    "name": "Jetbrains Team"
                 }
             ],
-            "artifactVersion": "2.3.12",
+            "artifactVersion": "3.1.1",
             "description": "Ktor is a framework for quickly creating web applications in Kotlin with minimal effort.",
             "scm": {
                 "url": "https://github.com/ktorio/ktor.git"
             },
             "name": "ktor-serialization",
+            "website": "https://github.com/ktorio/ktor",
+            "licenses": [
+                "Apache-2.0"
+            ]
+        },
+        {
+            "uniqueId": "io.ktor:ktor-sse",
+            "funding": [
+                
+            ],
+            "developers": [
+                {
+                    "organisationUrl": "https://www.jetbrains.com",
+                    "name": "Jetbrains Team"
+                }
+            ],
+            "artifactVersion": "3.1.1",
+            "description": "Ktor is a framework for quickly creating web applications in Kotlin with minimal effort.",
+            "scm": {
+                "url": "https://github.com/ktorio/ktor.git"
+            },
+            "name": "ktor-sse",
             "website": "https://github.com/ktorio/ktor",
             "licenses": [
                 "Apache-2.0"
@@ -236,10 +300,10 @@
             "developers": [
                 {
                     "organisationUrl": "https://www.jetbrains.com",
-                    "name": "JetBrains Team"
+                    "name": "Jetbrains Team"
                 }
             ],
-            "artifactVersion": "2.3.12",
+            "artifactVersion": "3.1.1",
             "description": "Ktor is a framework for quickly creating web applications in Kotlin with minimal effort.",
             "scm": {
                 "url": "https://github.com/ktorio/ktor.git"
@@ -258,10 +322,10 @@
             "developers": [
                 {
                     "organisationUrl": "https://www.jetbrains.com",
-                    "name": "JetBrains Team"
+                    "name": "Jetbrains Team"
                 }
             ],
-            "artifactVersion": "2.3.12",
+            "artifactVersion": "3.1.1",
             "description": "Ktor is a framework for quickly creating web applications in Kotlin with minimal effort.",
             "scm": {
                 "url": "https://github.com/ktorio/ktor.git"
@@ -280,10 +344,10 @@
             "developers": [
                 {
                     "organisationUrl": "https://www.jetbrains.com",
-                    "name": "JetBrains Team"
+                    "name": "Jetbrains Team"
                 }
             ],
-            "artifactVersion": "2.3.12",
+            "artifactVersion": "3.1.1",
             "description": "Ktor is a framework for quickly creating web applications in Kotlin with minimal effort.",
             "scm": {
                 "url": "https://github.com/ktorio/ktor.git"
@@ -291,33 +355,6 @@
             "name": "ktor-websockets",
             "website": "https://github.com/ktorio/ktor",
             "licenses": [
-                "Apache-2.0"
-            ]
-        },
-        {
-            "uniqueId": "net.java.dev.jna:jna",
-            "funding": [
-                
-            ],
-            "developers": [
-                {
-                    "name": "Timothy Wall"
-                },
-                {
-                    "name": "Matthias Bl\u00e4sing"
-                }
-            ],
-            "artifactVersion": "5.14.0",
-            "description": "Java Native Access",
-            "scm": {
-                "connection": "scm:git:https://github.com/java-native-access/jna",
-                "url": "https://github.com/java-native-access/jna",
-                "developerConnection": "scm:git:ssh://git@github.com/java-native-access/jna.git"
-            },
-            "name": "Java Native Access",
-            "website": "https://github.com/java-native-access/jna",
-            "licenses": [
-                "LGPL-2.1-or-later",
                 "Apache-2.0"
             ]
         },
@@ -332,7 +369,7 @@
                     "name": "Kotlin Team"
                 }
             ],
-            "artifactVersion": "2.0.0",
+            "artifactVersion": "2.1.10",
             "description": "Kotlin Standard Library",
             "scm": {
                 "connection": "scm:git:https://github.com/JetBrains/kotlin.git",
@@ -340,54 +377,6 @@
                 "developerConnection": "scm:git:https://github.com/JetBrains/kotlin.git"
             },
             "name": "Kotlin Stdlib",
-            "website": "https://kotlinlang.org/",
-            "licenses": [
-                "Apache-2.0"
-            ]
-        },
-        {
-            "uniqueId": "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
-            "funding": [
-                
-            ],
-            "developers": [
-                {
-                    "organisationUrl": "https://www.jetbrains.com",
-                    "name": "Kotlin Team"
-                }
-            ],
-            "artifactVersion": "1.8.20",
-            "description": "Kotlin Standard Library JDK 7 extension",
-            "scm": {
-                "connection": "scm:git:https://github.com/JetBrains/kotlin.git",
-                "url": "https://github.com/JetBrains/kotlin",
-                "developerConnection": "scm:git:https://github.com/JetBrains/kotlin.git"
-            },
-            "name": "Kotlin Stdlib Jdk7",
-            "website": "https://kotlinlang.org/",
-            "licenses": [
-                "Apache-2.0"
-            ]
-        },
-        {
-            "uniqueId": "org.jetbrains.kotlin:kotlin-stdlib-jdk8",
-            "funding": [
-                
-            ],
-            "developers": [
-                {
-                    "organisationUrl": "https://www.jetbrains.com",
-                    "name": "Kotlin Team"
-                }
-            ],
-            "artifactVersion": "1.8.20",
-            "description": "Kotlin Standard Library JDK 8 extension",
-            "scm": {
-                "connection": "scm:git:https://github.com/JetBrains/kotlin.git",
-                "url": "https://github.com/JetBrains/kotlin",
-                "developerConnection": "scm:git:https://github.com/JetBrains/kotlin.git"
-            },
-            "name": "Kotlin Stdlib Jdk8",
             "website": "https://kotlinlang.org/",
             "licenses": [
                 "Apache-2.0"
@@ -404,7 +393,7 @@
                     "name": "JetBrains Team"
                 }
             ],
-            "artifactVersion": "0.20.2",
+            "artifactVersion": "0.23.1",
             "description": "AtomicFU utilities",
             "scm": {
                 "url": "https://github.com/Kotlin/kotlinx.atomicfu"
@@ -426,7 +415,7 @@
                     "name": "JetBrains Team"
                 }
             ],
-            "artifactVersion": "1.7.1",
+            "artifactVersion": "1.10.1",
             "description": "Coroutines support libraries for Kotlin",
             "scm": {
                 "url": "https://github.com/Kotlin/kotlinx.coroutines"
@@ -448,13 +437,57 @@
                     "name": "JetBrains Team"
                 }
             ],
-            "artifactVersion": "0.5.0",
+            "artifactVersion": "0.6.2",
             "description": "Kotlin Datetime Library",
             "scm": {
                 "url": "https://github.com/Kotlin/kotlinx-datetime"
             },
             "name": "kotlinx-datetime",
             "website": "https://github.com/Kotlin/kotlinx-datetime",
+            "licenses": [
+                "Apache-2.0"
+            ]
+        },
+        {
+            "uniqueId": "org.jetbrains.kotlinx:kotlinx-io-bytestring",
+            "funding": [
+                
+            ],
+            "developers": [
+                {
+                    "organisationUrl": "https://www.jetbrains.com",
+                    "name": "JetBrains Team"
+                }
+            ],
+            "artifactVersion": "0.6.0",
+            "description": "IO support for Kotlin",
+            "scm": {
+                "url": "https://github.com/Kotlin/kotlinx-io"
+            },
+            "name": "kotlinx-io-bytestring",
+            "website": "https://github.com/Kotlin/kotlinx-io",
+            "licenses": [
+                "Apache-2.0"
+            ]
+        },
+        {
+            "uniqueId": "org.jetbrains.kotlinx:kotlinx-io-core",
+            "funding": [
+                
+            ],
+            "developers": [
+                {
+                    "organisationUrl": "https://www.jetbrains.com",
+                    "name": "JetBrains Team"
+                }
+            ],
+            "artifactVersion": "0.6.0",
+            "description": "IO support for Kotlin",
+            "scm": {
+                "url": "https://github.com/Kotlin/kotlinx-io"
+            },
+            "name": "kotlinx-io-core",
+            "website": "https://github.com/Kotlin/kotlinx-io",
             "licenses": [
                 "Apache-2.0"
             ]
@@ -470,7 +503,7 @@
                     "name": "JetBrains Team"
                 }
             ],
-            "artifactVersion": "1.7.1",
+            "artifactVersion": "1.8.0",
             "description": "Kotlin multiplatform serialization runtime library",
             "scm": {
                 "url": "https://github.com/Kotlin/kotlinx.serialization"
@@ -492,36 +525,13 @@
                     "name": "JetBrains Team"
                 }
             ],
-            "artifactVersion": "1.7.1",
+            "artifactVersion": "1.8.0",
             "description": "Kotlin multiplatform serialization runtime library",
             "scm": {
                 "url": "https://github.com/Kotlin/kotlinx.serialization"
             },
             "name": "kotlinx-serialization-json",
             "website": "https://github.com/Kotlin/kotlinx.serialization",
-            "licenses": [
-                "Apache-2.0"
-            ]
-        },
-        {
-            "uniqueId": "org.jetbrains:markdown",
-            "funding": [
-                
-            ],
-            "developers": [
-                {
-                    "organisationUrl": "https://jetbrains.com",
-                    "name": "Valentin Fondaratov"
-                }
-            ],
-            "artifactVersion": "0.7.0",
-            "description": "Markdown parser in Kotlin",
-            "scm": {
-                "connection": "scm:git:git://github.com/JetBrains/markdown.git",
-                "url": "https://github.com/JetBrains/markdown"
-            },
-            "name": "markdown",
-            "website": "https://github.com/JetBrains/markdown",
             "licenses": [
                 "Apache-2.0"
             ]
@@ -535,13 +545,6 @@
             "url": "https://spdx.org/licenses/Apache-2.0.html",
             "spdxId": "Apache-2.0",
             "name": "Apache License 2.0"
-        },
-        "LGPL-2.1-or-later": {
-            "hash": "LGPL-2.1-or-later",
-            "internalHash": "LGPL-2.1-or-later",
-            "url": "https://www.gnu.org/licenses/old-licenses/lgpl-2.1",
-            "spdxId": "LGPL-2.1-or-later",
-            "name": "LGPL-2.1-or-later"
         },
         "MIT": {
             "content": "MIT License\n\nCopyright (c) <year> <copyright holders>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
