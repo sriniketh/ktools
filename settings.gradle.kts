@@ -8,7 +8,7 @@ pluginManagement {
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("kotlin", "2.1.21")
+            version("kotlin", "2.2.0")
             version("okio", "3.15.0")
 
             plugin("gradle-versions", "com.github.ben-manes.versions").version("0.52.0")
