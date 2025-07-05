@@ -16,7 +16,7 @@ dependencyResolutionManagement {
             plugin("multiplatform", "org.jetbrains.kotlin.multiplatform").versionRef("kotlin")
             plugin("serialization", "org.jetbrains.kotlin.plugin.serialization").versionRef("kotlin")
             plugin("dokka", "org.jetbrains.dokka").version("2.0.0")
-            plugin("aboutlibraries", "com.mikepenz.aboutlibraries.plugin").version("12.2.1")
+            plugin("aboutlibraries", "com.mikepenz.aboutlibraries.plugin").version("12.2.4")
             plugin("buildconfig", "com.github.gmazzo.buildconfig").version("5.6.5")
 
             library("okio-core", "com.squareup.okio", "okio").versionRef("okio")
@@ -24,7 +24,7 @@ dependencyResolutionManagement {
             library("kotlinx-datetime", "org.jetbrains.kotlinx", "kotlinx-datetime").version("0.6.2")
             library("clikt", "com.github.ajalt.clikt", "clikt").version("5.0.3")
             library("kotlinx-serialization", "org.jetbrains.kotlinx", "kotlinx-serialization-json").version("1.8.1")
-            library("ktor-client", "io.ktor", "ktor-client-core").version("3.1.3")
+            library("ktor-client", "io.ktor", "ktor-client-core").version("3.2.1")
         }
     }
 }
