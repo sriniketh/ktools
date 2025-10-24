@@ -25,7 +25,7 @@ jobs:
         with:
           arguments: macosArm64Binaries
       - name: Upload macos Arm build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: macos-arm-build
           path: build/bin/macosArm64/releaseExecutable/ktools.kexe
@@ -46,7 +46,7 @@ jobs:
         with:
           arguments: macosX64Binaries
       - name: Upload macos X64 build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: macos-x64-build
           path: build/bin/macosX64/releaseExecutable/ktools.kexe
@@ -67,7 +67,7 @@ jobs:
         with:
           arguments: linuxX64Binaries
       - name: Upload linux X64 build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: linux-x64-build
           path: build/bin/linuxX64/releaseExecutable/ktools.kexe
@@ -88,7 +88,7 @@ jobs:
         with:
           arguments: mingwX64Binaries
       - name: Upload windows X64 build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: windows-x64-build
           path: build/bin/mingwX64/releaseExecutable/ktools.exe
@@ -102,7 +102,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download all builds
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           path: build
       - name: Rename builds
