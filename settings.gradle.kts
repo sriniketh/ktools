@@ -16,7 +16,7 @@ dependencyResolutionManagement {
             plugin("multiplatform", "org.jetbrains.kotlin.multiplatform").versionRef("kotlin")
             plugin("serialization", "org.jetbrains.kotlin.plugin.serialization").versionRef("kotlin")
             plugin("dokka", "org.jetbrains.dokka").version("2.1.0")
-            plugin("aboutlibraries", "com.mikepenz.aboutlibraries.plugin").version("12.2.4")
+            plugin("aboutlibraries", "com.mikepenz.aboutlibraries.plugin").version("13.2.1")
             plugin("buildconfig", "com.github.gmazzo.buildconfig").version("6.0.7")
 
             library("okio-core", "com.squareup.okio", "okio").versionRef("okio")
