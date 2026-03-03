@@ -90,9 +90,10 @@ tasks.withType<DokkaTask>().configureEach {
 
 // about libraries plugin config
 aboutLibraries {
-    registerAndroidTasks = false
-    outputFileName = "librariesandlicenses.json"
-    prettyPrint = true
+    export {
+        outputFileName.set("librariesandlicenses.json")
+        prettyPrint.set(true)
+    }
 }
 
 // build config plugin config
