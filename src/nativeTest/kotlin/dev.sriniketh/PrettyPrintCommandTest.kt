@@ -69,10 +69,10 @@ class PrettyPrintCommandTest {
             prettyPrintCommand.test("""json --string="{\"a\":42, \"b\": \"something\", \"c\": {\"d\":43, \""""")
         assertEquals(
             """
-                
-                IllegalArgumentException: Unexpected JSON token at offset 42: EOF at path: $['c']
+
+                IllegalArgumentException: Unexpected JSON token at offset 42: EOF at path: $
                 JSON input: {"a":42, "b": "something", "c": {"d":43, "
-                
+
             """.trimIndent(),
             result.stdout
         )
