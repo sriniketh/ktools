@@ -58,6 +58,18 @@ src/
 - **KDoc:** Public functions should have documentation comments
 - **`@Throws`:** Used on functions that can throw exceptions
 
+## Static Analysis
+
+```bash
+./gradlew detektMetadataCommonMain       # Check common sources
+./gradlew detektMacosArm64Main           # Check common + native sources (macOS ARM64)
+```
+
+- **Detekt** (v1.23.8) is configured in `build.gradle.kts` with `detekt.yml` at the project root
+- `buildUponDefaultConfig = true` — extends the default ruleset
+- Generated code (`build/`, `BuildConfig.kt`) is excluded
+- In KMP, the base `detekt` task has no sources — use target-specific tasks (e.g., `detektMetadataCommonMain`, `detektMacosArm64Main`)
+
 ## Dependencies
 
 - **Clikt** — CLI argument parsing
@@ -65,6 +77,7 @@ src/
 - **kotlinx-serialization-json** — JSON serialization
 - **Okio** — Cross-platform file I/O (`okio-fakefilesystem` for tests)
 - **Ktor Client** — HTTP client (cookie parsing in pretty-print)
+- **Detekt** — Static code analysis
 
 ## Versioning
 
