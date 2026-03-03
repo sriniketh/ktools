@@ -6,7 +6,8 @@ import kotlinx.datetime.Instant
 /**
  * Current time in millis.
  *
- * @param[clock] Clock instance to be used. Defaults to instance that queries the operating system as it's source of knowledge of time.
+ * @param[clock] Clock instance to be used. Defaults to instance that queries the
+ * operating system as its source of knowledge of time.
  * @return Current time in millis.
  */
 fun currentTimeInMillis(clock: Clock = Clock.System): Long = clock.now().toEpochMilliseconds()
@@ -14,7 +15,8 @@ fun currentTimeInMillis(clock: Clock = Clock.System): Long = clock.now().toEpoch
 /**
  * Current time in ISO 8601 format.
  *
- * @param[clock] Clock instance to be used. Defaults to instance that queries the operating system as it's source of knowledge of time.
+ * @param[clock] Clock instance to be used. Defaults to instance that queries the
+ * operating system as its source of knowledge of time.
  * @return Current time in ISO 8601 format.
  */
 fun currentTimeInIso8601(clock: Clock = Clock.System): String = clock.now().toString()
