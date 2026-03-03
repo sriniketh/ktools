@@ -1,3 +1,4 @@
+import io.gitlab.arturbosch.detekt.Detekt
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.dokka.DokkaConfiguration.Visibility
 import org.jetbrains.dokka.gradle.DokkaTask
@@ -14,6 +15,7 @@ plugins {
     alias(libs.plugins.buildconfig)
 
     alias(libs.plugins.gradle.versions)
+    alias(libs.plugins.detekt)
 }
 
 group = "dev.sriniketh"
@@ -104,6 +106,23 @@ buildConfig {
         name = "ABOUT_LIBRARIES_JSON",
         value = provider { file("src/nativeMain/resources/librariesandlicenses.json").readText() }
     )
+}
+
+// detekt plugin config
+detekt {
+    buildUponDefaultConfig = true
+    config.setFrom(files("$rootDir/detekt.yml"))
+}
+
+tasks.withType<Detekt>().configureEach {
+    exclude("**/build/**", "**/BuildConfig.kt")
+    reports {
+        html.required.set(true)
+        xml.required.set(false)
+        txt.required.set(false)
+        sarif.required.set(false)
+        md.required.set(false)
+    }
 }
 
 // gradle versions plugin config

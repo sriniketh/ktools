@@ -18,6 +18,7 @@ dependencyResolutionManagement {
             plugin("dokka", "org.jetbrains.dokka").version("2.1.0")
             plugin("aboutlibraries", "com.mikepenz.aboutlibraries.plugin").version("13.2.1")
             plugin("buildconfig", "com.github.gmazzo.buildconfig").version("6.0.7")
+            plugin("detekt", "io.gitlab.arturbosch.detekt").version("1.23.8")
 
             library("okio-core", "com.squareup.okio", "okio").versionRef("okio")
             library("okio-fakefilesystem", "com.squareup.okio", "okio-fakefilesystem").versionRef("okio")
