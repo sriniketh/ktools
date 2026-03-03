@@ -42,6 +42,8 @@ internal class PrettyPrintCommand : CliktCommand(name = "prettyprint") {
                 echo()
                 echo(prettyPrintCookieHeader(content))
             }
+
+            else -> echo("Unsupported option: $contenttype")
         }
     }
 }

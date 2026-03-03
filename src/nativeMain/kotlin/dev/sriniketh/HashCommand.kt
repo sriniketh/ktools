@@ -86,6 +86,8 @@ internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTE
                     }
                 }
             }
+
+            else -> echo("Unsupported option: $algorithm")
         }
     }
 }

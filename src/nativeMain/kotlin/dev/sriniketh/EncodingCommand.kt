@@ -35,6 +35,8 @@ internal class EncodingCommand : CliktCommand(name = "encode") {
                 echo("input string: $content")
                 echo("encoded string: ${encodeToBase64(content)}")
             }
+
+            else -> echo("Unsupported option: $format")
         }
     }
 }
