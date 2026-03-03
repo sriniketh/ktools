@@ -28,13 +28,24 @@ internal class DecodingCommand : CliktCommand(name = "decode") {
         when (format.lowercase()) {
             "utf8" -> {
                 echo("input string: $content")
-                echo("decoded string: ${decodeFromUTF8Hex(content)}")
+                try {
+                    echo("decoded string: ${decodeFromUTF8Hex(content)}")
+                } catch (_: IllegalArgumentException) {
+                    echo("Invalid UTF-8 hex input: $content")
+                }
             }
 
             "base64" -> {
                 echo("input string: $content")
-                echo("decoded string: ${decodeFromBase64(content)}")
+                val decoded = decodeFromBase64(content)
+                if (decoded != null) {
+                    echo("decoded string: $decoded")
+                } else {
+                    echo("Invalid base64 input: $content")
+                }
             }
+
+            else -> echo("Unsupported option: $format")
         }
     }
 }

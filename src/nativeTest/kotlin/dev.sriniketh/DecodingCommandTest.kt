@@ -2,6 +2,7 @@ package dev.sriniketh
 
 import com.github.ajalt.clikt.testing.test
 import kotlin.test.Test
+import kotlin.test.assertContains
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 
@@ -50,6 +51,13 @@ class DecodingCommandTest {
         )
     }
 
+    @Test
+    fun `decode utf8 prints error for invalid hex input`() {
+        val result = decodingCommand.test("""utf8 --string="ZZZZ"""")
+        assertEquals(0, result.statusCode)
+        assertContains(result.stdout, "Invalid UTF-8 hex input:")
+    }
+
     // base64
 
     @Test
@@ -59,5 +67,12 @@ class DecodingCommandTest {
             "input string: Rm9vIMKpIGJhciDwnYyGIGJheiDimIMgcXV4\ndecoded string: Foo © bar 𝌆 baz ☃ qux\n",
             result.stdout
         )
+    }
+
+    @Test
+    fun `decode base64 prints error for invalid base64 input`() {
+        val result = decodingCommand.test("""base64 --string="!!invalid!!" """)
+        assertEquals(0, result.statusCode)
+        assertContains(result.stdout, "Invalid base64 input:")
     }
 }
