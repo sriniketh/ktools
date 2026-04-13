@@ -46,3 +46,6 @@ venv/
 
 ### Kotlin
 .kotlin/
+
+### Claude
+.claude/
