@@ -49,3 +49,6 @@ venv/
 
 ### Claude
 .claude/
+
+### Worktrees
+.worktrees/
