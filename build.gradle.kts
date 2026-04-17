@@ -4,7 +4,7 @@ import org.jetbrains.dokka.DokkaConfiguration.Visibility
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import java.io.ByteArrayOutputStream
-import java.net.URL
+import java.net.URI
 
 plugins {
     alias(libs.plugins.multiplatform)
@@ -83,7 +83,7 @@ tasks.withType<DokkaTask>().configureEach {
         sourceLink {
             localDirectory.set(file("src/$name/kotlin"))
             remoteUrl.set(
-                URL("https://github.com/sriniketh/ktools/tree/main/src/$name/kotlin")
+                URI("https://github.com/sriniketh/ktools/tree/main/src/$name/kotlin").toURL()
             )
             remoteLineSuffix.set("#L")
         }
