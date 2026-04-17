@@ -1,6 +1,6 @@
 # Share Json Instance in PrettyPrint Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Extract the shared `Json { prettyPrint = true }` instance in `PrettyPrint.kt` to avoid creating a new one per function call.
 
@@ -22,12 +22,12 @@
 - Modify: `src/commonMain/kotlin/dev/sriniketh/PrettyPrint.kt`
 - Test: `src/commonTest/kotlin/dev/sriniketh/PrettyPrintTest.kt` (existing — no changes needed)
 
-- [ ] **Step 1: Run existing tests to establish baseline**
+- [x] **Step 1: Run existing tests to establish baseline**
 
 Run: `./gradlew allTests`
 Expected: All tests PASS.
 
-- [ ] **Step 2: Refactor PrettyPrint.kt to share the Json instance**
+- [x] **Step 2: Refactor PrettyPrint.kt to share the Json instance**
 
 Replace the entire content of `src/commonMain/kotlin/dev/sriniketh/PrettyPrint.kt` with:
 
@@ -67,17 +67,17 @@ fun prettyPrintCookieHeader(cookieHeader: String): String {
 }
 ```
 
-- [ ] **Step 3: Run all tests**
+- [x] **Step 3: Run all tests**
 
 Run: `./gradlew allTests`
 Expected: All tests PASS with identical output.
 
-- [ ] **Step 4: Run detekt**
+- [x] **Step 4: Run detekt**
 
 Run: `./gradlew detektMetadataCommonMain`
 Expected: No new violations.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/commonMain/kotlin/dev/sriniketh/PrettyPrint.kt

@@ -1,6 +1,6 @@
 # Fix Deprecated URL Constructor Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Replace the deprecated `java.net.URL(...)` constructor with `URI(...).toURL()` in `build.gradle.kts`.
 
@@ -22,7 +22,7 @@
 - Modify: `build.gradle.kts:7` (import line)
 - Modify: `build.gradle.kts:86` (usage line)
 
-- [ ] **Step 1: Replace the import**
+- [x] **Step 1: Replace the import**
 
 In `build.gradle.kts`, replace:
 
@@ -36,7 +36,7 @@ with:
 import java.net.URI
 ```
 
-- [ ] **Step 2: Replace the constructor call**
+- [x] **Step 2: Replace the constructor call**
 
 In `build.gradle.kts`, replace:
 
@@ -54,12 +54,12 @@ with:
             )
 ```
 
-- [ ] **Step 3: Verify the build still works**
+- [x] **Step 3: Verify the build still works**
 
 Run: `./gradlew build`
 Expected: Build succeeds with no deprecation warnings for this line.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add build.gradle.kts

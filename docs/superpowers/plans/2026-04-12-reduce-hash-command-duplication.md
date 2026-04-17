@@ -1,6 +1,6 @@
 # Reduce HashCommand Duplication Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Eliminate the duplicated algorithm branches in `HashCommand.run()` by extracting a common dispatch pattern.
 
@@ -23,12 +23,12 @@
 - Modify: `src/nativeMain/kotlin/dev/sriniketh/HashCommand.kt:48-92`
 - Test: `src/nativeTest/kotlin/dev.sriniketh/HashCommandTest.kt` (existing — no changes needed)
 
-- [ ] **Step 1: Run existing tests to establish baseline**
+- [x] **Step 1: Run existing tests to establish baseline**
 
 Run: `./gradlew allTests`
 Expected: All tests PASS.
 
-- [ ] **Step 2: Replace the `run()` method with deduplicated version**
+- [x] **Step 2: Replace the `run()` method with deduplicated version**
 
 Replace the `run()` method in `HashCommand.kt` (lines 48-92) with:
 
@@ -57,17 +57,17 @@ override fun run() {
 
 Note: The `::fileMD5` references require the functions to accept `(String, FileSystem)` params, which they do. The `::stringMD5` references accept `(String)`, which they do. The Kotlin compiler will infer the correct types.
 
-- [ ] **Step 3: Run all tests to confirm behavior is unchanged**
+- [x] **Step 3: Run all tests to confirm behavior is unchanged**
 
 Run: `./gradlew allTests`
 Expected: All tests PASS with identical output.
 
-- [ ] **Step 4: Run detekt**
+- [x] **Step 4: Run detekt**
 
 Run: `./gradlew detektMacosArm64Main`
 Expected: No new violations.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/nativeMain/kotlin/dev/sriniketh/HashCommand.kt
