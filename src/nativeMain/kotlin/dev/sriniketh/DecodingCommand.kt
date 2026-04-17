@@ -37,10 +37,9 @@ internal class DecodingCommand : CliktCommand(name = "decode") {
 
             "base64" -> {
                 echo("input string: $content")
-                val decoded = decodeFromBase64(content)
-                if (decoded != null) {
-                    echo("decoded string: $decoded")
-                } else {
+                try {
+                    echo("decoded string: ${decodeFromBase64(content)}")
+                } catch (_: IllegalArgumentException) {
                     echo("Invalid base64 input: $content")
                 }
             }
