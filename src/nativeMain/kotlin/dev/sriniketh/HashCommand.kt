@@ -46,48 +46,23 @@ internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTE
     override fun help(context: Context): String = "Get hash value for given file or string"
 
     override fun run() {
-        when (algorithm.lowercase()) {
-            "md5" -> {
-                when (val it = content) {
-                    is FileContent -> printHashForFileOrExceptionIfFailure { fileMD5(it.path, fileSystem) }
-                    is StringContent -> {
-                        echo("input string: ${it.text}")
-                        echo("hash: ${stringMD5(it.text)}")
-                    }
-                }
+        val (fileHashFn, stringHashFn) = when (algorithm.lowercase()) {
+            "md5" -> ::fileMD5 to ::stringMD5
+            "sha1" -> ::fileSHA1 to ::stringSHA1
+            "sha256" -> ::fileSHA256 to ::stringSHA256
+            "sha512" -> ::fileSHA512 to ::stringSHA512
+            else -> {
+                echo("Unsupported option: $algorithm")
+                return
             }
+        }
 
-            "sha1" -> {
-                when (val it = content) {
-                    is FileContent -> printHashForFileOrExceptionIfFailure { fileSHA1(it.path, fileSystem) }
-                    is StringContent -> {
-                        echo("input string: ${it.text}")
-                        echo("hash: ${stringSHA1(it.text)}")
-                    }
-                }
+        when (val it = content) {
+            is FileContent -> printHashForFileOrExceptionIfFailure { fileHashFn(it.path, fileSystem) }
+            is StringContent -> {
+                echo("input string: ${it.text}")
+                echo("hash: ${stringHashFn(it.text)}")
             }
-
-            "sha256" -> {
-                when (val it = content) {
-                    is FileContent -> printHashForFileOrExceptionIfFailure { fileSHA256(it.path, fileSystem) }
-                    is StringContent -> {
-                        echo("input string: ${it.text}")
-                        echo("hash: ${stringSHA256(it.text)}")
-                    }
-                }
-            }
-
-            "sha512" -> {
-                when (val it = content) {
-                    is FileContent -> printHashForFileOrExceptionIfFailure { fileSHA512(it.path, fileSystem) }
-                    is StringContent -> {
-                        echo("input string: ${it.text}")
-                        echo("hash: ${stringSHA512(it.text)}")
-                    }
-                }
-            }
-
-            else -> echo("Unsupported option: $algorithm")
         }
     }
 }
