@@ -84,7 +84,7 @@ git describe --tags --abbrev=0
 Generate the changelog, excluding docs/superpowers commits:
 
 ```bash
-git log <previous-tag>..HEAD --oneline -- . ':!docs/superpowers' ':!.agents'
+git log <previous-tag>..HEAD --oneline -- . ':!docs/superpowers'
 ```
 
 Format each line as a markdown list item:
