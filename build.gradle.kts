@@ -78,6 +78,7 @@ dokka {
             remoteUrl("https://github.com/sriniketh/ktools/tree/main/src/$name/kotlin")
             remoteLineSuffix.set("#L")
         }
+        suppressedFiles.from(file("src/$name/kotlin/dev/sriniketh/Main.kt"))
     }
 }
 
