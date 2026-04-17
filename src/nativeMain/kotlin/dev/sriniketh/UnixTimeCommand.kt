@@ -6,7 +6,7 @@ import com.github.ajalt.clikt.parameters.groups.OptionGroup
 import com.github.ajalt.clikt.parameters.groups.groupChoice
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.prompt
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
 
 internal class UnixTimeCommand(private val clock: Clock = Clock.System) : CliktCommand(name = "unixtime") {
 
