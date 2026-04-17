@@ -27,12 +27,12 @@
 - Modify: `src/commonMain/kotlin/dev/sriniketh/Hashing.kt:82-86` (`fileSHA512`)
 - Test: `src/commonTest/kotlin/dev/sriniketh/HashingTest.kt` (existing — no changes needed)
 
-- [ ] **Step 1: Run existing tests to establish baseline**
+- [x] **Step 1: Run existing tests to establish baseline**
 
 Run: `./gradlew allTests`
 Expected: All tests PASS. Note the hash values in `HashingTest.kt` — these must remain identical after refactoring.
 
-- [ ] **Step 2: Replace `getByteString` with a streaming `hashFile` helper**
+- [x] **Step 2: Replace `getByteString` with a streaming `hashFile` helper**
 
 Replace the entire `Hashing.kt` file content with:
 
@@ -144,17 +144,17 @@ private fun hashFile(filepath: String, fileSystem: FileSystem, algorithm: String
 }
 ```
 
-- [ ] **Step 3: Run all tests to confirm hashes are unchanged**
+- [x] **Step 3: Run all tests to confirm hashes are unchanged**
 
 Run: `./gradlew allTests`
 Expected: All tests PASS with identical hash values.
 
-- [ ] **Step 4: Run detekt**
+- [x] **Step 4: Run detekt**
 
 Run: `./gradlew detektMetadataCommonMain`
 Expected: No new violations.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/commonMain/kotlin/dev/sriniketh/Hashing.kt
