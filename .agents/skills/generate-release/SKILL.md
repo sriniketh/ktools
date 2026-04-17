@@ -63,28 +63,15 @@ git commit -m "chore: update librariesandlicenses.json for <version>"
 
 If unchanged (exit code 0), skip the commit.
 
-### 4. Update dokka docs
+### 4. Trigger dokka docs deployment
+
+The dokka docs are generated and deployed via the `docs.yml` workflow (not committed to the repo). Trigger it:
 
 ```bash
-./gradlew dokkaHtml
+gh workflow run docs.yml
 ```
 
-Output directory: `docs/dokka/`
-
-Check if docs changed:
-
-```bash
-git diff --exit-code docs/dokka/
-```
-
-If changed (exit code 1), commit:
-
-```bash
-git add docs/dokka/
-git commit -m "chore: update dokka docs for <version>"
-```
-
-If unchanged (exit code 0), skip the commit.
+This runs asynchronously — no need to wait for it to complete before continuing.
 
 ### 5. Generate changelog
 
@@ -97,7 +84,7 @@ git describe --tags --abbrev=0
 Generate the changelog, excluding docs/superpowers commits:
 
 ```bash
-git log <previous-tag>..HEAD --oneline -- . ':!docs/superpowers'
+git log <previous-tag>..HEAD --oneline -- . ':!docs/superpowers' ':!.agents'
 ```
 
 Format each line as a markdown list item:
@@ -126,15 +113,25 @@ This triggers the `release.yml` CI workflow.
 
 ### 8. Wait for CI
 
-Monitor the release workflow:
+Poll the release workflow until it completes:
 
 ```bash
-gh run list --workflow=release.yml --limit=1
+gh run list --workflow=release.yml --limit=1 --json status,conclusion
 ```
 
-Wait until the workflow run completes. If it fails, report the failure and stop.
+Re-check every 60 seconds until `status` is `completed`. Then check `conclusion` — if it is not `success`, report the failure and stop.
 
 ### 9. Update GitHub release body
+
+Verify the release exists first:
+
+```bash
+gh release view <version>
+```
+
+If the release does not exist yet (CI may still be finalizing), wait and retry.
+
+Then update the release body:
 
 ```bash
 gh release edit <version> --notes "<changelog>"
@@ -147,7 +144,8 @@ Use the same changelog from step 5. This ensures the changelog appears in both t
 | Failure | What to do |
 |---------|-----------|
 | Tests fail (step 2) | Fix tests, re-run from step 1 |
-| Gradle task fails (step 3, 4) | Check Gradle output, fix, re-run the failed step |
+| Gradle task fails (step 3) | Check Gradle output, fix, re-run the failed step |
+| Docs workflow fails (step 4) | Investigate via `gh run list --workflow=docs.yml --limit=1`, re-trigger with `gh workflow run docs.yml` |
 | Tag already exists (step 1) | User must choose a different version or delete the existing tag |
 | Push fails (step 7) | Check remote status, resolve conflicts, retry push |
 | CI fails (step 8) | Investigate the workflow run via `gh run view`, fix and re-tag if needed |
