@@ -17,7 +17,7 @@ import okio.Path.Companion.toPath
  * @throws IllegalArgumentException
  */
 @Throws(IOException::class, SerializationException::class, IllegalArgumentException::class)
-inline fun <reified T> parseFile(
+internal inline fun <reified T> parseFile(
     filepath: String,
     ignoreUnknownKeys: Boolean = true,
     fileSystem: FileSystem = FileSystem.SYSTEM
