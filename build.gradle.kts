@@ -3,7 +3,6 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.dokka.DokkaConfiguration.Visibility
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-import java.io.ByteArrayOutputStream
 import java.net.URI
 
 plugins {
@@ -64,12 +63,9 @@ kotlin {
 }
 
 fun getVersionNameFromGitTags(): String {
-    val stdout = ByteArrayOutputStream()
-    exec {
+    return providers.exec {
         commandLine("git", "describe", "--tags")
-        standardOutput = stdout
-    }
-    return stdout.toString().trim()
+    }.standardOutput.asText.get().trim()
 }
 
 // dokka plugin config
