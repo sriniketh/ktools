@@ -18,8 +18,8 @@ $dokka.location:dev.sriniketh.models/License/name/#/PointingToDeclaration/ktool
 $dokka.location:dev.sriniketh.models/License/url/#/PointingToDeclaration/ktools/dev.sriniketh.models/-license/url.html
 $dokka.location:dev.sriniketh////PointingToDeclaration/ktools/dev.sriniketh/index.html
 $dokka.location:dev.sriniketh//createRandomUUID/#/PointingToDeclaration/ktools/dev.sriniketh/create-random-u-u-i-d.html
-$dokka.location:dev.sriniketh//currentTimeInIso8601/#kotlinx.datetime.Clock/PointingToDeclaration/ktools/dev.sriniketh/current-time-in-iso8601.html
-$dokka.location:dev.sriniketh//currentTimeInMillis/#kotlinx.datetime.Clock/PointingToDeclaration/ktools/dev.sriniketh/current-time-in-millis.html
+$dokka.location:dev.sriniketh//currentTimeInIso8601/#kotlin.time.Clock/PointingToDeclaration/ktools/dev.sriniketh/current-time-in-iso8601.html
+$dokka.location:dev.sriniketh//currentTimeInMillis/#kotlin.time.Clock/PointingToDeclaration/ktools/dev.sriniketh/current-time-in-millis.html
 $dokka.location:dev.sriniketh//decodeFromBase64/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/decode-from-base64.html
 $dokka.location:dev.sriniketh//decodeFromUTF8Hex/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/decode-from-u-t-f8-hex.html
 $dokka.location:dev.sriniketh//encodeToBase64/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/encode-to-base64.html
