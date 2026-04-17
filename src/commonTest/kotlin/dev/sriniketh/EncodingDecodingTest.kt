@@ -2,7 +2,7 @@ package dev.sriniketh
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertNull
+import kotlin.test.assertFailsWith
 
 class EncodingDecodingTest {
 
@@ -31,8 +31,9 @@ class EncodingDecodingTest {
     }
 
     @Test
-    fun `decodeFromBase64 returns null when provided with invalid base64 input`() {
-        val result = decodeFromBase64("4rdHF")
-        assertNull(result)
+    fun `decodeFromBase64 throws IllegalArgumentException when provided with invalid base64 input`() {
+        assertFailsWith<IllegalArgumentException> {
+            decodeFromBase64("4rdHF")
+        }
     }
 }

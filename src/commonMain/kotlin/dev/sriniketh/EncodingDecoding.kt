@@ -33,5 +33,11 @@ fun encodeToBase64(content: String): String = content.encodeUtf8().base64()
  *
  * @param[encodedContent] Content to be decoded.
  * @return Decoded string.
+ * @throws IllegalArgumentException
  */
-fun decodeFromBase64(encodedContent: String): String? = encodedContent.decodeBase64()?.utf8()
+@Throws(IllegalArgumentException::class)
+fun decodeFromBase64(encodedContent: String): String {
+    val decoded = encodedContent.decodeBase64()
+        ?: throw IllegalArgumentException("Invalid base64 input: $encodedContent")
+    return decoded.utf8()
+}
