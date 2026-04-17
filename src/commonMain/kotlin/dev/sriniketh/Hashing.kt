@@ -1,7 +1,9 @@
 package dev.sriniketh
 
+import okio.Buffer
 import okio.ByteString.Companion.encodeUtf8
 import okio.FileSystem
+import okio.HashingSource
 import okio.IOException
 import okio.Path.Companion.toPath
 
@@ -14,10 +16,8 @@ import okio.Path.Companion.toPath
  * @throws IOException
  */
 @Throws(IOException::class)
-fun fileMD5(filepath: String, fileSystem: FileSystem = FileSystem.SYSTEM): String {
-    val byteString = filepath.getByteString(fileSystem)
-    return byteString.md5().hex()
-}
+fun fileMD5(filepath: String, fileSystem: FileSystem = FileSystem.SYSTEM): String =
+    hashFile(filepath, fileSystem, "md5")
 
 /**
  * Creates MD5 hash of given string.
@@ -36,10 +36,8 @@ fun stringMD5(content: String): String = content.encodeUtf8().md5().hex()
  * @throws IOException
  */
 @Throws(IOException::class)
-fun fileSHA1(filepath: String, fileSystem: FileSystem = FileSystem.SYSTEM): String {
-    val byteString = filepath.getByteString(fileSystem)
-    return byteString.sha1().hex()
-}
+fun fileSHA1(filepath: String, fileSystem: FileSystem = FileSystem.SYSTEM): String =
+    hashFile(filepath, fileSystem, "sha1")
 
 /**
  * Creates SHA1 hash of given string.
@@ -58,10 +56,8 @@ fun stringSHA1(content: String): String = content.encodeUtf8().sha1().hex()
  * @throws IOException
  */
 @Throws(IOException::class)
-fun fileSHA256(filepath: String, fileSystem: FileSystem = FileSystem.SYSTEM): String {
-    val byteString = filepath.getByteString(fileSystem)
-    return byteString.sha256().hex()
-}
+fun fileSHA256(filepath: String, fileSystem: FileSystem = FileSystem.SYSTEM): String =
+    hashFile(filepath, fileSystem, "sha256")
 
 /**
  * Creates SHA256 hash of given string.
@@ -80,10 +76,8 @@ fun stringSHA256(content: String): String = content.encodeUtf8().sha256().hex()
  * @throws IOException
  */
 @Throws(IOException::class)
-fun fileSHA512(filepath: String, fileSystem: FileSystem = FileSystem.SYSTEM): String {
-    val byteString = filepath.getByteString(fileSystem)
-    return byteString.sha512().hex()
-}
+fun fileSHA512(filepath: String, fileSystem: FileSystem = FileSystem.SYSTEM): String =
+    hashFile(filepath, fileSystem, "sha512")
 
 /**
  * Creates SHA512 hash of given string.
@@ -93,5 +87,24 @@ fun fileSHA512(filepath: String, fileSystem: FileSystem = FileSystem.SYSTEM): St
  */
 fun stringSHA512(content: String): String = content.encodeUtf8().sha512().hex()
 
-private fun String.getByteString(fileSystem: FileSystem) =
-    fileSystem.read(this.toPath()) { readByteString() }
+private const val BUFFER_SIZE = 8192L
+
+private fun hashFile(filepath: String, fileSystem: FileSystem, algorithm: String): String {
+    val source = fileSystem.source(filepath.toPath())
+    val hashingSource = when (algorithm) {
+        "md5" -> HashingSource.md5(source)
+        "sha1" -> HashingSource.sha1(source)
+        "sha256" -> HashingSource.sha256(source)
+        "sha512" -> HashingSource.sha512(source)
+        else -> throw IllegalArgumentException("Unsupported algorithm: $algorithm")
+    }
+    val buffer = Buffer()
+    try {
+        while (hashingSource.read(buffer, BUFFER_SIZE) != -1L) {
+            buffer.clear()
+        }
+    } finally {
+        hashingSource.close()
+    }
+    return hashingSource.hash.hex()
+}
