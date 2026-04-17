@@ -1,7 +1,5 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import org.jetbrains.dokka.DokkaConfiguration.Visibility
-import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import java.net.URI
 
@@ -69,18 +67,15 @@ fun getVersionNameFromGitTags(): String {
 }
 
 // dokka plugin config
-tasks.withType<DokkaTask>().configureEach {
+dokka {
+    dokkaPublications.html {
+        outputDirectory.set(file("${rootDir}/docs/dokka/"))
+    }
     dokkaSourceSets.configureEach {
         displayName.set(name)
-        documentedVisibilities.set(
-            setOf(Visibility.PUBLIC)
-        )
-        outputDirectory.set(file("${rootDir}/docs/dokka/"))
         sourceLink {
             localDirectory.set(file("src/$name/kotlin"))
-            remoteUrl.set(
-                URI("https://github.com/sriniketh/ktools/tree/main/src/$name/kotlin").toURL()
-            )
+            remoteUrl("https://github.com/sriniketh/ktools/tree/main/src/$name/kotlin")
             remoteLineSuffix.set("#L")
         }
     }
