@@ -33,7 +33,7 @@ kotlin {
             executable {
                 baseName = "ktools"
                 entryPoint = "dev.sriniketh.main"
-                runTask?.run {
+                runTaskProvider?.configure {
                     val args = providers.gradleProperty("runArgs")
                     argumentProviders.add(CommandLineArgumentProvider {
                         args.orNull?.split(' ') ?: emptyList()
@@ -85,8 +85,8 @@ dokka {
 // about libraries plugin config
 aboutLibraries {
     export {
-        outputFileName.set("librariesandlicenses.json")
-        prettyPrint.set(true)
+        outputFile = file("src/nativeMain/resources/librariesandlicenses.json")
+        prettyPrint = true
     }
 }
 
