@@ -11,7 +11,7 @@ dependencyResolutionManagement {
             version("kotlin", "2.3.10")
             version("okio", "3.16.4")
 
-            plugin("gradle-versions", "com.github.ben-manes.versions").version("0.53.0")
+            plugin("gradle-versions", "com.github.ben-manes.versions").version("0.54.0")
 
             plugin("multiplatform", "org.jetbrains.kotlin.multiplatform").versionRef("kotlin")
             plugin("serialization", "org.jetbrains.kotlin.plugin.serialization").versionRef("kotlin")
