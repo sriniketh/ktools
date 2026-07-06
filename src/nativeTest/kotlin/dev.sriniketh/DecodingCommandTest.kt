@@ -54,8 +54,8 @@ class DecodingCommandTest {
     @Test
     fun `decode utf8 prints error for invalid hex input`() {
         val result = decodingCommand.test("""utf8 --string="ZZZZ"""")
-        assertEquals(0, result.statusCode)
-        assertContains(result.stdout, "Invalid UTF-8 hex input:")
+        assertNotEquals(0, result.statusCode)
+        assertContains(result.stderr, "Invalid UTF-8 hex input:")
     }
 
     // base64
@@ -72,7 +72,7 @@ class DecodingCommandTest {
     @Test
     fun `decode base64 prints error for invalid base64 input`() {
         val result = decodingCommand.test("""base64 --string="!!invalid!!" """)
-        assertEquals(0, result.statusCode)
-        assertContains(result.stdout, "Invalid base64 input:")
+        assertNotEquals(0, result.statusCode)
+        assertContains(result.stderr, "Invalid base64 input:")
     }
 }
