@@ -11,6 +11,9 @@ permissions:
 jobs:
   build_macosArm:
     runs-on: macos-latest
+    permissions:
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
@@ -26,6 +29,10 @@ jobs:
           validate-wrappers: true
       - name: Build with Gradle
         run: ./gradlew macosArm64Binaries
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2
+        with:
+          subject-path: build/bin/macosArm64/releaseExecutable/ktools.kexe
       - name: Upload macos Arm build
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
@@ -34,6 +41,9 @@ jobs:
 
   build_macosX64:
     runs-on: macos-latest
+    permissions:
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
@@ -49,6 +59,10 @@ jobs:
           validate-wrappers: true
       - name: Build with Gradle
         run: ./gradlew macosX64Binaries
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2
+        with:
+          subject-path: build/bin/macosX64/releaseExecutable/ktools.kexe
       - name: Upload macos X64 build
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
@@ -57,6 +71,9 @@ jobs:
 
   build_linuxX64:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
@@ -72,6 +89,10 @@ jobs:
           validate-wrappers: true
       - name: Build with Gradle
         run: ./gradlew linuxX64Binaries
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2
+        with:
+          subject-path: build/bin/linuxX64/releaseExecutable/ktools.kexe
       - name: Upload linux X64 build
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
@@ -80,6 +101,9 @@ jobs:
 
   build_windowsX64:
     runs-on: windows-latest
+    permissions:
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
@@ -95,6 +119,10 @@ jobs:
           validate-wrappers: true
       - name: Build with Gradle
         run: ./gradlew mingwX64Binaries
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2
+        with:
+          subject-path: build/bin/mingwX64/releaseExecutable/ktools.exe
       - name: Upload windows X64 build
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
@@ -121,6 +149,9 @@ jobs:
           mv build/macos-x64-build/ktools.kexe build/macos-x64-build/macos-x64-ktools.kexe
           mv build/linux-x64-build/ktools.kexe build/linux-x64-build/linux-x64-ktools.kexe
           mv build/windows-x64-build/ktools.exe build/windows-x64-build/windows-x64-ktools.exe
+      - name: Generate SHA256SUMS
+        working-directory: build
+        run: sha256sum */*.kexe */*.exe > SHA256SUMS
       - name: Make Release
         uses: softprops/action-gh-release@718ea10b132b3b2eba29c1007bb80653f286566b # v3
         with:
@@ -129,3 +160,4 @@ jobs:
             build/macos-x64-build/macos-x64-ktools.kexe
             build/linux-x64-build/linux-x64-ktools.kexe
             build/windows-x64-build/windows-x64-ktools.exe
+            build/SHA256SUMS
