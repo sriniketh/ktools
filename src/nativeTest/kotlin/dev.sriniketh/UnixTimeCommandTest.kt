@@ -77,6 +77,12 @@ class UnixTimeCommandTest {
         )
     }
 
+    @Test
+    fun `test unixtime with no --operation flag exits with non-zero status code`() {
+        val result = unixTimeCommand.test("")
+        assertEquals(1, result.statusCode)
+    }
+
     private class FakeClock : Clock {
         override fun now(): Instant = Instant.fromEpochMilliseconds(1701331353006)
     }
