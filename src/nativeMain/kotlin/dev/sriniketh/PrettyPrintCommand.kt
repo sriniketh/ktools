@@ -6,19 +6,17 @@ import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.options.check
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.prompt
-import com.github.ajalt.clikt.parameters.types.choice
+import com.github.ajalt.clikt.parameters.types.enum
 import kotlinx.serialization.SerializationException
 
 internal class PrettyPrintCommand : CliktCommand(name = "prettyprint") {
 
+    private enum class ContentType { JSON, COOKIE_HEADER }
+
     private val contenttype by argument(
         name = "contenttype",
         help = "Pretty print content type: [json | cookie-header]"
-    ).choice(
-        "json",
-        "cookie-header",
-        ignoreCase = true
-    )
+    ).enum<ContentType> { it.name.lowercase().replace('_', '-') }
     private val content by option("--string", "-s", help = "Content that needs to be formatted")
         .prompt("Enter string for pretty printing")
         .check("string must be non-empty") { it.isNotEmpty() }
@@ -26,8 +24,8 @@ internal class PrettyPrintCommand : CliktCommand(name = "prettyprint") {
     override fun help(context: Context): String = "Pretty print content"
 
     override fun run() {
-        when (contenttype.lowercase()) {
-            "json" -> {
+        when (contenttype) {
+            ContentType.JSON -> {
                 try {
                     echo()
                     echo(prettyPrintJson(content))
@@ -38,12 +36,10 @@ internal class PrettyPrintCommand : CliktCommand(name = "prettyprint") {
                 }
             }
 
-            "cookie-header" -> {
+            ContentType.COOKIE_HEADER -> {
                 echo()
                 echo(prettyPrintCookieHeader(content))
             }
-
-            else -> echo("Unsupported option: $contenttype")
         }
     }
 }

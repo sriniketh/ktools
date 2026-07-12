@@ -6,6 +6,7 @@ import okio.FileSystem
 import okio.HashingSource
 import okio.IOException
 import okio.Path.Companion.toPath
+import okio.use
 
 /**
  * Creates MD5 hash of given file.
@@ -99,12 +100,10 @@ private fun hashFile(filepath: String, fileSystem: FileSystem, algorithm: String
         else -> throw IllegalArgumentException("Unsupported algorithm: $algorithm")
     }
     val buffer = Buffer()
-    try {
-        while (hashingSource.read(buffer, BUFFER_SIZE) != -1L) {
+    return hashingSource.use {
+        while (it.read(buffer, BUFFER_SIZE) != -1L) {
             buffer.clear()
         }
-    } finally {
-        hashingSource.close()
+        it.hash.hex()
     }
-    return hashingSource.hash.hex()
 }
