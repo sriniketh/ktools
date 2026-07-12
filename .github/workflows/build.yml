@@ -26,6 +26,7 @@ jobs:
         with:
           arguments: build
       - name: Save test results
+        if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: test-results-macos
@@ -47,6 +48,7 @@ jobs:
         with:
           arguments: build
       - name: Save test results
+        if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: test-results-linux
@@ -68,6 +70,7 @@ jobs:
         with:
           arguments: build
       - name: Save test results
+        if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: test-results-windows
