@@ -117,6 +117,21 @@ tasks.withType<Detekt>().configureEach {
     }
 }
 
+// In this KMP project the base `detekt` lifecycle task has no sources of its own; the actual
+// analysis happens in target-specific tasks (e.g. `detektMetadataCommonMain`, `detektMacosArm64Main`).
+// Those aren't wired into `check` by default, so `./gradlew build` never actually gated on them.
+// Wire every source-bearing detekt task into `check` so `build`/CI enforces them.
+tasks.named("check") {
+    dependsOn(
+        tasks.matching {
+            it.name.startsWith("detekt") &&
+                !it.name.startsWith("detektBaseline") &&
+                it.name != "detektGenerateConfig" &&
+                it.name != "detekt"
+        }
+    )
+}
+
 // gradle versions plugin config
 tasks.named<DependencyUpdatesTask>("dependencyUpdates") {
     checkForGradleUpdate = true
