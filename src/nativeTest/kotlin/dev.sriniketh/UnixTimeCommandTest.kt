@@ -4,6 +4,7 @@ import com.github.ajalt.clikt.testing.test
 import kotlin.time.Clock
 import kotlin.time.Instant
 import kotlin.test.Test
+import kotlin.test.assertContains
 import kotlin.test.assertEquals
 
 class UnixTimeCommandTest {
@@ -75,6 +76,13 @@ class UnixTimeCommandTest {
             "Illegal argument exception: invalid input 2023-11-30T08:02:33.006S",
             result.stdout.removeNewLines()
         )
+    }
+
+    @Test
+    fun `test unixtime with no --operation flag exits with non-zero status code`() {
+        val result = unixTimeCommand.test("")
+        assertEquals(1, result.statusCode)
+        assertContains(result.stderr, "missing option --operation")
     }
 
     private class FakeClock : Clock {

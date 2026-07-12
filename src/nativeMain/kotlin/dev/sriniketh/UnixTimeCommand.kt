@@ -4,6 +4,7 @@ import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.Context
 import com.github.ajalt.clikt.parameters.groups.OptionGroup
 import com.github.ajalt.clikt.parameters.groups.groupChoice
+import com.github.ajalt.clikt.parameters.groups.required
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.prompt
 import kotlin.time.Clock
@@ -30,7 +31,7 @@ internal class UnixTimeCommand(private val clock: Clock = Clock.System) : CliktC
         "nowiso" to NowISO(),
         "millistoiso" to MillisToISO(),
         "isotomillis" to ISOToMillis(),
-    )
+    ).required()
 
     override fun help(context: Context): String = "Unix time conversions"
 
@@ -49,8 +50,6 @@ internal class UnixTimeCommand(private val clock: Clock = Clock.System) : CliktC
             } catch (_: IllegalArgumentException) {
                 echo("Illegal argument exception: invalid input ${it.timeInISO}")
             }
-
-            else -> echo("Invalid operation")
         }
     }
 }
