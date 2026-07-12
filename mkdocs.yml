@@ -33,6 +33,12 @@ nav:
   - 'Commands': commands.md
   - 'Docs': dokka/ktools/dev.sriniketh/index.html
 
+# Internal planning docs live under docs/superpowers/ so they're easy to find locally, but they're
+# not part of the published site (they're absent from `nav` above) and `mkdocs gh-deploy` would
+# otherwise still copy and publish them since they sit under `docs_dir`. Exclude them explicitly.
+exclude_docs: |
+  superpowers/
+
 extra:
   social:
     - icon: fontawesome/brands/github-alt

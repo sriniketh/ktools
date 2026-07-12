@@ -100,6 +100,29 @@ buildConfig {
     )
 }
 
+// Keep the checked-in aboutlibraries export current: every generated BuildConfig embeds
+// `librariesandlicenses.json` as a string (see `ABOUT_LIBRARIES_JSON` above), read lazily at task
+// execution time. Without this, the JSON only gets refreshed when someone remembers to run
+// `exportLibraryDefinitions` by hand after a dependency bump, so the shipped `--about` output
+// silently drifts from the real version catalog. `exportLibraryDefinitions` only reads metadata
+// (POMs) already fetched during normal dependency resolution, so it's safe and network-free to run
+// on every build - wiring it as a task dependency (rather than a separate CI freshness check) means
+// `./gradlew build` regenerates the JSON automatically and it can never go stale again.
+tasks.matching {
+    it.name.startsWith("generate") && it.name.endsWith("BuildConfigClasses")
+}.configureEach {
+    dependsOn("exportLibraryDefinitions")
+}
+
+// exportLibraryDefinitions writes into src/nativeMain/resources, which every *ProcessResources
+// task for a native/metadata target also reads from when packaging that source set's resources.
+// Now that exportLibraryDefinitions runs as part of a normal build (wired in above), Gradle's task
+// validation flags that overlap as an undeclared implicit dependency unless we tell it those tasks
+// must run after the export - otherwise output could be produced in the wrong order.
+tasks.matching { it.name.endsWith("ProcessResources") }.configureEach {
+    mustRunAfter("exportLibraryDefinitions")
+}
+
 // detekt plugin config
 detekt {
     buildUponDefaultConfig = true

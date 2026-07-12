@@ -1,7 +1,7 @@
 # Commands
 
 ## ktools --help
-```dtd
+```text
 Usage: ktools [<options>] <command> [<args>]...
 
 Options:
@@ -19,40 +19,41 @@ Commands:
 ```
 
 ## ktools --version
-```dtd
-ktools version 0.1.0
+```text
+ktools version v0.4.0-20-g8087ca6
 ```
 
 ## ktools --about
-```dtd
+```text
 ktools is a command line application that provides useful developer tools. It's built as a kotlin multiplatform project.
 Learn more at https://github.com/sriniketh/ktools.
 
 Libraries used:
-Clikt : com.github.ajalt.clikt:clikt : 5.0.3
-Clikt Core : com.github.ajalt.clikt:clikt-core : 5.0.3
+Clikt : com.github.ajalt.clikt:clikt : 5.1.0
+Clikt Core : com.github.ajalt.clikt:clikt-core : 5.1.0
 Colormath : com.github.ajalt.colormath:colormath : 3.6.0
-Mordant : com.github.ajalt.mordant:mordant : 3.0.1
-Mordant Core : com.github.ajalt.mordant:mordant-core : 3.0.1
-okio : com.squareup.okio:okio : 3.10.2
-ktor-client-core : io.ktor:ktor-client-core : 3.1.1
-ktor-events : io.ktor:ktor-events : 3.1.1
-ktor-http : io.ktor:ktor-http : 3.1.1
-ktor-http-cio : io.ktor:ktor-http-cio : 3.1.1
-ktor-io : io.ktor:ktor-io : 3.1.1
-ktor-serialization : io.ktor:ktor-serialization : 3.1.1
-ktor-sse : io.ktor:ktor-sse : 3.1.1
-ktor-utils : io.ktor:ktor-utils : 3.1.1
-ktor-websocket-serialization : io.ktor:ktor-websocket-serialization : 3.1.1
-ktor-websockets : io.ktor:ktor-websockets : 3.1.1
-Kotlin Stdlib : org.jetbrains.kotlin:kotlin-stdlib : 2.1.10
+Mordant : com.github.ajalt.mordant:mordant : 3.0.2
+Mordant Core : com.github.ajalt.mordant:mordant-core : 3.0.2
+okio : com.squareup.okio:okio : 3.17.0
+ktor-client-core : io.ktor:ktor-client-core : 3.5.1
+ktor-events : io.ktor:ktor-events : 3.5.1
+ktor-http : io.ktor:ktor-http : 3.5.1
+ktor-http-cio : io.ktor:ktor-http-cio : 3.5.1
+ktor-io : io.ktor:ktor-io : 3.5.1
+ktor-serialization : io.ktor:ktor-serialization : 3.5.1
+ktor-sse : io.ktor:ktor-sse : 3.5.1
+ktor-utils : io.ktor:ktor-utils : 3.5.1
+ktor-websocket-serialization : io.ktor:ktor-websocket-serialization : 3.5.1
+ktor-websockets : io.ktor:ktor-websockets : 3.5.1
+Kotlin Stdlib : org.jetbrains.kotlin:kotlin-stdlib : 2.3.21
+Kotlin Stdlib Common : org.jetbrains.kotlin:kotlin-stdlib-common : 2.3.21
 atomicfu : org.jetbrains.kotlinx:atomicfu : 0.23.1
-kotlinx-coroutines-core : org.jetbrains.kotlinx:kotlinx-coroutines-core : 1.10.1
-kotlinx-datetime : org.jetbrains.kotlinx:kotlinx-datetime : 0.6.2
-kotlinx-io-bytestring : org.jetbrains.kotlinx:kotlinx-io-bytestring : 0.6.0
-kotlinx-io-core : org.jetbrains.kotlinx:kotlinx-io-core : 0.6.0
-kotlinx-serialization-core : org.jetbrains.kotlinx:kotlinx-serialization-core : 1.8.0
-kotlinx-serialization-json : org.jetbrains.kotlinx:kotlinx-serialization-json : 1.8.0
+kotlinx-coroutines-core : org.jetbrains.kotlinx:kotlinx-coroutines-core : 1.11.0
+kotlinx-datetime : org.jetbrains.kotlinx:kotlinx-datetime : 0.8.0-0.6.x-compat
+kotlinx-io-bytestring : org.jetbrains.kotlinx:kotlinx-io-bytestring : 0.9.0
+kotlinx-io-core : org.jetbrains.kotlinx:kotlinx-io-core : 0.9.0
+kotlinx-serialization-core : org.jetbrains.kotlinx:kotlinx-serialization-core : 1.11.0
+kotlinx-serialization-json : org.jetbrains.kotlinx:kotlinx-serialization-json : 1.11.0
 
 Licenses:
 Apache-2.0 : Apache License 2.0 : https://spdx.org/licenses/Apache-2.0.html
@@ -60,7 +61,7 @@ MIT : MIT License : https://spdx.org/licenses/MIT.html
 ```
 
 ## ktools uuid
-```dtd
+```text
 Usage: ktools uuid [<options>]
 
   Create a random UUID
@@ -71,7 +72,7 @@ Options:
 ```
 
 ## ktools unixtime
-```dtd
+```text
 Usage: ktools unixtime [<options>]
 
   Unix time conversions
@@ -83,12 +84,14 @@ Convert time in ISO 8601 format to millis:
   --iso=<text>
 
 Options:
-  -o, --operation=(nowmillis|nowiso|millistoiso|isotomillis)  Choose operation to perform: [nowmillis | nowiso | millistoiso | isotomillis]
-  -h, --help                                                  Show this message and exit
+  -o, --operation=(nowmillis|nowiso|millistoiso|isotomillis)
+              Choose operation to perform: [nowmillis | nowiso | millistoiso |
+              isotomillis]
+  -h, --help  Show this message and exit
 ```
 
 ## ktools hash
-```dtd
+```text
 Usage: ktools hash [<options>] <algorithm>
 
   Get hash value for given file or string
@@ -103,7 +106,7 @@ Arguments:
 ```
 
 ## ktools encode
-```dtd
+```text
 Usage: ktools encode [<options>] <format>
 
   Encode text content
@@ -117,7 +120,7 @@ Arguments:
 ```
 
 ## ktools decode
-```dtd
+```text
 Usage: ktools decode [<options>] <format>
 
   Decode text content
@@ -131,7 +134,7 @@ Arguments:
 ```
 
 ## ktools prettyprint
-```dtd
+```text
 Usage: ktools prettyprint [<options>] <contenttype>
 
   Pretty print content
