@@ -12,6 +12,7 @@ jobs:
   build_macosArm:
     runs-on: macos-latest
     permissions:
+      contents: read
       id-token: write
       attestations: write
     steps:
@@ -42,6 +43,7 @@ jobs:
   build_macosX64:
     runs-on: macos-latest
     permissions:
+      contents: read
       id-token: write
       attestations: write
     steps:
@@ -72,6 +74,7 @@ jobs:
   build_linuxX64:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       id-token: write
       attestations: write
     steps:
@@ -102,6 +105,7 @@ jobs:
   build_windowsX64:
     runs-on: windows-latest
     permissions:
+      contents: read
       id-token: write
       attestations: write
     steps:
@@ -151,7 +155,14 @@ jobs:
           mv build/windows-x64-build/ktools.exe build/windows-x64-build/windows-x64-ktools.exe
       - name: Generate SHA256SUMS
         working-directory: build
-        run: sha256sum */*.kexe */*.exe > SHA256SUMS
+        run: |
+          mkdir -p flat
+          cp macos-arm-build/macos-arm-ktools.kexe flat/
+          cp macos-x64-build/macos-x64-ktools.kexe flat/
+          cp linux-x64-build/linux-x64-ktools.kexe flat/
+          cp windows-x64-build/windows-x64-ktools.exe flat/
+          (cd flat && sha256sum * > ../SHA256SUMS)
+          rm -rf flat
       - name: Make Release
         uses: softprops/action-gh-release@718ea10b132b3b2eba29c1007bb80653f286566b # v3
         with:
