@@ -15,7 +15,10 @@ internal fun <T : CliktCommand> T.aboutOption(): T =
         val librariesAndLicenses = json.decodeFromString<LibrariesAndLicenses>(BuildConfig.ABOUT_LIBRARIES_JSON)
 
         val stringBuilder = StringBuilder().apply {
-            appendLine("ktools is a command line application that provides useful developer tools. It's built as a kotlin multiplatform project.")
+            appendLine(
+                "ktools is a command line application that provides useful developer tools. " +
+                    "It's built as a kotlin multiplatform project."
+            )
             appendLine("Learn more at https://github.com/sriniketh/ktools.")
 
             appendLine()
