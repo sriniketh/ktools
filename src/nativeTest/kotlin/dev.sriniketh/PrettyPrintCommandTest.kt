@@ -99,4 +99,24 @@ class PrettyPrintCommandTest {
             result.stdout
         )
     }
+
+    @Test
+    fun `prettyprint cookie-header does not crash for malformed header and prints best-effort output`() {
+        // parseClientCookiesHeader is a lenient, regex-based parser: it never throws, it just
+        // skips segments that don't look like `name=value` pairs. Encoding the resulting
+        // Map<String, String> to JSON can't fail either, so there is no exception for the
+        // cookie-header branch to guard against here (unlike the json branch).
+        val result = prettyPrintCommand.test("""cookie-header --string="====;;;;@@@@"""")
+        assertEquals(0, result.statusCode)
+        assertEquals(
+            """
+
+                {
+                    "@@@@": ""
+                }
+
+            """.trimIndent(),
+            result.stdout
+        )
+    }
 }

@@ -39,6 +39,13 @@ internal class PrettyPrintCommand : CliktCommand(name = "prettyprint") {
             }
 
             "cookie-header" -> {
+                // Unlike prettyPrintJson, prettyPrintCookieHeader cannot throw: Ktor's
+                // parseClientCookiesHeader is a lenient regex-based parser that never rejects
+                // input (malformed segments are silently skipped), and encoding the resulting
+                // Map<String, String> to JSON always succeeds. There is intentionally no
+                // try/catch here; see `prettyprint cookie-header does not crash for malformed
+                // header and prints best-effort output` in PrettyPrintCommandTest for the
+                // regression test that backs this up.
                 echo()
                 echo(prettyPrintCookieHeader(content))
             }
