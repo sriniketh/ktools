@@ -13,7 +13,9 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@ac2d340dc04d9e1113182899e983b5400c17cda1 # v3
+        uses: gradle/actions/setup-gradle@3f131e8634966bd73d06cc69884922b02e6faf92 # v6
+        with:
+          validate-wrappers: true
       - name: Generate dokka docs
         run: ./gradlew dokkaGeneratePublicationHtml
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
