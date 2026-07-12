@@ -9,11 +9,13 @@ import com.github.ajalt.clikt.parameters.groups.single
 import com.github.ajalt.clikt.parameters.options.check
 import com.github.ajalt.clikt.parameters.options.convert
 import com.github.ajalt.clikt.parameters.options.option
-import com.github.ajalt.clikt.parameters.types.choice
+import com.github.ajalt.clikt.parameters.types.enum
 import okio.FileSystem
 import okio.IOException
 
 internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTEM) : CliktCommand(name = "hash") {
+
+    private enum class Algorithm { MD5, SHA1, SHA256, SHA512 }
 
     private sealed interface Content
     private class FileContent(val path: String) : Content
@@ -22,13 +24,7 @@ internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTE
     private val algorithm by argument(
         name = "algorithm",
         help = "Algorithm to use for hashing: [MD5 | SHA1 | SHA256 | SHA512]"
-    ).choice(
-        "MD5",
-        "SHA1",
-        "SHA256",
-        "SHA512",
-        ignoreCase = true
-    )
+    ).enum<Algorithm> { it.name.lowercase() }
     private val content: Content by mutuallyExclusiveOptions(
         option("--file", "-f", help = "File to get hash value for (provide filepath)").convert { FileContent(it) }
             .check("filepath must be non-empty") { it.path.isNotEmpty() },
@@ -46,15 +42,11 @@ internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTE
     override fun help(context: Context): String = "Get hash value for given file or string"
 
     override fun run() {
-        val (fileHashFn, stringHashFn) = when (algorithm.lowercase()) {
-            "md5" -> ::fileMD5 to ::stringMD5
-            "sha1" -> ::fileSHA1 to ::stringSHA1
-            "sha256" -> ::fileSHA256 to ::stringSHA256
-            "sha512" -> ::fileSHA512 to ::stringSHA512
-            else -> {
-                echo("Unsupported option: $algorithm")
-                return
-            }
+        val (fileHashFn, stringHashFn) = when (algorithm) {
+            Algorithm.MD5 -> ::fileMD5 to ::stringMD5
+            Algorithm.SHA1 -> ::fileSHA1 to ::stringSHA1
+            Algorithm.SHA256 -> ::fileSHA256 to ::stringSHA256
+            Algorithm.SHA512 -> ::fileSHA512 to ::stringSHA512
         }
 
         when (val it = content) {
