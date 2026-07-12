@@ -20,10 +20,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
         with:
-          arguments: macosArm64Binaries
+          validate-wrappers: true
+      - name: Build with Gradle
+        run: ./gradlew macosArm64Binaries
       - name: Upload macos Arm build
         uses: actions/upload-artifact@v7
         with:
@@ -41,10 +43,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
         with:
-          arguments: macosX64Binaries
+          validate-wrappers: true
+      - name: Build with Gradle
+        run: ./gradlew macosX64Binaries
       - name: Upload macos X64 build
         uses: actions/upload-artifact@v7
         with:
@@ -62,10 +66,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
         with:
-          arguments: linuxX64Binaries
+          validate-wrappers: true
+      - name: Build with Gradle
+        run: ./gradlew linuxX64Binaries
       - name: Upload linux X64 build
         uses: actions/upload-artifact@v7
         with:
@@ -83,10 +89,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
         with:
-          arguments: mingwX64Binaries
+          validate-wrappers: true
+      - name: Build with Gradle
+        run: ./gradlew mingwX64Binaries
       - name: Upload windows X64 build
         uses: actions/upload-artifact@v7
         with:

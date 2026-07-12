@@ -21,10 +21,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
         with:
-          arguments: build
+          validate-wrappers: true
+      - name: Build with Gradle
+        run: ./gradlew build
       - name: Save test results
         if: always()
         uses: actions/upload-artifact@v7
@@ -43,10 +45,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
         with:
-          arguments: build
+          validate-wrappers: true
+      - name: Build with Gradle
+        run: ./gradlew build
       - name: Save test results
         if: always()
         uses: actions/upload-artifact@v7
@@ -65,10 +69,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
         with:
-          arguments: build
+          validate-wrappers: true
+      - name: Build with Gradle
+        run: ./gradlew build
       - name: Save test results
         if: always()
         uses: actions/upload-artifact@v7
