@@ -100,6 +100,19 @@ buildConfig {
     )
 }
 
+// Regenerate the checked-in aboutlibraries JSON on every build so ABOUT_LIBRARIES_JSON above
+// can't drift from the version catalog.
+tasks.matching {
+    it.name.startsWith("generate") && it.name.endsWith("BuildConfigClasses")
+}.configureEach {
+    dependsOn("exportLibraryDefinitions")
+}
+
+// Both tasks touch src/nativeMain/resources; order explicitly to satisfy Gradle's task validation.
+tasks.matching { it.name.endsWith("ProcessResources") }.configureEach {
+    mustRunAfter("exportLibraryDefinitions")
+}
+
 // detekt plugin config
 detekt {
     buildUponDefaultConfig = true

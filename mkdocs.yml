@@ -33,6 +33,10 @@ nav:
   - 'Commands': commands.md
   - 'Docs': dokka/ktools/dev.sriniketh/index.html
 
+# Internal planning docs; not part of the published site.
+exclude_docs: |
+  superpowers/
+
 extra:
   social:
     - icon: fontawesome/brands/github-alt
