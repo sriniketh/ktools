@@ -4,7 +4,9 @@ import com.github.ajalt.clikt.testing.test
 import kotlin.time.Clock
 import kotlin.time.Instant
 import kotlin.test.Test
+import kotlin.test.assertContains
 import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
 
 class UnixTimeCommandTest {
 
@@ -50,9 +52,10 @@ class UnixTimeCommandTest {
     @Test
     fun `test unixtime --operation=millistoiso throws exception when ISO string passed is invalid`() {
         val result = unixTimeCommand.test("--operation=millistoiso --millis=abcdef")
+        assertNotEquals(0, result.statusCode)
         assertEquals(
             "Number format exception: invalid input abcdef",
-            result.stdout.removeNewLines()
+            result.stderr.removeNewLines()
         )
     }
 
@@ -71,10 +74,18 @@ class UnixTimeCommandTest {
     @Test
     fun `test unixtime --operation=isotomillis throws exception when ISO string passed is invalid`() {
         val result = unixTimeCommand.test("--operation=isotomillis --iso=2023-11-30T08:02:33.006S")
+        assertNotEquals(0, result.statusCode)
         assertEquals(
             "Illegal argument exception: invalid input 2023-11-30T08:02:33.006S",
-            result.stdout.removeNewLines()
+            result.stderr.removeNewLines()
         )
+    }
+
+    @Test
+    fun `test unixtime with no --operation flag exits with non-zero status code`() {
+        val result = unixTimeCommand.test("")
+        assertEquals(1, result.statusCode)
+        assertContains(result.stderr, "missing option --operation")
     }
 
     private class FakeClock : Clock {

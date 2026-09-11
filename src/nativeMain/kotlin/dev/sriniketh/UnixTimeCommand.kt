@@ -2,8 +2,10 @@ package dev.sriniketh
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.Context
+import com.github.ajalt.clikt.core.PrintMessage
 import com.github.ajalt.clikt.parameters.groups.OptionGroup
 import com.github.ajalt.clikt.parameters.groups.groupChoice
+import com.github.ajalt.clikt.parameters.groups.required
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.prompt
 import kotlin.time.Clock
@@ -30,7 +32,7 @@ internal class UnixTimeCommand(private val clock: Clock = Clock.System) : CliktC
         "nowiso" to NowISO(),
         "millistoiso" to MillisToISO(),
         "isotomillis" to ISOToMillis(),
-    )
+    ).required()
 
     override fun help(context: Context): String = "Unix time conversions"
 
@@ -41,16 +43,22 @@ internal class UnixTimeCommand(private val clock: Clock = Clock.System) : CliktC
             is MillisToISO -> try {
                 echo(timeInMillisToIso8601(it.timeInMillis.toLong()))
             } catch (_: NumberFormatException) {
-                echo("Number format exception: invalid input ${it.timeInMillis}")
+                throw PrintMessage(
+                    "Number format exception: invalid input ${it.timeInMillis}",
+                    statusCode = 1,
+                    printError = true
+                )
             }
 
             is ISOToMillis -> try {
                 echo(iso8601ToTimeInMillis(it.timeInISO))
             } catch (_: IllegalArgumentException) {
-                echo("Illegal argument exception: invalid input ${it.timeInISO}")
+                throw PrintMessage(
+                    "Illegal argument exception: invalid input ${it.timeInISO}",
+                    statusCode = 1,
+                    printError = true
+                )
             }
-
-            else -> echo("Invalid operation")
         }
     }
 }

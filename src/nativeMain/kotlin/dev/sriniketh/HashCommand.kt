@@ -2,6 +2,7 @@ package dev.sriniketh
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.Context
+import com.github.ajalt.clikt.core.PrintMessage
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.groups.mutuallyExclusiveOptions
 import com.github.ajalt.clikt.parameters.groups.required
@@ -40,7 +41,7 @@ internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTE
         try {
             echo("hash: ${block.invoke()}")
         } catch (exception: IOException) {
-            echo("IOException: ${exception.message}")
+            throw PrintMessage("IOException: ${exception.message}", statusCode = 1, printError = true)
         }
 
     override fun help(context: Context): String = "Get hash value for given file or string"

@@ -2,6 +2,7 @@ package dev.sriniketh
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.Context
+import com.github.ajalt.clikt.core.PrintMessage
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.options.check
 import com.github.ajalt.clikt.parameters.options.option
@@ -32,7 +33,11 @@ internal class PrettyPrintCommand : CliktCommand(name = "prettyprint") {
                     echo()
                     echo(prettyPrintJson(content))
                 } catch (exception: SerializationException) {
-                    echo("Invalid JSON: ${exception.message}")
+                    throw PrintMessage(
+                        "Invalid JSON: ${exception.message}",
+                        statusCode = 1,
+                        printError = true
+                    )
                 }
             }
 
