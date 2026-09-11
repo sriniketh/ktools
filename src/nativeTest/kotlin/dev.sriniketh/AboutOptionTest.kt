@@ -4,6 +4,7 @@ import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.testing.test
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class AboutOptionTest {
 
@@ -17,5 +18,13 @@ class AboutOptionTest {
     fun `aboutOption returns 0 status and exits`() {
         val result = testCommand.test("--about")
         assertEquals(0, result.statusCode)
+    }
+
+    @Test
+    fun `aboutOption output includes known library and licenses section`() {
+        val result = testCommand.test("--about")
+
+        assertTrue(result.output.contains("Clikt"))
+        assertTrue(result.output.contains("Licenses:"))
     }
 }
