@@ -9,7 +9,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
             version("kotlin", "2.3.10")
-            version("okio", "3.17.0")
+            version("okio", "3.18.2")
 
             plugin("gradle-versions", "com.github.ben-manes.versions").version("0.54.0")
 
