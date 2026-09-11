@@ -40,8 +40,8 @@ internal class HashCommand(private val fileSystem: FileSystem = FileSystem.SYSTE
     private fun printHashForFileOrExceptionIfFailure(block: () -> String) =
         try {
             echo("hash: ${block.invoke()}")
-        } catch (exception: IOException) {
-            throw PrintMessage("IOException: ${exception.message}", statusCode = 1, printError = true)
+        } catch (expectedException: IOException) {
+            throw PrintMessage("IOException: ${expectedException.message}", statusCode = 1, printError = true)
         }
 
     override fun help(context: Context): String = "Get hash value for given file or string"

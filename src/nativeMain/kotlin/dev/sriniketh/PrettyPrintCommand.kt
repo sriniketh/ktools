@@ -32,9 +32,9 @@ internal class PrettyPrintCommand : CliktCommand(name = "prettyprint") {
                 try {
                     echo()
                     echo(prettyPrintJson(content))
-                } catch (exception: SerializationException) {
+                } catch (expectedException: SerializationException) {
                     throw PrintMessage(
-                        "Invalid JSON: ${exception.message}",
+                        "Invalid JSON: ${expectedException.message}",
                         statusCode = 1,
                         printError = true
                     )
