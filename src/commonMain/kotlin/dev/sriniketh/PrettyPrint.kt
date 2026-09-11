@@ -10,10 +10,9 @@ import kotlinx.serialization.json.JsonElement
  *
  * @param[jsonString] JSON string that needs to be formatted.
  * @return Formatted json string.
- * @throws IllegalArgumentException
  * @throws SerializationException
  */
-@Throws(IllegalArgumentException::class, SerializationException::class)
+@Throws(SerializationException::class)
 fun prettyPrintJson(jsonString: String): String {
     val prettyJson = Json { prettyPrint = true }
     val jsonElement = prettyJson.decodeFromString<JsonElement>(jsonString)

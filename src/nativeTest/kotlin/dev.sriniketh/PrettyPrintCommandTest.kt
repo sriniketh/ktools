@@ -70,7 +70,7 @@ class PrettyPrintCommandTest {
         assertNotEquals(0, result.statusCode)
         assertEquals(
             """
-                IllegalArgumentException: Unexpected JSON token at offset 42: EOF at path: $
+                Invalid JSON: Unexpected JSON token at offset 42: EOF at path: $
                 JSON input: {"a":42, "b": "something", "c": {"d":43, "
 
             """.trimIndent(),
