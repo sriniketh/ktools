@@ -2,6 +2,7 @@ package dev.sriniketh
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.Context
+import com.github.ajalt.clikt.core.PrintMessage
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.options.check
 import com.github.ajalt.clikt.parameters.options.option
@@ -31,7 +32,7 @@ internal class DecodingCommand : CliktCommand(name = "decode") {
                 try {
                     echo("decoded string: ${decodeFromUTF8Hex(content)}")
                 } catch (_: IllegalArgumentException) {
-                    echo("Invalid UTF-8 hex input: $content")
+                    throw PrintMessage("Invalid UTF-8 hex input: $content", statusCode = 1, printError = true)
                 }
             }
 
@@ -40,7 +41,7 @@ internal class DecodingCommand : CliktCommand(name = "decode") {
                 try {
                     echo("decoded string: ${decodeFromBase64(content)}")
                 } catch (_: IllegalArgumentException) {
-                    echo("Invalid base64 input: $content")
+                    throw PrintMessage("Invalid base64 input: $content", statusCode = 1, printError = true)
                 }
             }
 

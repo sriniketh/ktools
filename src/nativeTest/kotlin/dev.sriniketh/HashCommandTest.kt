@@ -55,7 +55,8 @@ class HashCommandTest {
     @Test
     fun `hash md5 prints exception when file input is invalid`() {
         val result = hashCommand.test("md5 --file=HashingTestFiles.txt")
-        assertEquals("IOException: no such file: HashingTestFiles.txt", result.stdout.removeNewLines())
+        assertNotEquals(0, result.statusCode)
+        assertEquals("IOException: no such file: HashingTestFiles.txt", result.stderr.removeNewLines())
     }
 
     @Test
@@ -87,7 +88,8 @@ class HashCommandTest {
     @Test
     fun `hash sha256 prints exception when file input is invalid`() {
         val result = hashCommand.test("sha256 --file=HashingTestFiles.txt")
-        assertEquals("IOException: no such file: HashingTestFiles.txt", result.stdout.removeNewLines())
+        assertNotEquals(0, result.statusCode)
+        assertEquals("IOException: no such file: HashingTestFiles.txt", result.stderr.removeNewLines())
     }
 
     @Test
@@ -125,7 +127,8 @@ class HashCommandTest {
     @Test
     fun `hash sha512 prints exception when file input is invalid`() {
         val result = hashCommand.test("sha512 --file=HashingTestFiles.txt")
-        assertEquals("IOException: no such file: HashingTestFiles.txt", result.stdout.removeNewLines())
+        assertNotEquals(0, result.statusCode)
+        assertEquals("IOException: no such file: HashingTestFiles.txt", result.stderr.removeNewLines())
     }
 
     @Test
@@ -163,7 +166,8 @@ class HashCommandTest {
     @Test
     fun `hash sha1 prints exception when file input is invalid`() {
         val result = hashCommand.test("sha1 --file=HashingTestFiles.txt")
-        assertEquals("IOException: no such file: HashingTestFiles.txt", result.stdout.removeNewLines())
+        assertNotEquals(0, result.statusCode)
+        assertEquals("IOException: no such file: HashingTestFiles.txt", result.stderr.removeNewLines())
     }
 
     @Test
