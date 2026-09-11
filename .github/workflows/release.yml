@@ -31,7 +31,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew macosArm64Binaries
       - name: Attest build provenance
-        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4
         with:
           subject-path: build/bin/macosArm64/releaseExecutable/ktools.kexe
       - name: Upload macos Arm build
@@ -62,7 +62,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew macosX64Binaries
       - name: Attest build provenance
-        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4
         with:
           subject-path: build/bin/macosX64/releaseExecutable/ktools.kexe
       - name: Upload macos X64 build
@@ -93,7 +93,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew linuxX64Binaries
       - name: Attest build provenance
-        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4
         with:
           subject-path: build/bin/linuxX64/releaseExecutable/ktools.kexe
       - name: Upload linux X64 build
@@ -124,7 +124,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew mingwX64Binaries
       - name: Attest build provenance
-        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4
         with:
           subject-path: build/bin/mingwX64/releaseExecutable/ktools.exe
       - name: Upload windows X64 build
