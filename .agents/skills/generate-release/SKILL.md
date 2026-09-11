@@ -43,9 +43,10 @@ If tests fail, stop. Report which tests failed.
 
 ### 3. Update libraries and licenses JSON
 
+The aboutlibraries plugin is configured to export directly to `src/nativeMain/resources/librariesandlicenses.json` (see `aboutLibraries { export { outputFile = ... } }` in `build.gradle.kts`), so no intermediate copy step is needed:
+
 ```bash
 ./gradlew exportLibraryDefinitions
-cp build/generated/aboutLibraries/librariesandlicenses.json src/nativeMain/resources/librariesandlicenses.json
 ```
 
 Check if the file changed:
