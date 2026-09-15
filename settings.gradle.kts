@@ -17,7 +17,7 @@ dependencyResolutionManagement {
             plugin("serialization", "org.jetbrains.kotlin.plugin.serialization").versionRef("kotlin")
             plugin("dokka", "org.jetbrains.dokka").version("2.2.0")
             plugin("aboutlibraries", "com.mikepenz.aboutlibraries.plugin").version("15.2.0")
-            plugin("buildconfig", "com.github.gmazzo.buildconfig").version("6.0.10")
+            plugin("buildconfig", "com.github.gmazzo.buildconfig").version("6.1.0")
             plugin("detekt", "io.gitlab.arturbosch.detekt").version("1.23.8")
 
             library("okio-core", "com.squareup.okio", "okio").versionRef("okio")
