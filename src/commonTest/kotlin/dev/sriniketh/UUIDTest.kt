@@ -9,6 +9,21 @@ import kotlin.test.assertTrue
 import kotlin.time.Clock
 import kotlin.time.Instant
 
+private const val SAME_MILLISECOND_SAMPLE_SIZE = 10
+private const val FUTURE_SAFETY_MARGIN_MILLIS = 86_400_000L
+
+// createUuidV7's monotonic counter is shared, mutable state across the whole test binary. A
+// hardcoded fixed timestamp can't safely be asserted on by value: an earlier test may have
+// already advanced the counter past it, silently reusing that later timestamp instead. A "now +
+// margin" value alone isn't quite enough either, since two calls made within the same real
+// millisecond (plausible for a fast test suite) would collide. The strictly-increasing sequence
+// number guarantees every call returns a value greater than every previous one, regardless of
+// wall-clock timing or test order, so these calls always land on a genuinely new millisecond.
+private var freshMillisSequence = 0L
+
+private fun freshFutureMillis(): Long =
+    Clock.System.now().toEpochMilliseconds() + FUTURE_SAFETY_MARGIN_MILLIS + freshMillisSequence++
+
 class UUIDTest {
 
     @Test
@@ -40,6 +55,31 @@ class UUIDTest {
         val uuid1 = createUuidV7(fixedClock)
         val uuid2 = createUuidV7(fixedClock)
         assertTrue(uuid1 < uuid2)
+    }
+
+    @Test
+    fun `test createUuidV7 generates a strictly sorted and unique sequence within the same millisecond`() {
+        val fixedClock = FixedClock()
+        val uuids = List(SAME_MILLISECOND_SAMPLE_SIZE) { createUuidV7(fixedClock) }
+        assertEquals(uuids, uuids.sorted())
+        assertEquals(uuids.size, uuids.toSet().size)
+    }
+
+    @Test
+    fun `test createUuidV7 sorts a later timestamp after an earlier one`() {
+        val uuid1 = createUuidV7(FixedClock(freshFutureMillis()))
+        val uuid2 = createUuidV7(FixedClock(freshFutureMillis()))
+        assertTrue(uuid1 < uuid2)
+    }
+
+    @Test
+    fun `test createUuidV7 embeds the clock's timestamp and RFC 9562 fields as inspectUuid decodes them`() {
+        val timestampMillis = freshFutureMillis()
+        val uuid = createUuidV7(FixedClock(timestampMillis))
+        val inspection = inspectUuid(uuid)
+        assertEquals(7, inspection.version)
+        assertEquals("RFC 4122", inspection.variant)
+        assertEquals(timestampMillis, inspection.timestampMillis)
     }
 
     @Test
@@ -118,7 +158,7 @@ class UUIDTest {
         assertEquals("f47ac10b58cc4372a5670e02b2c3d479", inspection.rawBytesHex)
     }
 
-    private class FixedClock : Clock {
-        override fun now(): Instant = Instant.fromEpochMilliseconds(1701331353006)
+    private class FixedClock(private val epochMillis: Long = 1701331353006) : Clock {
+        override fun now(): Instant = Instant.fromEpochMilliseconds(epochMillis)
     }
 }
