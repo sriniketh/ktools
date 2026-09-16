@@ -5,7 +5,7 @@ ktools is a command line application that provides useful developer tools. It's 
 ## Commands
 
 * `ktools --help` - View all available commands
-* `ktools uuid` - Creates a random UUID
+* `ktools uuid` - Creates a random UUID (v4 or v7), or inspects one with `uuid inspect`
 * `ktools unixtime` - Unix time conversions
 * `ktools hash` - Provides hash value for given file or string
 * `ktools encode` - Encodes some text content to specified format
