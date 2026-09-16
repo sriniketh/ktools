@@ -8,7 +8,7 @@ and is currently available for macos (both X64 and ARM), linux and windows targe
 ## Commands
 
 - `ktools --help` - View all available commands
-- `ktools uuid` - Creates a random UUID
+- `ktools uuid` - Creates a random UUID (v4 or v7), or inspects one with `uuid inspect`
 - `ktools unixtime` - Unix time conversions
 - `ktools hash` - Provides hash value for given file or string
 - `ktools encode` - Encodes some text content to specified format
