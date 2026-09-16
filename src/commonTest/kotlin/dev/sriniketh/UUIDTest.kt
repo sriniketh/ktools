@@ -1,6 +1,5 @@
 package dev.sriniketh
 
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -14,20 +13,13 @@ class UUIDTest {
 
     private companion object {
         private const val SAME_MILLISECOND_SAMPLE_SIZE = 10
-        private const val FUTURE_SAFETY_MARGIN_MILLIS = 86_400_000L
     }
 
-    private var freshMillisSeq = 0L
-
-    @BeforeTest
-    fun resetFreshMillisSeq() {
-        freshMillisSeq = 0L
-    }
-
-    // Guarantees a strictly increasing timestamp on each call, so two calls never land in the
-    // same millisecond.
-    private fun freshFutureMillis(): Long =
-        Clock.System.now().toEpochMilliseconds() + FUTURE_SAFETY_MARGIN_MILLIS + freshMillisSeq++
+    // createUuidV7's monotonic counter is shared state across the whole test binary, so a value
+    // can't be picked in advance without knowing what other tests already used. Feeding it an
+    // old clock value forces its "not newer than last time" guard to report back exactly what
+    // it's currently holding; adding 1 to that is then guaranteed to land on a fresh millisecond.
+    private fun nextUnusedV7Millis(): Long = inspectUuid(createUuidV7(FixedClock(0))).timestampMillis!! + 1
 
     @Test
     fun `test createRandomUUID creates new random UUID`() {
@@ -70,14 +62,14 @@ class UUIDTest {
 
     @Test
     fun `test createUuidV7 sorts a later timestamp after an earlier one`() {
-        val uuid1 = createUuidV7(FixedClock(freshFutureMillis()))
-        val uuid2 = createUuidV7(FixedClock(freshFutureMillis()))
+        val uuid1 = createUuidV7(FixedClock(nextUnusedV7Millis()))
+        val uuid2 = createUuidV7(FixedClock(nextUnusedV7Millis()))
         assertTrue(uuid1 < uuid2)
     }
 
     @Test
     fun `test createUuidV7 embeds the clock's timestamp and RFC 9562 fields as inspectUuid decodes them`() {
-        val timestampMillis = freshFutureMillis()
+        val timestampMillis = nextUnusedV7Millis()
         val uuid = createUuidV7(FixedClock(timestampMillis))
         val inspection = inspectUuid(uuid)
         assertEquals(7, inspection.version)
