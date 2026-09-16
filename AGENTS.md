@@ -7,12 +7,12 @@ ktools is a Kotlin Multiplatform (KMP) CLI utility providing developer tools: UU
 ## Build & Run
 
 ```bash
-./gradlew build                          # Build all targets
-./gradlew nativeRun -PrunArgs="uuid"     # Run locally with args
-./gradlew macosArm64Binaries             # Build macOS ARM binary
-./gradlew macosX64Binaries               # Build macOS x64 binary
-./gradlew linuxX64Binaries               # Build Linux binary
-./gradlew mingwX64Binaries               # Build Windows binary
+./gradlew build                                          # Build all targets
+./gradlew runDebugExecutableMacosArm64 -PrunArgs="uuid"  # Run locally with args (host-specific; see `./gradlew tasks --all | grep run`)
+./gradlew macosArm64Binaries                             # Build macOS ARM binary
+./gradlew macosX64Binaries                               # Build macOS x64 binary
+./gradlew linuxX64Binaries                               # Build Linux binary
+./gradlew mingwX64Binaries                               # Build Windows binary
 ```
 
 ## Testing
