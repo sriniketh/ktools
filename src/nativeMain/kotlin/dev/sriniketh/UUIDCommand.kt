@@ -13,9 +13,10 @@ import kotlin.time.Clock
 private const val UUID_VERSION_4 = 4
 private const val UUID_VERSION_7 = 7
 
-internal class UUIDCommand(private val clock: Clock = Clock.System) :
-    CliktCommand(name = "uuid", invokeWithoutSubcommand = true) {
+internal class UUIDCommand(private val clock: Clock = Clock.System) : CliktCommand(name = "uuid") {
     private enum class Case { LOWER, UPPER }
+
+    override val invokeWithoutSubcommand = true
 
     init {
         subcommands(UUIDInspectCommand())
