@@ -20,7 +20,7 @@ Commands:
 
 ## ktools --version
 ```text
-ktools version v0.4.0-20-g8087ca6
+ktools version v0.5.0-19-g6b1c7a0
 ```
 
 ## ktools --about

@@ -30,12 +30,13 @@ Tests are in two source sets:
 ```
 src/
 ├── commonMain/kotlin/dev/sriniketh/     # Platform-agnostic business logic (pure functions)
-│   └── UUID.kt, Hashing.kt, EncodingDecoding.kt, UnixTime.kt, PrettyPrint.kt
+│   ├── UUID.kt, Hashing.kt, EncodingDecoding.kt, UnixTime.kt, PrettyPrint.kt, AboutText.kt
+│   └── models/LibrariesAndLicenses.kt
 ├── commonTest/kotlin/dev/sriniketh/     # Unit tests for common code
 ├── nativeMain/kotlin/dev/sriniketh/     # CLI commands (Clikt) and entry point
 │   ├── Main.kt                          # Entry point, wires subcommands
-│   ├── *Command.kt                      # One file per CLI command
-│   └── models/LibrariesAndLicenses.kt
+│   ├── AboutOption.kt                   # --about option
+│   └── *Command.kt                      # One file per CLI command
 └── nativeTest/kotlin/dev.sriniketh/     # CLI integration tests
 ```
 
