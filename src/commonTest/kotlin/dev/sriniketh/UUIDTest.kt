@@ -1,5 +1,6 @@
 package dev.sriniketh
 
+import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -9,22 +10,24 @@ import kotlin.test.assertTrue
 import kotlin.time.Clock
 import kotlin.time.Instant
 
-private const val SAME_MILLISECOND_SAMPLE_SIZE = 10
-private const val FUTURE_SAFETY_MARGIN_MILLIS = 86_400_000L
-
-// createUuidV7's monotonic counter is shared, mutable state across the whole test binary. A
-// hardcoded fixed timestamp can't safely be asserted on by value: an earlier test may have
-// already advanced the counter past it, silently reusing that later timestamp instead. A "now +
-// margin" value alone isn't quite enough either, since two calls made within the same real
-// millisecond (plausible for a fast test suite) would collide. The strictly-increasing sequence
-// number guarantees every call returns a value greater than every previous one, regardless of
-// wall-clock timing or test order, so these calls always land on a genuinely new millisecond.
-private var freshMillisSequence = 0L
-
-private fun freshFutureMillis(): Long =
-    Clock.System.now().toEpochMilliseconds() + FUTURE_SAFETY_MARGIN_MILLIS + freshMillisSequence++
-
 class UUIDTest {
+
+    private companion object {
+        private const val SAME_MILLISECOND_SAMPLE_SIZE = 10
+        private const val FUTURE_SAFETY_MARGIN_MILLIS = 86_400_000L
+    }
+
+    private var freshMillisSeq = 0L
+
+    @BeforeTest
+    fun resetFreshMillisSeq() {
+        freshMillisSeq = 0L
+    }
+
+    // Guarantees a strictly increasing timestamp on each call, so two calls never land in the
+    // same millisecond.
+    private fun freshFutureMillis(): Long =
+        Clock.System.now().toEpochMilliseconds() + FUTURE_SAFETY_MARGIN_MILLIS + freshMillisSeq++
 
     @Test
     fun `test createRandomUUID creates new random UUID`() {
