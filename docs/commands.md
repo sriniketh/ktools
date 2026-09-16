@@ -62,13 +62,32 @@ MIT : MIT License : https://spdx.org/licenses/MIT.html
 
 ## ktools uuid
 ```text
-Usage: ktools uuid [<options>]
+Usage: ktools uuid [<options>] <command> [<args>]...
 
   Create a random UUID
 
 Options:
   -c, --case=(lower|upper)  Use upper or lower case. Default is lower.
+  --version=<int>           UUID version to generate: [4 | 7]. Default is 4.
   -h, --help                Show this message and exit
+
+Commands:
+  inspect  Inspect a UUID and report its version, variant, and (for v1/v6/v7)
+           timestamp
+```
+
+## ktools uuid inspect
+```text
+Usage: ktools uuid inspect [<options>] <uuid>
+
+  Inspect a UUID and report its version, variant, and (for v1/v6/v7) timestamp
+
+Options:
+  --json      Output result as JSON
+  -h, --help  Show this message and exit
+
+Arguments:
+  <uuid>  UUID value to inspect
 ```
 
 ## ktools unixtime
