@@ -52,3 +52,6 @@ venv/
 
 ### Worktrees
 .worktrees/
+
+### Superpowers plans
+docs/superpowers/plans/
