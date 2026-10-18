@@ -58,6 +58,14 @@ class DecodingCommandTest {
         assertContains(result.stderr, "Invalid UTF-8 hex input:")
     }
 
+    @Test
+    fun `decode utf8 prints error for hex that is not valid UTF-8`() {
+        val result = decodingCommand.test("""utf8 --string="ff"""")
+        assertEquals(1, result.statusCode)
+        assertEquals("input string: ff\n", result.stdout)
+        assertContains(result.stderr, "Invalid UTF-8 hex input: ff")
+    }
+
     // base64
 
     @Test
