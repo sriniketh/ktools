@@ -190,8 +190,8 @@ internal fun verifySha256(contents: ByteString, sha256Sums: String, assetName: S
  * @param[executable] Path of the executable to replace.
  * @param[contents] New executable.
  * @param[makeExecutable] Marks a file as executable.
- * @throws UpdateException if the swap fails and the previous binary cannot be moved back, leaving it at
- * `<executable>.old`.
+ * @throws UpdateException if `<executable>.old` from an earlier update cannot be removed, or if the swap fails and
+ * the previous binary cannot be moved back, leaving it at `<executable>.old`.
  * @throws IOException if the new binary cannot be staged or swapped in. [executable] is left as it was.
  */
 @Throws(UpdateException::class, IOException::class)
@@ -203,10 +203,10 @@ internal fun replaceExecutable(
 ) {
     val staged = "$executable.new".toPath()
     val previous = "$executable.old".toPath()
+    fileSystem.removeLeftover(previous)
     try {
         fileSystem.write(staged) { write(contents) }
         makeExecutable(staged)
-        fileSystem.delete(previous, mustExist = false)
         fileSystem.atomicMove(executable, previous)
     } catch (exception: IOException) {
         fileSystem.deleteQuietly(staged)
@@ -220,6 +220,18 @@ internal fun replaceExecutable(
         throw exception
     }
     fileSystem.deleteQuietly(previous)
+}
+
+private fun FileSystem.removeLeftover(previous: Path) {
+    try {
+        delete(previous, mustExist = false)
+    } catch (exception: IOException) {
+        throw UpdateException(
+            "Could not remove $previous left by the previous update: ${exception.message}. " +
+                "Close any ktools still running from it and try again.",
+            exception,
+        )
+    }
 }
 
 private fun FileSystem.restore(previous: Path, executable: Path, installFailure: IOException) {

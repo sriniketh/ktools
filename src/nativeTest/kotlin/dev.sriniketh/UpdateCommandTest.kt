@@ -17,6 +17,7 @@ import okio.fakefilesystem.FakeFileSystem
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 import kotlinx.io.IOException as NetworkIOException
 
@@ -147,5 +148,24 @@ class UpdateCommandTest {
         assertContains(result.stderr, installDir.toString())
         assertEquals("old binary", installedBinary())
         assertEquals(listOf(executable), fakeFileSystem.list(installDir))
+    }
+
+    @Test
+    fun `update explains a locked previous binary and leaves the executable untouched`() {
+        val previous = installDir / "ktools.old"
+        fakeFileSystem.write(previous) { writeUtf8("older binary") }
+        val locked = object : ForwardingFileSystem(fakeFileSystem) {
+            override fun delete(path: Path, mustExist: Boolean) {
+                if (path == previous) throw IOException("Access is denied")
+                super.delete(path, mustExist)
+            }
+        }
+        val result = updateCommand(fileSystem = locked).test("")
+        assertEquals(1, result.statusCode)
+        assertContains(result.stderr, "Could not remove $previous")
+        assertContains(result.stderr, "Close any ktools still running from it")
+        assertFalse(result.stderr.contains("Re-run with permission"))
+        assertEquals("old binary", installedBinary())
+        assertEquals(listOf(executable, previous), fakeFileSystem.list(installDir))
     }
 }

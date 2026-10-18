@@ -180,4 +180,5 @@ Options:
 
 `ktools update` writes the new executable next to the current one and swaps it in by rename, so it needs write
 permission to the directory that holds ktools. On Windows the previous executable is left as `ktools.exe.old` because a
-running executable cannot be deleted; the next update removes it.
+running executable cannot be deleted; the next update removes it. If a ktools started before that update is still
+running from `ktools.exe.old`, the next update stops and asks you to close it.
