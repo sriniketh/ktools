@@ -190,9 +190,11 @@ internal fun verifySha256(contents: ByteString, sha256Sums: String, assetName: S
  * @param[executable] Path of the executable to replace.
  * @param[contents] New executable.
  * @param[makeExecutable] Marks a file as executable.
- * @throws IOException
+ * @throws UpdateException if the swap fails and the previous binary cannot be moved back, leaving it at
+ * `<executable>.old`.
+ * @throws IOException if the new binary cannot be staged or swapped in. [executable] is left as it was.
  */
-@Throws(IOException::class)
+@Throws(UpdateException::class, IOException::class)
 internal fun replaceExecutable(
     fileSystem: FileSystem,
     executable: Path,
@@ -213,11 +215,23 @@ internal fun replaceExecutable(
     try {
         fileSystem.atomicMove(staged, executable)
     } catch (exception: IOException) {
-        fileSystem.atomicMove(previous, executable)
         fileSystem.deleteQuietly(staged)
+        fileSystem.restore(previous, executable, exception)
         throw exception
     }
     fileSystem.deleteQuietly(previous)
+}
+
+private fun FileSystem.restore(previous: Path, executable: Path, installFailure: IOException) {
+    try {
+        atomicMove(previous, executable)
+    } catch (exception: IOException) {
+        throw UpdateException(
+            "Could not install the new binary (${installFailure.message}) or put the previous one back. " +
+                "The previous binary is now at $previous. Rename it to $executable to restore ktools.",
+            installFailure,
+        ).apply { addSuppressed(exception) }
+    }
 }
 
 private fun FileSystem.deleteQuietly(path: Path) {

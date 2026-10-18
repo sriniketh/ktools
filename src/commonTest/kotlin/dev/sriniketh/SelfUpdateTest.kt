@@ -9,6 +9,7 @@ import okio.Path.Companion.toPath
 import okio.Sink
 import okio.fakefilesystem.FakeFileSystem
 import kotlin.test.Test
+import kotlin.test.assertContains
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
@@ -180,5 +181,23 @@ class SelfUpdateTest {
         assertFailsWith<IOException> { replaceExecutable(failingSwap, executable, "new".encodeUtf8()) {} }
         assertEquals("old", fakeFileSystem.readText(executable))
         assertEquals(listOf(executable), fakeFileSystem.list(installDir))
+    }
+
+    @Test
+    fun `replaceExecutable names where the previous binary is when it cannot be moved back after a failed swap`() {
+        val previous = installDir / "ktools.old"
+        val failingMoves = object : ForwardingFileSystem(fakeFileSystem) {
+            override fun atomicMove(source: Path, target: Path) {
+                if (target == executable) throw IOException("Permission denied")
+                super.atomicMove(source, target)
+            }
+        }
+        val exception = assertFailsWith<UpdateException> {
+            replaceExecutable(failingMoves, executable, "new".encodeUtf8()) {}
+        }
+        assertContains(exception.message.orEmpty(), "Permission denied")
+        assertContains(exception.message.orEmpty(), previous.toString())
+        assertEquals("old", fakeFileSystem.readText(previous))
+        assertEquals(listOf(previous), fakeFileSystem.list(installDir))
     }
 }
