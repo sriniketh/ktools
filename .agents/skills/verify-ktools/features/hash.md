@@ -22,9 +22,14 @@ Preconditions: doctor prints `OK`.
 - **File.** `printf hello > /tmp/kt-verify-hash.txt`, then `drive.sh hash file -- hash SHA256 -f /tmp/kt-verify-hash.txt`. Same SHA256 as the string step (no `input string:` line). Remove the temp file after.
 - **Other algorithms.** `hash SHA1 -s hello` gives `aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d`; `hash SHA512 -s hello` starts `9b71d224bd62f378`.
 - **No input.** `drive.sh hash none -- hash SHA256`. Exit 1; `Error: must provide one of --file, --string`.
-- **Missing file.** `drive.sh hash missing -- hash SHA256 -f /nonexistent`. Exit 1; `IOException: No such file or directory`.
+- **Missing file.** `drive.sh hash missing -- hash SHA256 -f /nonexistent`. Exit 1; stderr `IOException: No such file or directory`.
+- **Directory.** `drive.sh hash dir -- hash SHA256 -f /tmp`. Exit 1; stderr `IOException: Is a directory`.
+- **Both inputs.** `hash SHA256 -s hello -f <path>`. Exit 1; stderr `Error: option --file cannot be used with --string`; nothing is hashed.
+- **Empty string.** `hash SHA256 -s ''`. Exit 1; stderr `Error: invalid value for --string: string must be non-empty`. The empty string cannot be hashed.
+- **Bad or missing algorithm.** `hash foo -s x` exits 1 with `invalid choice: foo. (choose from md5, sha1, sha256, sha512)`; `hash -s x` exits 1 with `missing argument <algorithm>`.
 
 ## Gotchas
 
 - Use `printf`, not `echo`, when creating file content; a trailing newline changes the digest.
-- The algorithm argument is upper-case (`SHA256`).
+- The algorithm argument is case-insensitive: `SHA256` and `sha256` give the same output, although the error lists the choices in lower case.
+- Every error goes to stderr with exit 1; usage errors also print a `Usage:` line, the `IOException:` lines do not.
