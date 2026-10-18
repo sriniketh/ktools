@@ -36,4 +36,24 @@ class EncodingDecodingTest {
             decodeFromBase64("4rdHF")
         }
     }
+
+    @Test
+    fun `decodeFromBase64 decodes multibyte content round tripped through encodeToBase64`() {
+        val result = decodeFromBase64(encodeToBase64("héllo ✓"))
+        assertEquals("héllo ✓", result)
+    }
+
+    @Test
+    fun `decodeFromBase64 throws IllegalArgumentException when bytes are not valid UTF-8`() {
+        assertFailsWith<IllegalArgumentException> {
+            decodeFromBase64("/w==")
+        }
+    }
+
+    @Test
+    fun `decodeFromBase64 throws IllegalArgumentException when bytes are a truncated multibyte sequence`() {
+        assertFailsWith<IllegalArgumentException> {
+            decodeFromBase64("ww==")
+        }
+    }
 }
