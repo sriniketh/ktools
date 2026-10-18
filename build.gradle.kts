@@ -57,6 +57,15 @@ kotlin {
         nativeMain.dependencies {
             implementation(libs.clikt)
         }
+        macosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
+        }
+        linuxMain.dependencies {
+            implementation(libs.ktor.client.curl)
+        }
+        mingwMain.dependencies {
+            implementation(libs.ktor.client.winhttp)
+        }
     }
 }
 
