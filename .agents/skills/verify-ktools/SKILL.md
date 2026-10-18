@@ -44,7 +44,7 @@ Run commands from bash. In zsh an unquoted `$args` variable is not word-split an
 
 ## Cleanup
 
-Nothing runs in the background. Delete only temp files you created (e.g. `/tmp/kt-verify-*`). Leave `build/verify-evidence/`. Run `git status`: the tree should be clean apart from your own edits.
+The binary exits after every drive, so nothing of ktools runs in the background. `launch.sh` leaves a Gradle daemon that exits on its own when idle; run `./gradlew --stop` only if you started it just for this run. Delete only temp files you created (e.g. `/tmp/kt-verify-*`). Leave `build/verify-evidence/`. Run `git status`: the tree should be clean apart from your own edits.
 
 ## Isolation
 

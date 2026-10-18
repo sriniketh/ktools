@@ -13,6 +13,8 @@ Maintained source for verifying user-facing ktools behavior. Read this index, th
 - Use `scripts/drive.sh <feature-id> <step> -- <args>`; arguments after `--` are passed literally to ktools.
 - Quote JSON and cookie strings so the shell passes them as one argument.
 - Assert exit code and exact stdout for deterministic commands.
+- Errors go to stderr with exit 1, including Clikt usage errors (never 2). `drive.sh` prints both streams after `exit=`, so check the `.stdout` and `.stderr` files to tell them apart.
+- Never rely on interactive prompts (`-s`, `--millis`, `--iso`): they do not read stdin and fail with `missing option`.
 
 ## Proof and skip reporting
 
@@ -27,3 +29,4 @@ Maintained source for verifying user-facing ktools behavior. Read this index, th
 - [encode-decode](./encode-decode.md): utf8 and base64 round trips and invalid input.
 - [unixtime](./unixtime.md): millis and ISO conversion and now operations.
 - [prettyprint](./prettyprint.md): JSON and cookie-header formatting and invalid JSON.
+- [meta](./meta.md): top-level `--version`, `--about`, `--help`, no arguments and unknown commands.
