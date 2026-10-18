@@ -19,6 +19,33 @@ class EncodingDecodingTest {
     }
 
     @Test
+    fun `decodeFromUTF8 decodes multibyte content round tripped through encodeToUTF8Hex`() {
+        val result = decodeFromUTF8Hex(encodeToUTF8Hex("héllo ✓"))
+        assertEquals("héllo ✓", result)
+    }
+
+    @Test
+    fun `decodeFromUTF8 throws IllegalArgumentException when hex is not valid UTF-8`() {
+        assertFailsWith<IllegalArgumentException> {
+            decodeFromUTF8Hex("ff")
+        }
+    }
+
+    @Test
+    fun `decodeFromUTF8 throws IllegalArgumentException when hex is a truncated multibyte sequence`() {
+        assertFailsWith<IllegalArgumentException> {
+            decodeFromUTF8Hex("c3")
+        }
+    }
+
+    @Test
+    fun `decodeFromUTF8 throws IllegalArgumentException when hex is invalid`() {
+        assertFailsWith<IllegalArgumentException> {
+            decodeFromUTF8Hex("ZZZZ")
+        }
+    }
+
+    @Test
     fun `encodeToBase64 encodes content to base64`() {
         val result = encodeToBase64("Foo © bar 𝌆 baz ☃ qux")
         assertEquals("Rm9vIMKpIGJhciDwnYyGIGJheiDimIMgcXV4", result)
@@ -34,6 +61,26 @@ class EncodingDecodingTest {
     fun `decodeFromBase64 throws IllegalArgumentException when provided with invalid base64 input`() {
         assertFailsWith<IllegalArgumentException> {
             decodeFromBase64("4rdHF")
+        }
+    }
+
+    @Test
+    fun `decodeFromBase64 decodes multibyte content round tripped through encodeToBase64`() {
+        val result = decodeFromBase64(encodeToBase64("héllo ✓"))
+        assertEquals("héllo ✓", result)
+    }
+
+    @Test
+    fun `decodeFromBase64 throws IllegalArgumentException when bytes are not valid UTF-8`() {
+        assertFailsWith<IllegalArgumentException> {
+            decodeFromBase64("/w==")
+        }
+    }
+
+    @Test
+    fun `decodeFromBase64 throws IllegalArgumentException when bytes are a truncated multibyte sequence`() {
+        assertFailsWith<IllegalArgumentException> {
+            decodeFromBase64("ww==")
         }
     }
 }
