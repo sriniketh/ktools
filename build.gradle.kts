@@ -1,7 +1,6 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
 import org.jetbrains.kotlin.konan.target.HostManager
 import java.net.URI
 
@@ -35,7 +34,6 @@ kotlin {
             executable {
                 baseName = "ktools"
                 entryPoint = "dev.sriniketh.main"
-                if (buildType == NativeBuildType.RELEASE) linkerOpts("-s")
                 runTaskProvider?.configure {
                     val args = providers.gradleProperty("runArgs")
                     argumentProviders.add(CommandLineArgumentProvider {
