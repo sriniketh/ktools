@@ -7,6 +7,7 @@ import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
 import dev.sriniketh.ktools.BuildConfig
 import io.ktor.client.HttpClient
+import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.statement.HttpResponse
@@ -23,9 +24,22 @@ import okio.Path
 import kotlinx.io.IOException as NetworkIOException
 
 private const val LATEST_RELEASE_URL = "https://api.github.com/repos/sriniketh/ktools/releases/latest"
+private const val CONNECT_TIMEOUT_MILLIS = 15_000L
+private const val SOCKET_TIMEOUT_MILLIS = 30_000L
+
+// Curl ignores the socket timeout, so this is its only limit on a stalled download. It fits a ~15 MB slow download.
+private const val REQUEST_TIMEOUT_MILLIS = 300_000L
+
+private fun updateHttpClient() = HttpClient {
+    install(HttpTimeout) {
+        connectTimeoutMillis = CONNECT_TIMEOUT_MILLIS
+        socketTimeoutMillis = SOCKET_TIMEOUT_MILLIS
+        requestTimeoutMillis = REQUEST_TIMEOUT_MILLIS
+    }
+}
 
 internal class UpdateCommand(
-    private val httpClient: () -> HttpClient = { HttpClient() },
+    private val httpClient: () -> HttpClient = ::updateHttpClient,
     private val fileSystem: FileSystem = FileSystem.SYSTEM,
     private val currentVersion: String = BuildConfig.VERSION,
     private val executablePath: () -> Path = { FileSystem.SYSTEM.canonicalize(currentExecutablePath()) },

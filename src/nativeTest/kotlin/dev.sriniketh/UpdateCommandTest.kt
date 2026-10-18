@@ -5,6 +5,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
 import io.ktor.client.engine.mock.respondError
+import io.ktor.client.plugins.HttpTimeout
 import io.ktor.http.HttpStatusCode
 import okio.ByteString.Companion.encodeUtf8
 import okio.FileSystem
@@ -19,6 +20,7 @@ import kotlin.test.assertContains
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import kotlinx.coroutines.awaitCancellation
 import kotlinx.io.IOException as NetworkIOException
 
 class UpdateCommandTest {
@@ -134,6 +136,16 @@ class UpdateCommandTest {
         val result = updateCommand(httpClient = { HttpClient(offline) }).test("")
         assertEquals(1, result.statusCode)
         assertContains(result.stderr, "Network is unreachable")
+        assertEquals("old binary", installedBinary())
+    }
+
+    @Test
+    fun `update fails when GitHub does not respond in time`() {
+        val stalled = MockEngine { awaitCancellation() }
+        val client = { HttpClient(stalled) { install(HttpTimeout) { requestTimeoutMillis = 10 } } }
+        val result = updateCommand(httpClient = client).test("")
+        assertEquals(1, result.statusCode)
+        assertContains(result.stderr, "Could not reach $latestReleaseUrl")
         assertEquals("old binary", installedBinary())
     }
 
