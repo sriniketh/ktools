@@ -23,7 +23,7 @@ Preconditions: doctor prints `OK`.
 - **Version.** `drive.sh meta ver-long -- --version` and `drive.sh meta ver-short -- -v`. Exit 0; both print `ktools version <git describe --tags>`, for example `ktools version v0.5.0-31-g98eab92`.
 - **About.** `drive.sh meta about-long -- --about` and `drive.sh meta about-short -- -a`. Exit 0; identical stdout that starts `ktools is a command line application`, then `Libraries used:` with one `<name> : <id> : <version>` line per library (`Clikt : com.github.ajalt.clikt:clikt : <version>` is among them), then `Licenses:` with `Apache-2.0` and `MIT`. Assert shape, not library versions.
 - **About is eager.** `drive.sh meta about-eager -- --about uuid`. Same stdout as `--about`; no UUID is generated.
-- **Root help.** `drive.sh meta help-root -- --help`. Exit 0; lists options `-v, --version`, `-a, --about`, `-h, --help` and exactly six commands: uuid, unixtime, hash, encode, decode, prettyprint.
+- **Root help.** `drive.sh meta help-root -- --help`. Exit 0; lists options `-v, --version`, `-a, --about`, `-h, --help` and exactly seven commands: uuid, unixtime, hash, encode, decode, prettyprint, update.
 - **Command help.** `drive.sh meta help-uuid -- uuid --help`. Exit 0; starts `Usage: ktools uuid [<options>] <command> [<args>]...` and lists the `inspect` subcommand.
 - **No arguments.** `drive.sh meta noargs --`. Exit 0; stdout is the root help (same as `--help`); stderr empty.
 - **Unknown subcommand.** `drive.sh meta unknown -- bogus`. Exit 1; stdout empty; stderr `Error: no such subcommand bogus`.

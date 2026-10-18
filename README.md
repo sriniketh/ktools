@@ -14,6 +14,7 @@ and is currently available for macos (both X64 and ARM), linux and windows targe
 - `ktools encode` - Encodes some text content to specified format
 - `ktools decode` - Decodes some text content from specified format
 - `ktools prettyprint` - Pretty print commonly used text like json
+- `ktools update` - Updates ktools to the latest release
 - ... and growing
 
 Commands are written using [Clikt](https://ajalt.github.io/clikt/) and have help messages that can be viewed
@@ -27,6 +28,10 @@ The function definitions for common code can be viewed [here](https://sriniketh.
 
 Download the latest executable from the [releases](https://github.com/sriniketh/ktools/releases) page. You may have to
 provide executable permission for the file based on your setup.
+
+To update an installed ktools, run `ktools update`. It downloads the latest release for your platform, checks it
+against the release's SHA-256 checksums, and replaces the executable. Run `ktools update --check` to only see whether an
+update is available.
 
 Note for MacOS: The OS may prevent opening the executable since the app has not been notarized. You can temporarily
 override the settings to allow execution by heading to privacy and security settings and allowing execution as

@@ -11,6 +11,7 @@ ktools is a command line application that provides useful developer tools. It's 
 * `ktools encode` - Encodes some text content to specified format
 * `ktools decode` - Decodes some text content from specified format
 * `ktools prettyprint` - Pretty print commonly used text like json
+* `ktools update` - Updates ktools to the latest release
 * ... and growing
 
 Commands are written using [Clikt](https://ajalt.github.io/clikt/) and have help messages that can be viewed using `--help`. Learn more about these commands [here](commands.md).
@@ -18,6 +19,8 @@ Commands are written using [Clikt](https://ajalt.github.io/clikt/) and have help
 ## Releases
 
 ktools is available as an executable for MacOS ARM, MacOS x64, Linux x64 and Windows x64 systems. Find the latest release [here](https://github.com/sriniketh/ktools/releases). 
+
+To update an installed ktools, run `ktools update`. It downloads the latest release for your platform, checks it against the release's SHA-256 checksums, and replaces the executable. Run `ktools update --check` to only see whether an update is available.
 
 ## License
 
