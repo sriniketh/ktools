@@ -1,6 +1,6 @@
 # update
 
-`ktools update` replaces the running executable with the latest GitHub release binary for its platform, after checking it against the release's `SHA256SUMS`. `--check` only reports whether an update is available.
+`ktools update` replaces the running executable with the latest GitHub release binary for its platform, after checking it against the release's `SHA256SUMS` to catch a corrupted or truncated download. `--check` only reports whether an update is available.
 
 ## Sub-features
 

@@ -165,6 +165,9 @@ internal fun parseSha256Sums(text: String): Map<String, String> =
 /**
  * Checks that [contents] matches the checksum listed for [assetName] in [sha256Sums].
  *
+ * This catches a corrupted or truncated download. [sha256Sums] comes from the same release, so a tampered release
+ * passes.
+ *
  * @param[contents] Downloaded asset.
  * @param[sha256Sums] Contents of the release checksums file.
  * @param[assetName] File name of the downloaded asset.

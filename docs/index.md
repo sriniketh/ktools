@@ -20,7 +20,7 @@ Commands are written using [Clikt](https://ajalt.github.io/clikt/) and have help
 
 ktools is available as an executable for MacOS ARM, MacOS x64, Linux x64 and Windows x64 systems. Find the latest release [here](https://github.com/sriniketh/ktools/releases). 
 
-To update an installed ktools, run `ktools update`. It downloads the latest release for your platform, checks it against the release's SHA-256 checksums, and replaces the executable. Run `ktools update --check` to only see whether an update is available.
+To update an installed ktools, run `ktools update`. It downloads the latest release for your platform, checks it against the release's SHA-256 checksums to catch a corrupted or truncated download, and replaces the executable. Run `ktools update --check` to only see whether an update is available.
 
 ## License
 

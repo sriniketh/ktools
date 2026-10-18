@@ -30,8 +30,8 @@ Download the latest executable from the [releases](https://github.com/sriniketh/
 provide executable permission for the file based on your setup.
 
 To update an installed ktools, run `ktools update`. It downloads the latest release for your platform, checks it
-against the release's SHA-256 checksums, and replaces the executable. Run `ktools update --check` to only see whether an
-update is available.
+against the release's SHA-256 checksums to catch a corrupted or truncated download, and replaces the executable. Run
+`ktools update --check` to only see whether an update is available.
 
 Note for MacOS: The OS may prevent opening the executable since the app has not been notarized. You can temporarily
 override the settings to allow execution by heading to privacy and security settings and allowing execution as

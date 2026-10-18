@@ -182,3 +182,11 @@ Options:
 permission to the directory that holds ktools. On Windows the previous executable is left as `ktools.exe.old` because a
 running executable cannot be deleted; the next update removes it. If a ktools started before that update is still
 running from `ktools.exe.old`, the next update stops and asks you to close it.
+
+The download is checked against the release's `SHA256SUMS` to catch a corrupted or truncated download. That file comes
+from the same release, so it does not prove the release itself is genuine. For that, release binaries carry GitHub
+build provenance attestations, which you can verify with:
+
+```text
+gh attestation verify <path-to-ktools> --repo sriniketh/ktools
+```
