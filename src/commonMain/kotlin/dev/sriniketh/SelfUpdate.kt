@@ -13,7 +13,7 @@ import okio.Path.Companion.toPath
 /**
  * Name of the release asset that lists the SHA-256 checksum of every other asset.
  */
-const val CHECKSUMS_ASSET_NAME = "SHA256SUMS"
+private const val CHECKSUMS_ASSET_NAME = "SHA256SUMS"
 
 /**
  * A GitHub release, as returned by the GitHub releases API.
@@ -22,7 +22,7 @@ const val CHECKSUMS_ASSET_NAME = "SHA256SUMS"
  * @property[assets] Files attached to the release.
  */
 @Serializable
-data class GitHubRelease(
+internal data class GitHubRelease(
     @SerialName("tag_name") val tagName: String,
     val assets: List<GitHubAsset>,
 )
@@ -34,7 +34,7 @@ data class GitHubRelease(
  * @property[downloadUrl] URL the asset can be downloaded from.
  */
 @Serializable
-data class GitHubAsset(
+internal data class GitHubAsset(
     val name: String,
     @SerialName("browser_download_url") val downloadUrl: String,
 )
@@ -42,7 +42,7 @@ data class GitHubAsset(
 /**
  * Platforms ktools is released for, each with the name of its release asset.
  */
-enum class ReleaseTarget(val assetName: String) {
+internal enum class ReleaseTarget(val assetName: String) {
     MACOS_ARM64("macos-arm-ktools.kexe"),
     MACOS_X64("macos-x64-ktools.kexe"),
     LINUX_X64("linux-x64-ktools.kexe"),
@@ -52,7 +52,7 @@ enum class ReleaseTarget(val assetName: String) {
 /**
  * A `MAJOR.MINOR.PATCH` release version, ordered numerically.
  */
-data class ReleaseVersion(val major: Int, val minor: Int, val patch: Int) : Comparable<ReleaseVersion> {
+private data class ReleaseVersion(val major: Int, val minor: Int, val patch: Int) : Comparable<ReleaseVersion> {
 
     override fun compareTo(other: ReleaseVersion): Int =
         compareValuesBy(this, other, { it.major }, { it.minor }, { it.patch })
@@ -78,7 +78,7 @@ data class ReleaseVersion(val major: Int, val minor: Int, val patch: Int) : Comp
 /**
  * Outcome of comparing the running ktools against the latest release.
  */
-sealed interface UpdatePlan {
+internal sealed interface UpdatePlan {
     val current: String
     val latest: String
 
@@ -101,7 +101,7 @@ sealed interface UpdatePlan {
 /**
  * Raised when ktools cannot be updated.
  */
-class UpdateException(message: String, cause: Throwable? = null) : Exception(message, cause)
+internal class UpdateException(message: String, cause: Throwable? = null) : Exception(message, cause)
 
 private val releaseJson = Json { ignoreUnknownKeys = true }
 
@@ -113,11 +113,11 @@ private val releaseJson = Json { ignoreUnknownKeys = true }
  * @throws UpdateException if [json] is not a GitHub release.
  */
 @Throws(UpdateException::class)
-fun parseGitHubRelease(json: String): GitHubRelease =
+internal fun parseGitHubRelease(json: String): GitHubRelease =
     try {
         releaseJson.decodeFromString<GitHubRelease>(json)
-    } catch (e: SerializationException) {
-        throw UpdateException("Unexpected response from GitHub: ${e.message}", e)
+    } catch (exception: SerializationException) {
+        throw UpdateException("Unexpected response from GitHub: ${exception.message}", exception)
     }
 
 /**
@@ -133,7 +133,7 @@ fun parseGitHubRelease(json: String): GitHubRelease =
  * or the checksums file.
  */
 @Throws(UpdateException::class)
-fun planUpdate(currentVersion: String, release: GitHubRelease, target: ReleaseTarget): UpdatePlan {
+internal fun planUpdate(currentVersion: String, release: GitHubRelease, target: ReleaseTarget): UpdatePlan {
     val latest = ReleaseVersion.parse(release.tagName)
         ?: throw UpdateException("Latest release tag ${release.tagName} is not a version")
     val current = ReleaseVersion.parse(currentVersion)
@@ -156,7 +156,7 @@ private fun GitHubRelease.assetUrl(name: String): String =
  * @param[text] Contents of the checksums file.
  * @return Lowercase hex SHA-256 checksum by file name.
  */
-fun parseSha256Sums(text: String): Map<String, String> =
+internal fun parseSha256Sums(text: String): Map<String, String> =
     text.lineSequence()
         .map { it.trim().split(Regex("""\s+"""), limit = 2) }
         .filter { it.size == 2 }
@@ -171,7 +171,7 @@ fun parseSha256Sums(text: String): Map<String, String> =
  * @throws UpdateException if [sha256Sums] has no entry for [assetName] or the checksum differs.
  */
 @Throws(UpdateException::class)
-fun verifySha256(contents: ByteString, sha256Sums: String, assetName: String) {
+internal fun verifySha256(contents: ByteString, sha256Sums: String, assetName: String) {
     val expected = parseSha256Sums(sha256Sums)[assetName]
         ?: throw UpdateException("$CHECKSUMS_ASSET_NAME has no entry for $assetName")
     val actual = contents.sha256().hex()
@@ -193,7 +193,7 @@ fun verifySha256(contents: ByteString, sha256Sums: String, assetName: String) {
  * @throws IOException
  */
 @Throws(IOException::class)
-fun replaceExecutable(
+internal fun replaceExecutable(
     fileSystem: FileSystem,
     executable: Path,
     contents: ByteString,
@@ -206,16 +206,16 @@ fun replaceExecutable(
         makeExecutable(staged)
         fileSystem.delete(previous, mustExist = false)
         fileSystem.atomicMove(executable, previous)
-    } catch (e: IOException) {
+    } catch (exception: IOException) {
         fileSystem.deleteQuietly(staged)
-        throw e
+        throw exception
     }
     try {
         fileSystem.atomicMove(staged, executable)
-    } catch (e: IOException) {
+    } catch (exception: IOException) {
         fileSystem.atomicMove(previous, executable)
         fileSystem.deleteQuietly(staged)
-        throw e
+        throw exception
     }
     fileSystem.deleteQuietly(previous)
 }

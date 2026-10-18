@@ -67,11 +67,11 @@ internal class UpdateCommand(
         verifySha256(binary, sha256Sums, target.assetName)
         try {
             replaceExecutable(fileSystem, executable, binary, makeExecutable)
-        } catch (e: IOException) {
+        } catch (exception: IOException) {
             throw UpdateException(
-                "Could not replace $executable: ${e.message}. " +
+                "Could not replace $executable: ${exception.message}. " +
                     "Re-run with permission to write to ${executable.parent}.",
-                e
+                exception
             )
         }
         echo("Updated ktools ${plan.current} -> ${plan.latest}")
@@ -80,10 +80,10 @@ internal class UpdateCommand(
     private suspend fun HttpClient.fetch(url: String): HttpResponse {
         val response = try {
             get(url) { header(HttpHeaders.UserAgent, "ktools/$currentVersion") }
-        } catch (e: NetworkIOException) {
-            throw UpdateException("Could not reach $url: ${e.message}", e)
-        } catch (e: IllegalStateException) {
-            throw UpdateException("Could not reach $url: ${e.message}", e)
+        } catch (exception: NetworkIOException) {
+            throw UpdateException("Could not reach $url: ${exception.message}", exception)
+        } catch (exception: IllegalStateException) {
+            throw UpdateException("Could not reach $url: ${exception.message}", exception)
         }
         return response.requireSuccess()
     }
