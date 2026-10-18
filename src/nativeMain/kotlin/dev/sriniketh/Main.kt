@@ -19,7 +19,8 @@ fun main(args: Array<String>) =
             HashCommand(),
             EncodingCommand(),
             DecodingCommand(),
-            PrettyPrintCommand()
+            PrettyPrintCommand(),
+            UpdateCommand()
         )
         .main(args)
 

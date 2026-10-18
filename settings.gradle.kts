@@ -30,6 +30,7 @@ dependencyResolutionManagement {
             library("ktor-client-curl", "io.ktor", "ktor-client-curl").versionRef("ktor")
             library("ktor-client-darwin", "io.ktor", "ktor-client-darwin").versionRef("ktor")
             library("ktor-client-winhttp", "io.ktor", "ktor-client-winhttp").versionRef("ktor")
+            library("ktor-client-mock", "io.ktor", "ktor-client-mock").versionRef("ktor")
         }
     }
 }

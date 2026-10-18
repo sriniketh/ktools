@@ -57,6 +57,9 @@ kotlin {
         nativeMain.dependencies {
             implementation(libs.clikt)
         }
+        nativeTest.dependencies {
+            implementation(libs.ktor.client.mock)
+        }
         macosMain.dependencies {
             implementation(libs.ktor.client.darwin)
         }
