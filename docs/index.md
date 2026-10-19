@@ -12,9 +12,14 @@ ktools is a command line application that provides useful developer tools. It's 
 * `ktools decode` - Decodes some text content from specified format
 * `ktools prettyprint` - Pretty print commonly used text like json
 * `ktools update` - Updates ktools to the latest release
+* `ktools init` - Installs the ktools skills into your AI coding agents
 * ... and growing
 
 Commands are written using [Clikt](https://ajalt.github.io/clikt/) and have help messages that can be viewed using `--help`. Learn more about these commands [here](commands.md).
+
+## Agent skills
+
+ktools ships skills that teach AI coding agents (Claude Code, Codex, Gemini CLI, GitHub Copilot, Cursor, OpenCode and others) when and how to use it. Run `ktools init` to install them into every agent on your machine, and run it again after `ktools update` to pick up the skills for the new version. See [`ktools init`](commands.md#ktools-init) for details.
 
 ## Releases
 

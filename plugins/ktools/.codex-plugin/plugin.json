@@ -1,0 +1,27 @@
+{
+  "name": "ktools",
+  "version": "0.6.0",
+  "description": "Skills for using the ktools CLI: UUIDs, unix time, hashing, base64/hex encoding and pretty printing.",
+  "author": {
+    "name": "Sriniketh Ramachandran",
+    "url": "https://github.com/sriniketh"
+  },
+  "repository": "https://github.com/sriniketh/ktools",
+  "license": "Apache-2.0",
+  "keywords": [
+    "ktools",
+    "cli",
+    "skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "ktools",
+    "shortDescription": "Skills for using the ktools CLI.",
+    "developerName": "Sriniketh Ramachandran",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Skills"
+    ],
+    "websiteURL": "https://sriniketh.dev/ktools/"
+  }
+}

@@ -6,7 +6,8 @@ Maintained source for verifying user-facing ktools behavior. Read this index, th
 
 - Binary built by `scripts/launch.sh`; `scripts/doctor.sh` prints `OK`.
 - Run from the repo root in bash.
-- No network or data directory is needed, except for `update`. File inputs use temp files you create.
+- No network or data directory is needed, except for `update`. File inputs use temp files you create. `init` writes
+  under `$HOME`, so always drive it with `HOME` set to a temp directory.
 
 ## Driving conventions
 
@@ -30,4 +31,5 @@ Maintained source for verifying user-facing ktools behavior. Read this index, th
 - [unixtime](./unixtime.md): millis and ISO conversion and now operations.
 - [prettyprint](./prettyprint.md): JSON and cookie-header formatting and invalid JSON.
 - [update](./update.md): `--check` and self-replace from the latest GitHub release.
+- [init](./init.md): install, update, conflict, `--force`, `--dry-run` and `--uninstall` of the bundled agent skills.
 - [meta](./meta.md): top-level `--version`, `--about`, `--help`, no arguments and unknown commands.

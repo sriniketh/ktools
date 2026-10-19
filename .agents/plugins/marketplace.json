@@ -1,0 +1,20 @@
+{
+  "name": "ktools",
+  "interface": {
+    "displayName": "ktools"
+  },
+  "plugins": [
+    {
+      "name": "ktools",
+      "source": {
+        "source": "local",
+        "path": "./plugins/ktools"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

@@ -111,6 +111,18 @@ buildConfig {
         name = "ABOUT_LIBRARIES_JSON",
         value = provider { file("src/nativeMain/resources/librariesandlicenses.json").readText() }
     )
+    // The plugin's skills ship inside the binary so `ktools init` installs the ones matching its version.
+    buildConfigField(
+        name = "BUNDLED_SKILLS_JSON",
+        value = provider {
+            val skillsDir = file("plugins/ktools/skills")
+            val skillFiles = skillsDir.walkTopDown()
+                .filter { it.isFile && !it.name.startsWith(".") }
+                .associate { it.relativeTo(skillsDir).invariantSeparatorsPath to it.readText() }
+                .toSortedMap()
+            groovy.json.JsonOutput.toJson(skillFiles)
+        }
+    )
 }
 
 // Regenerate the checked-in aboutlibraries JSON on every build so ABOUT_LIBRARIES_JSON above

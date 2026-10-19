@@ -20,7 +20,8 @@ fun main(args: Array<String>) =
             EncodingCommand(),
             DecodingCommand(),
             PrettyPrintCommand(),
-            UpdateCommand()
+            UpdateCommand(),
+            InitCommand()
         )
         .main(args)
 

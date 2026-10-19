@@ -15,10 +15,18 @@ and is currently available for macos (both X64 and ARM), linux and windows targe
 - `ktools decode` - Decodes some text content from specified format
 - `ktools prettyprint` - Pretty print commonly used text like json
 - `ktools update` - Updates ktools to the latest release
+- `ktools init` - Installs the ktools skills into your AI coding agents
 - ... and growing
 
 Commands are written using [Clikt](https://ajalt.github.io/clikt/) and have help messages that can be viewed
 using `--help` option. Learn more about these commands [here](https://sriniketh.dev/ktools/commands/).
+
+## Agent skills
+
+ktools ships skills that teach AI coding agents (Claude Code, Codex, Gemini CLI, GitHub Copilot, Cursor, OpenCode and
+others) when and how to use it. Run `ktools init` to install them into every agent on your machine; run it again after
+`ktools update` to pick up the skills for the new version. See [`plugins/ktools`](plugins/ktools/README.md) for the
+skills and other ways to install them.
 
 ## Docs
 

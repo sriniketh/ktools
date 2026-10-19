@@ -1,0 +1,22 @@
+{
+  "name": "ktools",
+  "owner": {
+    "name": "Sriniketh Ramachandran",
+    "url": "https://github.com/sriniketh"
+  },
+  "description": "Agent skills for the ktools CLI.",
+  "plugins": [
+    {
+      "name": "ktools",
+      "source": "./plugins/ktools",
+      "description": "Skills for using the ktools CLI: UUIDs, unix time, hashing, base64/hex encoding and pretty printing.",
+      "skills": [
+        "./skills/ktools-encoding",
+        "./skills/ktools-hash",
+        "./skills/ktools-prettyprint",
+        "./skills/ktools-unixtime",
+        "./skills/ktools-uuid"
+      ]
+    }
+  ]
+}
