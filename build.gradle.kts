@@ -118,7 +118,8 @@ buildConfig {
             val skillsDir = file("plugins/ktools/skills")
             val skillFiles = skillsDir.walkTopDown()
                 .filter { it.isFile && !it.name.startsWith(".") }
-                .associate { it.relativeTo(skillsDir).invariantSeparatorsPath to it.readText() }
+                // Windows checkouts use CRLF; ship the same LF text from every build host.
+                .associate { it.relativeTo(skillsDir).invariantSeparatorsPath to it.readText().replace("\r\n", "\n") }
                 .toSortedMap()
             groovy.json.JsonOutput.toJson(skillFiles)
         }
