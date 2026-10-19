@@ -389,6 +389,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ktools-uuid-inspect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ktools uuid inspect
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ktools-unixtime" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -437,6 +448,17 @@
     <span class="md-ellipsis">
       
         ktools prettyprint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ktools-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ktools update
       
     </span>
   </a>
@@ -549,6 +571,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ktools-uuid-inspect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ktools uuid inspect
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ktools-unixtime" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -603,6 +636,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ktools-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ktools update
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -647,9 +691,10 @@ Commands:
   encode       Encode text content
   decode       Decode text content
   prettyprint  Pretty print content
+  update       Update ktools to the latest release
 </code></pre>
 <h2 id="ktools-version">ktools --version</h2>
-<pre><code class="language-text">ktools version v0.4.0-20-g8087ca6
+<pre><code class="language-text">ktools version v0.5.0-19-g6b1c7a0
 </code></pre>
 <h2 id="ktools-about">ktools --about</h2>
 <pre><code class="language-text">ktools is a command line application that provides useful developer tools. It's built as a kotlin multiplatform project.
@@ -687,13 +732,30 @@ Apache-2.0 : Apache License 2.0 : https://spdx.org/licenses/Apache-2.0.html
 MIT : MIT License : https://spdx.org/licenses/MIT.html
 </code></pre>
 <h2 id="ktools-uuid">ktools uuid</h2>
-<pre><code class="language-text">Usage: ktools uuid [&lt;options&gt;]
+<pre><code class="language-text">Usage: ktools uuid [&lt;options&gt;] &lt;command&gt; [&lt;args&gt;]...
 
   Create a random UUID
 
 Options:
   -c, --case=(lower|upper)  Use upper or lower case. Default is lower.
+  --version=&lt;int&gt;           UUID version to generate: [4 | 7]. Default is 4.
   -h, --help                Show this message and exit
+
+Commands:
+  inspect  Inspect a UUID and report its version, variant, and (for v1/v6/v7)
+           timestamp
+</code></pre>
+<h2 id="ktools-uuid-inspect">ktools uuid inspect</h2>
+<pre><code class="language-text">Usage: ktools uuid inspect [&lt;options&gt;] &lt;uuid&gt;
+
+  Inspect a UUID and report its version, variant, and (for v1/v6/v7) timestamp
+
+Options:
+  --json      Output result as JSON
+  -h, --help  Show this message and exit
+
+Arguments:
+  &lt;uuid&gt;  UUID value to inspect
 </code></pre>
 <h2 id="ktools-unixtime">ktools unixtime</h2>
 <pre><code class="language-text">Usage: ktools unixtime [&lt;options&gt;]
@@ -760,6 +822,24 @@ Options:
 
 Arguments:
   &lt;contenttype&gt;  Pretty print content type: [json | cookie-header]
+</code></pre>
+<h2 id="ktools-update">ktools update</h2>
+<pre><code class="language-text">Usage: ktools update [&lt;options&gt;]
+
+  Update ktools to the latest release
+
+Options:
+  --check     Only report whether an update is available
+  -h, --help  Show this message and exit
+</code></pre>
+<p><code>ktools update</code> writes the new executable next to the current one and swaps it in by rename, so it needs write
+permission to the directory that holds ktools. On Windows the previous executable is left as <code>ktools.exe.old</code> because a
+running executable cannot be deleted; the next update removes it. If a ktools started before that update is still
+running from <code>ktools.exe.old</code>, the next update stops and asks you to close it.</p>
+<p>The download is checked against the release's <code>SHA256SUMS</code> to catch a corrupted or truncated download. That file comes
+from the same release, so it does not prove the release itself is genuine. For that, release binaries carry GitHub
+build provenance attestations, which you can verify with:</p>
+<pre><code class="language-text">gh attestation verify &lt;path-to-ktools&gt; --repo sriniketh/ktools
 </code></pre>
 
 

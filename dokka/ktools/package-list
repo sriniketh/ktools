@@ -2,6 +2,7 @@ $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:dev.sriniketh////PointingToDeclaration/ktools/dev.sriniketh/index.html
 $dokka.location:dev.sriniketh//createRandomUUID/#/PointingToDeclaration/ktools/dev.sriniketh/create-random-u-u-i-d.html
+$dokka.location:dev.sriniketh//createUuidV7/#kotlin.time.Clock/PointingToDeclaration/ktools/dev.sriniketh/create-uuid-v7.html
 $dokka.location:dev.sriniketh//currentTimeInIso8601/#kotlin.time.Clock/PointingToDeclaration/ktools/dev.sriniketh/current-time-in-iso8601.html
 $dokka.location:dev.sriniketh//currentTimeInMillis/#kotlin.time.Clock/PointingToDeclaration/ktools/dev.sriniketh/current-time-in-millis.html
 $dokka.location:dev.sriniketh//decodeFromBase64/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/decode-from-base64.html
@@ -12,6 +13,7 @@ $dokka.location:dev.sriniketh//fileMD5/#kotlin.String#okio.FileSystem/PointingTo
 $dokka.location:dev.sriniketh//fileSHA1/#kotlin.String#okio.FileSystem/PointingToDeclaration/ktools/dev.sriniketh/file-s-h-a1.html
 $dokka.location:dev.sriniketh//fileSHA256/#kotlin.String#okio.FileSystem/PointingToDeclaration/ktools/dev.sriniketh/file-s-h-a256.html
 $dokka.location:dev.sriniketh//fileSHA512/#kotlin.String#okio.FileSystem/PointingToDeclaration/ktools/dev.sriniketh/file-s-h-a512.html
+$dokka.location:dev.sriniketh//inspectUuid/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/inspect-uuid.html
 $dokka.location:dev.sriniketh//iso8601ToTimeInMillis/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/iso8601-to-time-in-millis.html
 $dokka.location:dev.sriniketh//prettyPrintCookieHeader/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/pretty-print-cookie-header.html
 $dokka.location:dev.sriniketh//prettyPrintJson/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/pretty-print-json.html
@@ -20,4 +22,10 @@ $dokka.location:dev.sriniketh//stringSHA1/#kotlin.String/PointingToDeclaration/
 $dokka.location:dev.sriniketh//stringSHA256/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/string-s-h-a256.html
 $dokka.location:dev.sriniketh//stringSHA512/#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/string-s-h-a512.html
 $dokka.location:dev.sriniketh//timeInMillisToIso8601/#kotlin.Long/PointingToDeclaration/ktools/dev.sriniketh/time-in-millis-to-iso8601.html
+$dokka.location:dev.sriniketh/UuidInspection///PointingToDeclaration/ktools/dev.sriniketh/-uuid-inspection/index.html
+$dokka.location:dev.sriniketh/UuidInspection/UuidInspection/#kotlin.Int#kotlin.String#kotlin.Long?#kotlin.String/PointingToDeclaration/ktools/dev.sriniketh/-uuid-inspection/-uuid-inspection.html
+$dokka.location:dev.sriniketh/UuidInspection/rawBytesHex/#/PointingToDeclaration/ktools/dev.sriniketh/-uuid-inspection/raw-bytes-hex.html
+$dokka.location:dev.sriniketh/UuidInspection/timestampMillis/#/PointingToDeclaration/ktools/dev.sriniketh/-uuid-inspection/timestamp-millis.html
+$dokka.location:dev.sriniketh/UuidInspection/variant/#/PointingToDeclaration/ktools/dev.sriniketh/-uuid-inspection/variant.html
+$dokka.location:dev.sriniketh/UuidInspection/version/#/PointingToDeclaration/ktools/dev.sriniketh/-uuid-inspection/version.html
 dev.sriniketh

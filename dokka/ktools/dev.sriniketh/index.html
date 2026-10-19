@@ -43,7 +43,7 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-v0.5.0        </div>
+v0.6.0        </div>
         <div class="navigation-controls">
         <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
                 <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true"
@@ -109,8 +109,27 @@ v0.5.0        </div>
     <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
   </div>
   <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
     <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="1167389101%2FClasslikes%2F-1302147912" anchor-label="UuidInspection" id="1167389101%2FClasslikes%2F-1302147912" data-filterable-set=":/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-uuid-inspection/index.html"><span>Uuid</span><wbr></wbr><span><span>Inspection</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1167389101%2FClasslikes%2F-1302147912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-uuid-inspection/index.html">UuidInspection</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>version<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>variant<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>timestampMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>rawBytesHex<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Result of inspecting a UUID: its version and variant, plus, for versions that embed one (v1, v6, v7), the millisecond Unix timestamp.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div data-togglable="FUNCTION">
         <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="897745001%2FFunctions%2F-1302147912" anchor-label="createRandomUUID" id="897745001%2FFunctions%2F-1302147912" data-filterable-set=":/commonMain"></a>
@@ -124,6 +143,21 @@ v0.5.0        </div>
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="create-random-u-u-i-d.html"><span class="token function">createRandomUUID</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Creates random UUID.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1127960835%2FFunctions%2F-1302147912" anchor-label="createUuidV7" id="-1127960835%2FFunctions%2F-1302147912" data-filterable-set=":/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-uuid-v7.html"><span>create</span><wbr></wbr><span>Uuid</span><wbr></wbr><span><span>V7</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1127960835%2FFunctions%2F-1302147912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="create-uuid-v7.html"><span class="token function">createUuidV7</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clock<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-clock/index.html">Clock</a><span class="token operator"> = </span>Clock.System</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Creates a UUIDv7 (RFC 9562) using the given clock for its embedded millisecond timestamp. When called more than once within the same millisecond, the random-A field is incremented so that successive calls still sort lexicographically in creation order.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -274,6 +308,21 @@ v0.5.0        </div>
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="file-s-h-a512.html"><span class="token function">fileSHA512</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">filepath<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">fileSystem<span class="token operator">: </span><span data-unresolved-link="okio/FileSystem///PointingToDeclaration/">FileSystem</span><span class="token operator"> = </span>FileSystem.SYSTEM</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Creates SHA512 hash of given file.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-939332708%2FFunctions%2F-1302147912" anchor-label="inspectUuid" id="-939332708%2FFunctions%2F-1302147912" data-filterable-set=":/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/commonMain" data-filterable-set=":/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="inspect-uuid.html"><span>inspect</span><wbr></wbr><span><span>Uuid</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-939332708%2FFunctions%2F-1302147912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="inspect-uuid.html"><span class="token function">inspectUuid</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-uuid-inspection/index.html">UuidInspection</a></div><div class="brief "><p class="paragraph">Inspects a UUID string, reporting its version, variant, and, for v1/v6/v7, the embedded timestamp. Accepts uppercase, lowercase, braced (<code class="lang-kotlin">{...}</code>), and urn-prefixed (<code class="lang-kotlin">urn:uuid:...</code>) input.</p></div></div></div>
                 </div>
               </div>
             </div>
