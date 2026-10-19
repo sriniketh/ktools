@@ -1,9 +1,14 @@
 package dev.sriniketh
 
+import okio.ForwardingFileSystem
+import okio.IOException
+import okio.Path
 import okio.Path.Companion.toPath
+import okio.Sink
 import okio.fakefilesystem.FakeFileSystem
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -135,6 +140,35 @@ class AgentSkillsTest {
         fileSystem.write(skillsDir / "ktools-uuid" / "SKILL.md") { writeUtf8("my own skill") }
         assertEquals(SkillChange.Conflict("ktools-uuid", replace = true), install(force = true).last())
         assertEquals("uuid skill", read("ktools-uuid/SKILL.md"))
+    }
+
+    @Test
+    fun `install interrupted partway is repaired by the next install`() {
+        val failingWrites = object : ForwardingFileSystem(fileSystem) {
+            override fun sink(file: Path, mustCreate: Boolean): Sink {
+                if (file.name == "algorithms.md") throw IOException("No space left on device")
+                return super.sink(file, mustCreate)
+            }
+        }
+        val changes = planSkillInstall(failingWrites, skillsDir, skills, force = false)
+        assertFailsWith<IOException> { applySkillChanges(failingWrites, skillsDir, skills, changes, "v0.7.0") }
+
+        assertEquals(SkillChange.Update("ktools-hash", "v0.7.0"), install().first())
+        assertEquals("algorithms", read("ktools-hash/references/algorithms.md"))
+    }
+
+    @Test
+    fun `install with force replaces a linked skill directory without touching its target`() {
+        fileSystem.allowSymlinks = true
+        val ownSkill = home / "my-skills" / "ktools-uuid"
+        fileSystem.createDirectories(ownSkill)
+        fileSystem.write(ownSkill / "SKILL.md") { writeUtf8("my own skill") }
+        fileSystem.createSymlink(skillsDir / "ktools-uuid", ownSkill)
+
+        install(force = true)
+        assertEquals(null, fileSystem.metadata(skillsDir / "ktools-uuid").symlinkTarget)
+        assertEquals("uuid skill", read("ktools-uuid/SKILL.md"))
+        assertEquals("my own skill", fileSystem.read(ownSkill / "SKILL.md") { readUtf8() })
     }
 
     @Test

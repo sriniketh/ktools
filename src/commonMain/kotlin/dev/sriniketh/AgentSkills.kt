@@ -162,12 +162,19 @@ private fun matchesBundle(fileSystem: FileSystem, dir: Path, skill: BundledSkill
         skill.files.all { (path, content) -> fileSystem.read(dir / path) { readUtf8() } == content }
 }
 
+// The marker goes in first and stays while the old files are cleared, so a write cut short (disk full, Ctrl-C)
+// still reads as ktools' own skill and the next run repairs it instead of reporting a conflict.
 private fun writeSkill(fileSystem: FileSystem, dir: Path, skill: BundledSkill, version: String) {
-    fileSystem.deleteRecursively(dir)
+    val marker = dir / SKILL_MARKER_FILE_NAME
+    if (fileSystem.metadataOrNull(dir)?.isDirectory != true) {
+        fileSystem.deleteRecursively(dir)
+        fileSystem.createDirectories(dir)
+    }
+    fileSystem.write(marker) { writeUtf8("$version\n") }
+    fileSystem.list(dir).filter { it != marker }.forEach { fileSystem.deleteRecursively(it) }
     for ((path, content) in skill.files) {
         val file = dir / path
         file.parent?.let { fileSystem.createDirectories(it) }
         fileSystem.write(file) { writeUtf8(content) }
     }
-    fileSystem.write(dir / SKILL_MARKER_FILE_NAME) { writeUtf8("$version\n") }
 }
