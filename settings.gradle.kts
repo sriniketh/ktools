@@ -25,7 +25,12 @@ dependencyResolutionManagement {
             library("kotlinx-datetime", "org.jetbrains.kotlinx", "kotlinx-datetime").version("0.8.0-0.6.x-compat")
             library("clikt", "com.github.ajalt.clikt", "clikt").version("5.1.0")
             library("kotlinx-serialization", "org.jetbrains.kotlinx", "kotlinx-serialization-json").version("1.11.0")
-            library("ktor-client", "io.ktor", "ktor-client-core").version("3.6.0")
+            version("ktor", "3.6.0")
+            library("ktor-client", "io.ktor", "ktor-client-core").versionRef("ktor")
+            library("ktor-client-curl", "io.ktor", "ktor-client-curl").versionRef("ktor")
+            library("ktor-client-darwin", "io.ktor", "ktor-client-darwin").versionRef("ktor")
+            library("ktor-client-winhttp", "io.ktor", "ktor-client-winhttp").versionRef("ktor")
+            library("ktor-client-mock", "io.ktor", "ktor-client-mock").versionRef("ktor")
         }
     }
 }

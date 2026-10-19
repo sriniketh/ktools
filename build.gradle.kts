@@ -1,6 +1,7 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.konan.target.HostManager
 import java.net.URI
 
 plugins {
@@ -57,6 +58,18 @@ kotlin {
         nativeMain.dependencies {
             implementation(libs.clikt)
         }
+        nativeTest.dependencies {
+            implementation(libs.ktor.client.mock)
+        }
+        macosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
+        }
+        linuxMain.dependencies {
+            implementation(libs.ktor.client.curl)
+        }
+        mingwMain.dependencies {
+            implementation(libs.ktor.client.winhttp)
+        }
     }
 }
 
@@ -111,6 +124,14 @@ tasks.matching {
 // Both tasks touch src/nativeMain/resources; order explicitly to satisfy Gradle's task validation.
 tasks.matching { it.name.endsWith("ProcessResources") }.configureEach {
     mustRunAfter("exportLibraryDefinitions")
+}
+
+// Ktor's Curl klib picks its static libraries by host family, so on a Windows host the linuxX64 link omits
+// libssl/libcrypto and fails. Linux binaries are linked on Linux and macOS hosts instead.
+if (HostManager.hostIsMingw) {
+    tasks.matching { it.name.startsWith("link") && it.name.endsWith("LinuxX64") }.configureEach {
+        enabled = false
+    }
 }
 
 // detekt plugin config

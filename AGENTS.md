@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-ktools is a Kotlin Multiplatform (KMP) CLI utility providing developer tools: UUID generation, time conversions, hashing (MD5/SHA1/SHA256/SHA512), base64 encoding/decoding, and JSON pretty-printing. It compiles to native executables for macOS (ARM64/x64), Linux (x64), and Windows (x64).
+ktools is a Kotlin Multiplatform (KMP) CLI utility providing developer tools: UUID generation, time conversions, hashing (MD5/SHA1/SHA256/SHA512), base64 encoding/decoding, JSON pretty-printing, and self-update from GitHub releases. It compiles to native executables for macOS (ARM64/x64), Linux (x64), and Windows (x64).
 
 ## Build & Run
 
@@ -31,12 +31,15 @@ Tests are in two source sets:
 src/
 ├── commonMain/kotlin/dev/sriniketh/     # Platform-agnostic business logic (pure functions)
 │   ├── UUID.kt, Hashing.kt, EncodingDecoding.kt, UnixTime.kt, PrettyPrint.kt, AboutText.kt
+│   ├── SelfUpdate.kt                    # Release planning, checksum check, executable replacement
 │   └── models/LibrariesAndLicenses.kt
 ├── commonTest/kotlin/dev/sriniketh/     # Unit tests for common code
 ├── nativeMain/kotlin/dev/sriniketh/     # CLI commands (Clikt) and entry point
 │   ├── Main.kt                          # Entry point, wires subcommands
 │   ├── AboutOption.kt                   # --about option
+│   ├── SelfUpdatePlatform.kt            # expect declarations for the update command's platform hooks
 │   └── *Command.kt                      # One file per CLI command
+├── macosMain/, linuxMain/, mingwMain/   # actuals: executable path, chmod, release target
 └── nativeTest/kotlin/dev.sriniketh/     # CLI integration tests
 ```
 
@@ -62,13 +65,14 @@ src/
 
 ```bash
 ./gradlew detektMetadataCommonMain       # Check common sources
-./gradlew detektMacosArm64Main           # Check common + native sources (macOS ARM64)
+./gradlew detektMetadataNativeMain       # Check native sources
+./gradlew detektMetadataMacosMain        # Check macOS sources
 ```
 
 - **Detekt** (v1.23.8) is configured in `build.gradle.kts` with `detekt.yml` at the project root
 - `buildUponDefaultConfig = true` — extends the default ruleset
 - Generated code (`build/`, `BuildConfig.kt`) is excluded
-- In KMP, the base `detekt` task has no sources — use target-specific tasks (e.g., `detektMetadataCommonMain`, `detektMacosArm64Main`)
+- In KMP, the base `detekt` task has no sources — use source-set tasks (e.g., `detektMetadataCommonMain`, `detektMetadataNativeMain`). Per-target tasks such as `detektMacosArm64Main` report NO-SOURCE, and `linuxMain`/`mingwMain` have no detekt task
 
 ## Dependencies
 
@@ -76,7 +80,7 @@ src/
 - **kotlinx-datetime** — Cross-platform date/time
 - **kotlinx-serialization-json** — JSON serialization
 - **Okio** — Cross-platform file I/O (`okio-fakefilesystem` for tests)
-- **Ktor Client** — HTTP client (cookie parsing in pretty-print)
+- **Ktor Client** — HTTP client (cookie parsing in pretty-print, release download in `update`). Engines per platform: Darwin (macOS), Curl (Linux), WinHttp (Windows)
 - **Detekt** — Static code analysis
 
 ## Versioning
