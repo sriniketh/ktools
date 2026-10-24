@@ -25,6 +25,8 @@ JSON silently drops or changes values, and it cannot tell you whether the input 
 
 - The output starts with an empty line. Leave it out when you show the result.
 - If the JSON contains a single quote, put it in a file and use `-s "$(cat file)"` instead of quoting it inline.
+- In Windows `cmd.exe`, single quotes stay part of the value, which makes the JSON invalid, and `$(cat file)` does
+  not work. Wrap the value in double quotes and escape the quotes inside it as `\"`: `-s "{\"a\":1}"`.
 - For a cookie header, a repeated name keeps its last value, a bare name gets an empty value, and values are not
   URL-decoded.
 - `-s` is required. Without it ktools prompts interactively, which hangs or fails in an agent shell.

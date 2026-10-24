@@ -26,7 +26,7 @@ class InitCommandTest {
         fileSystem = fileSystem,
         home = { home },
         environment = { null },
-        skills = skills,
+        skills = { skills },
         version = version,
     )
 

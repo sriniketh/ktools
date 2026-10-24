@@ -49,3 +49,7 @@ npx skills add sriniketh/ktools
 
 The plugin and skills.sh routes install from the repository's default branch, which can be ahead of your installed
 ktools. `ktools init` installs the skills that match your binary.
+
+Pick one route for each skills directory. skills.sh does not write the `.ktools-skill` marker that `ktools init` looks
+for, so `init` treats skills installed that way as your own: it skips them and exits 1. Run `ktools init --force` to
+let ktools take them over.

@@ -27,6 +27,8 @@ compute is a guess, and a stray trailing newline gives a different digest.
 
 - `-s` hashes the string as UTF-8 without a trailing newline. That matches `printf '%s' 'hello' | shasum -a 256`,
   not `echo hello | shasum -a 256`.
+- In Windows `cmd.exe`, single quotes stay part of the value, so `-s 'hello'` hashes `'hello'`. Use double quotes
+  there (`-s "hello"`), or `-f` for a file. PowerShell treats single quotes like a POSIX shell does.
 - The empty string is rejected (`string must be non-empty`). Its SHA-256 is
   `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` if the user needs it.
 - Pass exactly one of `-s` and `-f`.

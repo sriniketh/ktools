@@ -17,7 +17,7 @@ internal class InitCommand(
     private val fileSystem: FileSystem = FileSystem.SYSTEM,
     private val home: () -> Path = ::homeDirectory,
     private val environment: (String) -> String? = ::environmentVariable,
-    private val skills: List<BundledSkill> = parseBundledSkills(BuildConfig.BUNDLED_SKILLS_JSON),
+    private val skills: () -> List<BundledSkill> = { parseBundledSkills(BuildConfig.BUNDLED_SKILLS_JSON) },
     private val version: String = BuildConfig.VERSION,
 ) : CliktCommand(name = "init") {
 
@@ -41,6 +41,7 @@ internal class InitCommand(
 
     private fun init() {
         val home = home()
+        val skills = skills()
         val agents = knownSkillAgents(home, environment)
         val chosen = if (agentIds.isEmpty()) {
             agents.filter { fileSystem.exists(it.configDir) }

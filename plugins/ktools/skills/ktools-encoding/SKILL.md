@@ -27,6 +27,8 @@ in your head go wrong on padding and on non-ASCII characters.
 
 - Decoding base64 accepts missing `=` padding and the URL-safe alphabet (`-` and `_`), so it also reads base64url.
 - `utf8` means hex of UTF-8 bytes, not a character-set conversion.
+- In Windows `cmd.exe`, single quotes stay part of the value, so `-s 'hello'` encodes `'hello'`. Use double quotes
+  there (`-s "hello"`). PowerShell treats single quotes like a POSIX shell does.
 - The value must be non-empty, and must be passed with `-s`. Without it ktools prompts interactively, which hangs
   or fails in an agent shell.
 
