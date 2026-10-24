@@ -61,6 +61,7 @@ class UpdateCommandTest {
         currentVersion: String = "v0.5.0",
         httpClient: () -> HttpClient = { HttpClient(engine) },
         fileSystem: FileSystem = fakeFileSystem,
+        skillsInstalled: Boolean = false,
     ) = UpdateCommand(
         httpClient = httpClient,
         fileSystem = fileSystem,
@@ -68,6 +69,7 @@ class UpdateCommandTest {
         executablePath = { executable },
         makeExecutable = {},
         target = ReleaseTarget.LINUX_X64,
+        skillsInstalled = { skillsInstalled },
     )
 
     private fun installedBinary() = fakeFileSystem.read(executable) { readUtf8() }
@@ -86,6 +88,20 @@ class UpdateCommandTest {
         assertEquals(0, result.statusCode)
         assertContains(result.stdout, "Updated ktools v0.5.0 -> v0.6.0")
         assertEquals(newBinary, installedBinary())
+    }
+
+    @Test
+    fun `update tells you to refresh agent skills when ktools installed them`() {
+        val result = updateCommand(skillsInstalled = true).test("")
+        assertEquals(0, result.statusCode)
+        assertContains(result.stdout, "Run `ktools init` to update the ktools skills in your agents.")
+    }
+
+    @Test
+    fun `update does not mention agent skills when none are installed`() {
+        val result = updateCommand().test("")
+        assertEquals(0, result.statusCode)
+        assertFalse(result.stdout.contains("ktools init"))
     }
 
     @Test

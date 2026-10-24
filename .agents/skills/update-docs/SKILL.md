@@ -1,6 +1,8 @@
 ---
 name: update-docs
 description: Use when README.md, docs/index.md, docs/commands.md, or AGENTS.md may be out of sync with the actual code — after adding/removing/changing a CLI command or option, after changing the src/ layout or build/run tasks, before a release, or when asked to sync/refresh/update the docs
+metadata:
+  internal: true
 ---
 
 # Update Docs
@@ -17,6 +19,8 @@ Brings README.md, docs/index.md, docs/commands.md, and AGENTS.md back in sync wi
 | `AGENTS.md` build/run/test commands | `./gradlew tasks --all` | Every command shown actually exists as a task; no invented/renamed tasks |
 | `AGENTS.md` "Project Structure" tree | `find src -name "*.kt"` | New/removed/moved files reflected |
 | `mkdocs.yml` nav | `docs/*.md` top-level pages | New published doc pages have a nav entry |
+| `plugins/ktools/skills/*/SKILL.md` and `plugins/ktools/README.md` | The commands they describe, run live | Every command line, option, output and error message a skill quotes still matches the binary; the README skill table lists every skill directory |
+| `.claude-plugin/marketplace.json` `skills` list | `ls plugins/ktools/skills` | Lists exactly the skill directories |
 
 ## Steps
 
@@ -49,6 +53,8 @@ BIN=$(find build/bin -path "*debugExecutable/ktools.kexe" | head -1)
 "$BIN" encode --help
 "$BIN" decode --help
 "$BIN" prettyprint --help
+"$BIN" update --help
+"$BIN" init --help
 ```
 
 Capture output for every command and subcommand found in step 1, not just the ones already in the docs — a new command won't be caught by only re-checking existing entries.

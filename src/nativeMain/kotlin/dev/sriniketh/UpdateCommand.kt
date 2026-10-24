@@ -38,6 +38,8 @@ private fun updateHttpClient() = HttpClient {
     }
 }
 
+// Every parameter replaces a network, file system or platform dependency in tests.
+@Suppress("LongParameterList")
 internal class UpdateCommand(
     private val httpClient: () -> HttpClient = ::updateHttpClient,
     private val fileSystem: FileSystem = FileSystem.SYSTEM,
@@ -45,6 +47,7 @@ internal class UpdateCommand(
     private val executablePath: () -> Path = { FileSystem.SYSTEM.canonicalize(currentExecutablePath()) },
     private val makeExecutable: (Path) -> Unit = ::makeExecutable,
     private val target: ReleaseTarget = currentReleaseTarget,
+    private val skillsInstalled: () -> Boolean = ::ktoolsSkillsInstalled,
 ) : CliktCommand(name = "update") {
 
     private val checkOnly by option("--check", help = "Only report whether an update is available").flag()
@@ -89,6 +92,7 @@ internal class UpdateCommand(
             )
         }
         echo("Updated ktools ${plan.current} -> ${plan.latest}")
+        if (skillsInstalled()) echo("Run `ktools init` to update the ktools skills in your agents.")
     }
 
     private suspend fun HttpClient.fetch(url: String): HttpResponse {

@@ -1,6 +1,8 @@
 ---
 name: verify-ktools
-description: Drive the real ktools native CLI (uuid, unixtime, hash, encode, decode, prettyprint) the way a user does and capture proof. Use after changing any command, option, or output in src/, or whenever a claim about CLI behavior needs evidence beyond unit tests.
+description: Drive the real ktools native CLI (uuid, unixtime, hash, encode, decode, prettyprint, update, init) the way a user does and capture proof. Use after changing any command, option, or output in src/, or whenever a claim about CLI behavior needs evidence beyond unit tests.
+metadata:
+  internal: true
 ---
 
 # Verify ktools

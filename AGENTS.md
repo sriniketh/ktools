@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-ktools is a Kotlin Multiplatform (KMP) CLI utility providing developer tools: UUID generation, time conversions, hashing (MD5/SHA1/SHA256/SHA512), base64 encoding/decoding, JSON pretty-printing, and self-update from GitHub releases. It compiles to native executables for macOS (ARM64/x64), Linux (x64), and Windows (x64).
+ktools is a Kotlin Multiplatform (KMP) CLI utility providing developer tools: UUID generation, time conversions, hashing (MD5/SHA1/SHA256/SHA512), base64 encoding/decoding, JSON pretty-printing, self-update from GitHub releases, and `ktools init`, which installs the bundled agent skills into AI coding agents. It compiles to native executables for macOS (ARM64/x64), Linux (x64), and Windows (x64).
 
 ## Build & Run
 
@@ -32,16 +32,34 @@ src/
 ├── commonMain/kotlin/dev/sriniketh/     # Platform-agnostic business logic (pure functions)
 │   ├── UUID.kt, Hashing.kt, EncodingDecoding.kt, UnixTime.kt, PrettyPrint.kt, AboutText.kt
 │   ├── SelfUpdate.kt                    # Release planning, checksum check, executable replacement
+│   ├── AgentSkills.kt                   # Bundled skill parsing, install/update/uninstall planning
+│   ├── SkillAgents.kt                   # Known agents and the skills directories they read
 │   └── models/LibrariesAndLicenses.kt
 ├── commonTest/kotlin/dev/sriniketh/     # Unit tests for common code
 ├── nativeMain/kotlin/dev/sriniketh/     # CLI commands (Clikt) and entry point
 │   ├── Main.kt                          # Entry point, wires subcommands
 │   ├── AboutOption.kt                   # --about option
 │   ├── SelfUpdatePlatform.kt            # expect declarations for the update command's platform hooks
+│   ├── Environment.kt                   # Environment variables and home directory
 │   └── *Command.kt                      # One file per CLI command
 ├── macosMain/, linuxMain/, mingwMain/   # actuals: executable path, chmod, release target
 └── nativeTest/kotlin/dev.sriniketh/     # CLI integration tests
+plugins/ktools/                          # Agent plugin for users of ktools (Claude, Codex and Agent Plugins manifests)
+└── skills/<skill>/SKILL.md              # Skills bundled into the binary and installed by `ktools init`
+.claude-plugin/, .agents/plugins/        # Marketplaces listing plugins/ktools
+.agents/skills/                          # Skills for developing ktools itself (not shipped)
 ```
+
+## Agent skills
+
+- `plugins/ktools/skills/` is embedded into the binary as `BuildConfig.BUNDLED_SKILLS_JSON` at build time, so editing
+  a skill needs a rebuild and ships with the next release. Hidden files (names starting with `.`) are not bundled.
+- `ktools init` writes each skill with a `.ktools-skill` marker holding the ktools version; only directories with that
+  marker are updated or removed.
+- Skill conventions: `name:` equals the directory name, and `description` starts with `Use when`.
+  `InitCommandTest` checks both. When a command, option or output changes, update the matching skill too.
+- Plugin manifest versions (`plugins/ktools/plugin.json`, `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`)
+  match the release version without the `v`; the `generate-release` skill bumps them.
 
 ## Architecture
 

@@ -17,6 +17,7 @@ Commands:
   decode       Decode text content
   prettyprint  Pretty print content
   update       Update ktools to the latest release
+  init         Install the ktools skills into your AI coding agents
 ```
 
 ## ktools --version
@@ -190,3 +191,40 @@ build provenance attestations, which you can verify with:
 ```text
 gh attestation verify <path-to-ktools> --repo sriniketh/ktools
 ```
+
+## ktools init
+```text
+Usage: ktools init [<options>]
+
+  Install the ktools skills into your AI coding agents
+
+Options:
+  --agent=(claude|codex|gemini|copilot|cursor|opencode|agents)
+               Agent to install skills for, instead of every agent found.
+               Repeat for more than one.
+  --uninstall  Remove the skills ktools installed
+  --force      Replace skill directories that ktools did not install
+  --dry-run    Show what would change without writing anything
+  -h, --help   Show this message and exit
+```
+
+`ktools init` installs the [ktools agent skills](https://github.com/sriniketh/ktools/tree/main/plugins/ktools), which
+teach AI coding agents when and how to use ktools. The skills are built into the binary, so each ktools release
+installs the skills for its own commands. It installs for every agent it finds a config directory for, or only the
+ones named with `--agent`:
+
+| Agent | `--agent` | Found by | Skills directory |
+|---|---|---|---|
+| Claude Code | `claude` | `~/.claude` (or `$CLAUDE_CONFIG_DIR`) | `~/.claude/skills` |
+| Codex | `codex` | `~/.codex` (or `$CODEX_HOME`) | `~/.agents/skills` |
+| Gemini CLI | `gemini` | `~/.gemini` | `~/.agents/skills` |
+| GitHub Copilot | `copilot` | `~/.copilot` | `~/.agents/skills` |
+| Cursor | `cursor` | `~/.cursor` | `~/.agents/skills` |
+| OpenCode | `opencode` | `~/.config/opencode` | `~/.agents/skills` |
+| Other agents | `agents` | `~/.agents` | `~/.agents/skills` |
+
+Agents that read the shared `~/.agents/skills` directory get one copy between them. Run `ktools init` again after
+`ktools update` to bring the skills up to date; skills that are already current are left alone, and skills dropped
+from a release are removed. Each installed skill directory holds a `.ktools-skill` file recording the ktools version
+that installed it. `init` only updates or removes directories with that file, so it never overwrites a skill of your
+own with the same name unless you pass `--force`.

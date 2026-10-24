@@ -1,6 +1,8 @@
 ---
 name: generate-release
 description: Use when creating a new ktools release version — runs tests, updates dependency metadata and docs, generates changelog from commit history, tags, pushes, and updates GitHub release
+metadata:
+  internal: true
 ---
 
 # Generate Release
@@ -64,7 +66,23 @@ git commit -m "chore: update librariesandlicenses.json for <version>"
 
 If unchanged (exit code 0), skip the commit.
 
-### 4. Trigger dokka docs deployment
+### 4. Bump the plugin manifest versions
+
+The ktools plugin manifests carry the release version without the leading `v` (e.g. `0.4.0` for `v0.4.0`). Set the
+`"version"` field in all three, so plugin installs see the new release:
+
+- `plugins/ktools/plugin.json`
+- `plugins/ktools/.claude-plugin/plugin.json`
+- `plugins/ktools/.codex-plugin/plugin.json`
+
+If any changed, commit:
+
+```bash
+git add plugins/ktools
+git commit -m "chore: bump ktools plugin version for <version>"
+```
+
+### 5. Trigger dokka docs deployment
 
 The dokka docs are generated and deployed via the `docs.yml` workflow (not committed to the repo). Trigger it:
 
@@ -74,7 +92,7 @@ gh workflow run docs.yml
 
 This runs asynchronously — no need to wait for it to complete before continuing.
 
-### 5. Generate changelog
+### 6. Generate changelog
 
 Get the previous tag:
 
@@ -94,17 +112,17 @@ Format each line as a markdown list item:
 - <commit hash> <commit subject>
 ```
 
-Save the full changelog text for use in steps 6 and 8.
+Save the full changelog text for use in steps 7 and 10.
 
-### 6. Create annotated tag
+### 7. Create annotated tag
 
 ```bash
 git tag -a <version> -m "<changelog>"
 ```
 
-Use the changelog from step 5 as the tag annotation.
+Use the changelog from step 6 as the tag annotation.
 
-### 7. Push commits and tag
+### 8. Push commits and tag
 
 ```bash
 git push && git push --tags
@@ -112,7 +130,7 @@ git push && git push --tags
 
 This triggers the `release.yml` CI workflow.
 
-### 8. Wait for CI
+### 9. Wait for CI
 
 Poll the release workflow until it completes:
 
@@ -122,7 +140,7 @@ gh run list --workflow=release.yml --limit=1 --json status,conclusion
 
 Re-check every 60 seconds until `status` is `completed`. Then check `conclusion` — if it is not `success`, report the failure and stop.
 
-### 9. Update GitHub release body
+### 10. Update GitHub release body
 
 Verify the release exists first:
 
@@ -138,7 +156,7 @@ Then update the release body:
 gh release edit <version> --notes "<changelog>"
 ```
 
-Use the same changelog from step 5. This ensures the changelog appears in both the tag annotation and the GitHub release page.
+Use the same changelog from step 6. This ensures the changelog appears in both the tag annotation and the GitHub release page.
 
 ## Error Recovery
 
@@ -146,8 +164,8 @@ Use the same changelog from step 5. This ensures the changelog appears in both t
 |---------|-----------|
 | Tests fail (step 2) | Fix tests, re-run from step 1 |
 | Gradle task fails (step 3) | Check Gradle output, fix, re-run the failed step |
-| Docs workflow fails (step 4) | Investigate via `gh run list --workflow=docs.yml --limit=1`, re-trigger with `gh workflow run docs.yml` |
+| Docs workflow fails (step 5) | Investigate via `gh run list --workflow=docs.yml --limit=1`, re-trigger with `gh workflow run docs.yml` |
 | Tag already exists (step 1) | User must choose a different version or delete the existing tag |
-| Push fails (step 7) | Check remote status, resolve conflicts, retry push |
-| CI fails (step 8) | Investigate the workflow run via `gh run view`, fix and re-tag if needed |
-| Release edit fails (step 9) | Retry manually: `gh release edit <version> --notes "<changelog>"` |
+| Push fails (step 8) | Check remote status, resolve conflicts, retry push |
+| CI fails (step 9) | Investigate the workflow run via `gh run view`, fix and re-tag if needed |
+| Release edit fails (step 10) | Retry manually: `gh release edit <version> --notes "<changelog>"` |
