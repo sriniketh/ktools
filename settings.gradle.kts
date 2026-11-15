@@ -11,11 +11,11 @@ dependencyResolutionManagement {
             version("kotlin", "2.4.21")
             version("okio", "3.18.2")
 
-            plugin("gradle-versions", "com.github.ben-manes.versions").version("0.66.0")
+            plugin("gradle-versions", "com.github.ben-manes.versions").version("0.67.0")
 
             plugin("multiplatform", "org.jetbrains.kotlin.multiplatform").versionRef("kotlin")
             plugin("serialization", "org.jetbrains.kotlin.plugin.serialization").versionRef("kotlin")
-            plugin("dokka", "org.jetbrains.dokka").version("2.2.0")
+            plugin("dokka", "org.jetbrains.dokka").version("2.3.0")
             plugin("aboutlibraries", "com.mikepenz.aboutlibraries.plugin").version("15.3.0")
             plugin("buildconfig", "com.github.gmazzo.buildconfig").version("6.1.2")
             plugin("detekt", "io.gitlab.arturbosch.detekt").version("1.23.8")
