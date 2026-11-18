@@ -23,7 +23,7 @@ dependencyResolutionManagement {
             library("okio-core", "com.squareup.okio", "okio").versionRef("okio")
             library("okio-fakefilesystem", "com.squareup.okio", "okio-fakefilesystem").versionRef("okio")
             library("kotlinx-datetime", "org.jetbrains.kotlinx", "kotlinx-datetime").version("0.8.0-0.6.x-compat")
-            library("clikt", "com.github.ajalt.clikt", "clikt").version("5.1.0")
+            library("clikt", "com.github.ajalt.clikt", "clikt").version("5.2.1")
             library("kotlinx-serialization", "org.jetbrains.kotlinx", "kotlinx-serialization-json").version("1.11.0")
             version("ktor", "3.6.1")
             library("ktor-client", "io.ktor", "ktor-client-core").versionRef("ktor")
